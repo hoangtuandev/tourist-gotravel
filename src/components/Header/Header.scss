@@ -1,0 +1,70 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.header {
+    margin: 0 0;
+    padding: 2px 0;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    //box-shadow: 1px 1px 10px #d1d1d1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+
+    .header-logo {
+        margin: 0 20px;
+        img {
+            width: 145px;
+            height: 70px;
+        }
+    }
+
+    .header-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        input {
+            width: 600px;
+            outline: none;
+            border: 1px solid $mainColor;
+            border-radius: 50px;
+            font-family: monospace;
+            font-size: 15.5px;
+            font-weight: 600;
+            color: #7a7a7a;
+            padding: 11px 65px 11px 25px;
+        }
+
+        .label {
+            position: absolute;
+            background-color: #34b4ef;
+            color: #fff;
+            font-size: 32px;
+            padding: 7px 9px 4px 9px;
+            right: 0;
+            border-radius: 50px;
+            transition: ease-in-out 0.2s;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.15);
+                transition: ease-in-out 0.2s;
+            }
+        }
+    }
+
+    .header-user {
+        width: 130px;
+        margin: 0 20px;
+        display: flex;
+        justify-content: right;
+
+        img {
+            text-align: right;
+            z-index: 2;
+        }
+    }
+}
