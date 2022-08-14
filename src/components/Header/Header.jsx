@@ -12,7 +12,7 @@ function Header() {
         <div className={cx('header')}>
             <div className={cx('header-logo')}>
                 <img
-                    src="https://res.cloudinary.com/phtuandev/image/upload/v1658737322/GoTravel/Screenshot_2022-07-25_152144_rzkfy0.png"
+                    src="https://res.cloudinary.com/phtuandev/image/upload/v1660352742/GoTravel/24324_ihmxj2.png"
                     alt=""
                 />
             </div>

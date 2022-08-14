@@ -3,11 +3,14 @@ $mainFamily: "Mulish", sans-serif;
 
 .header {
     margin: 0 0;
-    padding: 2px 0;
+    padding: 0px 0;
     position: fixed;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 1);
     //box-shadow: 1px 1px 10px #d1d1d1;
+    background-image: url("https://res.cloudinary.com/phtuandev/image/upload/v1657607532/GoTravel/background_hahalolo_euqfgv.svg");
+    background-attachment: fixed;
+    background-size: cover;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,8 +19,10 @@ $mainFamily: "Mulish", sans-serif;
     .header-logo {
         margin: 0 20px;
         img {
-            width: 145px;
-            height: 70px;
+            padding-top: 10px;
+            padding-bottom: 5px;
+            width: 100px;
+            height: 85px;
         }
     }
 
@@ -43,21 +48,21 @@ $mainFamily: "Mulish", sans-serif;
             background-color: #34b4ef;
             color: #fff;
             font-size: 32px;
-            padding: 7px 9px 4px 9px;
+            padding: 8px 12px 0px 12px;
             right: 0;
             border-radius: 50px;
             transition: ease-in-out 0.2s;
 
             &:hover {
                 cursor: pointer;
-                transform: scale(1.15);
+                transform: scale(1.1);
                 transition: ease-in-out 0.2s;
             }
         }
     }
 
     .header-user {
-        width: 130px;
+        width: 100px;
         margin: 0 20px;
         display: flex;
         justify-content: right;

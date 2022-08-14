@@ -1,0 +1,44 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.catagory-home {
+    //background-color: bisque;
+    padding: 0 10px;
+    margin: 0 0 100px 0;
+
+    .catagory-menu {
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, 0.7);
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        border-radius: 50px;
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: ease-in-out 0.25s;
+
+            &:hover {
+                cursor: pointer;
+
+                transform: scale(1.1);
+                transition: ease-in-out 0.25s;
+            }
+
+            img {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 10px;
+            }
+
+            .label-item {
+                font-size: 17px;
+                font-weight: 700;
+                font-family: $mainFamily;
+            }
+        }
+    }
+}
