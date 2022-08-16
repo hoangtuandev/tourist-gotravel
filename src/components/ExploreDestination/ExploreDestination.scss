@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.explore-destination {
+    background-color: #fff;
+    margin: 80px 0 30px 0;
+    padding: 20px 0;
+    border-radius: 20px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+
+    .title {
+        color: #0b9de0;
+        font-size: 18px;
+        font-weight: 800;
+        font-family: $mainFamily;
+        text-align: center;
+
+        span {
+            position: relative;
+            top: -32px;
+            background-image: linear-gradient(to right, #0b94f5 0%, #3ae1ff 45%, #1fa2ff 100%);
+            padding: 10px 50px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            border-radius: 50px;
+            color: white;
+        }
+    }
+
+    .explore-group {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0 40px;
+
+        .group-item {
+            .image-destination {
+                position: relative;
+
+                img {
+                    width: 590px;
+                    height: 100px;
+                    border-radius: 2px;
+                    margin-top: 15px;
+                    margin-bottom: 10px;
+                    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+                }
+
+                .label {
+                    position: absolute;
+                    top: 45px;
+                    left: 45px;
+                    color: #fff;
+                    text-shadow: 3px 3px 5px #747474;
+                    font-size: 25px;
+                    font-family: $mainFamily;
+                    font-weight: 800;
+
+                    .icon {
+                        top: -11px;
+                        left: -35px;
+                        font-size: 30px;
+                        position: absolute;
+                    }
+                }
+
+                button {
+                    position: absolute;
+                    top: 45px;
+                    right: 45px;
+                    border: 2px solid #fff;
+                    text-shadow: 2px 2px 3px #535353;
+                    background-color: rgba(255, 255, 255, 0.3);
+                    color: #fff;
+                    font-size: 15px;
+                    font-family: $mainFamily;
+                    font-weight: 800;
+                }
+            }
+
+            .destination {
+                padding: 0px 15px 10px 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .col-image {
+                    display: flex;
+                    flex-direction: column;
+
+                    img {
+                        margin: 5px 0;
+                        border-radius: 15px;
+                        width: 130px;
+                        height: 80px;
+                    }
+                }
+
+                .col-name {
+                    list-style-type: none;
+                    padding: 0 0;
+                    margin: 0 0;
+
+                    li {
+                        margin: 30px 0;
+                        font-size: 16px;
+                        font-family: $mainFamily;
+                        font-weight: 700;
+                        color: #6b6b6b;
+                        transition: ease-in-out 0.2s;
+
+                        &:hover {
+                            cursor: pointer;
+                            color: #0b94f5;
+                            transform: scale(1.05);
+                            transition: ease-in-out 0.2s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.buttons-group {
+    text-align: center;
+
+    button {
+        margin: 40px 0 0px 0;
+        padding: 0px 20px;
+        font-size: 15px;
+        font-family: $mainFamily;
+        font-weight: 700;
+        color: #0b94f5;
+        border: 2px solid #0b94f5;
+
+        &:hover {
+            border: 2px solid #0b94f5;
+        }
+    }
+}

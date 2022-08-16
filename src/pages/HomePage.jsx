@@ -8,9 +8,12 @@ import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 
 import styles from './HomePage.scss';
-import Banner from '../components/Banner/Banner';
 import PreferDestination from '../components/PreferDestination/PreferDestination';
 import CatagoryHome from '../components/CatagoryHome/CatagoryHome';
+import Slideshow from '../components/Slideshow/Slideshow';
+import NewDestination from '../components/NewDestination/NewDestination';
+import ExploreDestination from '../components/ExploreDestination/ExploreDestination';
+import Footer from '../components/Footer/Footer';
 
 const cx = classNames.bind(styles);
 
@@ -24,12 +27,17 @@ function HomePage() {
                     <CssBaseline />
                     <Container maxWidth="xl">
                         {/* <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} /> */}
-                        <Banner></Banner>
+
+                        {/* <Banner></Banner> */}
+                        <Slideshow></Slideshow>
                         <CatagoryHome></CatagoryHome>
                         <PreferDestination></PreferDestination>
+                        <NewDestination></NewDestination>
+                        <ExploreDestination></ExploreDestination>
                     </Container>
                 </Fragment>
             </div>
+            <Footer></Footer>
         </div>
     );
 }

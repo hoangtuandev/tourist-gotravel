@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+@import "~bootstrap/scss/bootstrap";
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.new-destination {
+    background-color: #fff;
+    margin: 80px 0 30px 0;
+    padding: 20px 40px 20px 40px;
+    border-radius: 20px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+
+    .title {
+        color: #0b9de0;
+        font-size: 18px;
+        font-weight: 800;
+        font-family: $mainFamily;
+        text-align: center;
+
+        span {
+            position: relative;
+            top: -32px;
+            background-image: linear-gradient(to right, #0b94f5 0%, #3ae1ff 45%, #1fa2ff 100%);
+            padding: 10px 50px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            border-radius: 50px;
+            color: white;
+        }
+    }
+}
+
+.destination-list {
+    padding: 20px 0px 10px 0px;
+    margin: 0 0;
+    display: flex;
+    justify-content: space-between;
+
+    .destination-item {
+        list-style-type: none;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        transition: ease-in-out 0.2s;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: rgba(174, 174, 174, 0.19) 0px 0px 20px, rgba(182, 182, 182, 0.23) 0px 5px 6px;
+        width: 385px;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.02);
+            transition: ease-in-out 0.2s;
+        }
+
+        .controlled-carousel {
+            border-radius: 10px;
+            .carousel-inner {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            .carousel-control-prev {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            .carousel-control-next {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            .carousel-item {
+                border-radius: 10px;
+
+                img {
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    width: 385px;
+                    height: 250px;
+                }
+            }
+        }
+
+        .destination-infor {
+            p {
+                margin: 0 15px 0 15px;
+                padding: 0 0;
+                font-family: $mainFamily;
+            }
+
+            .infor-label {
+                padding-top: 10px;
+                color: #0b94f5;
+                font-weight: 700;
+                font-size: 16px;
+                // text-shadow: 3px 2px 5px #787878;
+            }
+
+            .infor-content {
+                padding-top: 0px;
+                padding-bottom: 15px;
+                color: #5f5f5f;
+                font-weight: 600;
+                font-size: 14px;
+                text-align: justify;
+            }
+        }
+    }
+}
+
+.button-bases {
+    margin: 20px 0;
+    .image-button {
+        .css-1p4evgx {
+            background-color: #5d5d5d;
+        }
+
+        .css-97e7ai-MuiTypography-root {
+            font-size: 18px;
+            font-family: $mainFamily;
+            font-weight: 700;
+        }
+    }
+}
+
+.buttons-group {
+    text-align: center;
+
+    button {
+        margin: 40px 0 0px 0;
+        padding: 0px 20px;
+        font-size: 15px;
+        font-family: $mainFamily;
+        font-weight: 700;
+        color: #0b94f5;
+        border: 2px solid #0b94f5;
+
+        &:hover {
+            border: 2px solid #0b94f5;
+        }
+    }
+}

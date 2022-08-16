@@ -1,0 +1,182 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.footer {
+    margin: 150px 0 0 0;
+    padding: 0 0;
+    position: relative;
+    bottom: 0;
+    background-image: url("https://res.cloudinary.com/phtuandev/image/upload/v1660627206/GoTravel/pexels-pok-rie-2049422_a6v56k.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: $mainFamily;
+    color: #fff;
+
+    .background-over {
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 20px;
+
+        .about {
+            .go-travel-text {
+                font-size: 50px;
+                font-weight: 800;
+                color: #00a4f1;
+                text-shadow: 1px 1px 3px rgb(164, 164, 164);
+
+                span {
+                    font-size: 65px;
+                    color: #ff0d00;
+                }
+            }
+
+            .media-list {
+                list-style-type: none;
+                padding: 0 0;
+                margin: 15px 0;
+                display: flex;
+
+                align-items: center;
+
+                li {
+                    margin-right: 25px;
+                    img {
+                        width: 45px;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .contact {
+                position: relative;
+                width: 400px;
+                max-width: 400px;
+                margin: 25px 0;
+
+                input {
+                    width: 400px;
+                    height: 45px;
+                    padding: 7px 15px;
+                    outline: none;
+                    border: 1px solid #fff;
+                    font-family: $mainFamily;
+                    font-size: 16px;
+                    font-weight: 600;
+                    border-radius: 35px;
+                }
+
+                label {
+                    width: 85px;
+                    height: 45px;
+                    text-align: center;
+                    position: absolute;
+                    top: 0;
+                    right: 0px;
+                    font-family: $mainFamily;
+                    font-size: 15px;
+                    font-weight: 700;
+                    background-color: #00a4f1;
+                    border-radius: 50px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .address {
+                list-style-type: none;
+                padding: 0 0;
+                margin-top: 50px;
+                width: 400px;
+                max-width: 400px;
+
+                li {
+                    margin: 15px 0;
+                    display: flex;
+                    align-items: center;
+
+                    .icon {
+                        font-size: 20px;
+                    }
+
+                    span {
+                        margin-left: 15px;
+                        font-family: $mainFamily;
+                    }
+                }
+            }
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+
+            ul {
+                padding: 0 0;
+                margin: 0 100px;
+
+                list-style-type: none;
+                li {
+                    text-align: center;
+                    margin: 40px 0;
+
+                    button {
+                        width: 175px;
+                        border: 2px solid #fff;
+                        color: #fff;
+                        font-family: $mainFamily;
+                        font-size: 13.5px;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+        .images {
+            padding-right: 10px;
+            padding-top: 15px;
+            ul {
+                padding: 0 0;
+                list-style-type: none;
+
+                li {
+                    margin: 23px 0;
+                    button {
+                        width: 185px;
+                        height: 100px;
+                        font-family: $mainFamily;
+                        font-size: 18px;
+                        text-shadow: 2px 2px 3px rgb(99, 99, 99);
+                        font-family: $mainFamily;
+                        font-weight: 700;
+                    }
+
+                    .button-one {
+                        background-image: url("https://res.cloudinary.com/phtuandev/image/upload/v1659140588/GoTravel/inspired-2_x7zaev.jpg");
+
+                        background-size: cover;
+                    }
+                    .button-two {
+                        background-image: url("https://res.cloudinary.com/phtuandev/image/upload/v1659600006/GoTravel/tour-hue_zdwml2.jpg");
+
+                        background-size: cover;
+                    }
+                    .button-three {
+                        background-image: url("https://res.cloudinary.com/phtuandev/image/upload/v1659601310/GoTravel/soc-trang-2_dluusl.jpg");
+
+                        background-size: cover;
+                    }
+                }
+            }
+        }
+    }
+}

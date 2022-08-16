@@ -14,15 +14,15 @@ $mainFamily: "Mulish", sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 2;
+    z-index: 10;
 
     .header-logo {
         margin: 0 20px;
         img {
             padding-top: 10px;
             padding-bottom: 5px;
-            width: 100px;
-            height: 85px;
+            width: 90px;
+            height: 75px;
         }
     }
 
@@ -47,9 +47,9 @@ $mainFamily: "Mulish", sans-serif;
             position: absolute;
             background-color: #34b4ef;
             color: #fff;
-            font-size: 32px;
-            padding: 8px 12px 0px 12px;
+            font-size: 37px;
             right: 0;
+            padding: 0px 12px 5px 12px;
             border-radius: 50px;
             transition: ease-in-out 0.2s;
 

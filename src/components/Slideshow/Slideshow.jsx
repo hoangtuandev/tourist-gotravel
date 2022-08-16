@@ -1,12 +1,13 @@
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import classNames from 'classnames/bind';
 import Select from 'react-select';
 
 import { BiCalendar } from 'react-icons/bi';
 import { TbMapSearch } from 'react-icons/tb';
+import Carousel from 'react-bootstrap/Carousel';
 import DatePicker from 'react-datepicker';
 
-import styles from './Banner.scss';
+import styles from './Slideshow.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 const cx = classNames.bind(styles);
 
@@ -27,55 +28,72 @@ export const colourOptions = [
     { value: 'slate', label: 'Slate', color: '#253858' },
 ];
 
-export const images = [
-    'https://res.cloudinary.com/phtuandev/image/upload/v1660449042/GoTravel/banner_1_tm4ebo.png',
-    'https://res.cloudinary.com/phtuandev/image/upload/v1660449342/GoTravel/banner_4_shjgjf.png',
-    'https://res.cloudinary.com/phtuandev/image/upload/v1660449051/GoTravel/banner_5_rnhzwl.png',
-    'https://res.cloudinary.com/phtuandev/image/upload/v1660449051/GoTravel/banner_3_nde15w.png',
-];
-
-function Banner() {
+function Slideshow() {
+    const [index, setIndex] = useState(0);
     const [startDate, setStartDate] = useState(new Date());
-    const [currentImageIndex, setCurrentImageIndex] = useState(
-        Math.floor(Math.random() * images.length)
-    );
 
-    const changeImage = () => {
-        const randomNumber = Math.floor(Math.random() * images.length);
-        setCurrentImageIndex(randomNumber);
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
     };
-    // useEffect(() => changeImage(), []);
-
-    useEffect(() => {
-        setInterval(() => changeImage(), 5000);
-    }, []);
 
     return (
-        <div className={cx('banner')}>
-            <div className={cx('banner-top')}>
-                <div className={cx('banner-text')}>
-                    <p className={cx('slogan-before')}>
-                        Khám phá Việt Nam cùng
-                    </p>
-                    <p className={cx('slogan-after')}>
-                        {' '}
-                        <span>GO</span> Travel
-                    </p>
-                    <button type="button" className={cx('btn-grad')}>
-                        KHÁM PHÁ NGAY
-                    </button>
-                </div>
-                <div className={cx('banner-images')}>
-                    <img
-                        className={cx('image-large')}
-                        src={images[currentImageIndex]}
-                        alt=""
-                    />
-                </div>
+        <div className={cx('slide-show')}>
+            <div className={cx('banner-text')}>
+                <p className={cx('slogan-before')}>Khám phá Việt Nam cùng</p>
+                <p className={cx('slogan-after')}>
+                    {' '}
+                    <span>GO</span> Travel
+                </p>
+                <button type="button" className={cx('btn-grad')}>
+                    KHÁM PHÁ NGAY
+                </button>
             </div>
-            <div className={cx('banner-bottom')}>
-                {' '}
-                <div className={cx('search-banner')}>
+            <Carousel
+                activeIndex={index}
+                onSelect={handleSelect}
+                className={cx('controlled-carousel')}
+            >
+                <Carousel.Item interval={4000} className={cx('carousel-item')}>
+                    <img
+                        src="https://res.cloudinary.com/phtuandev/image/upload/v1660540896/GoTravel/pexels-asad-photo-maldives-3601425_tlzcch.jpg"
+                        alt="Third slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item interval={4000} className={cx('carousel-item')}>
+                    <img
+                        src="https://res.cloudinary.com/phtuandev/image/upload/v1660539903/GoTravel/pexels-michiel-ton-4269594_xrhd0w.jpg"
+                        alt="First slide"
+                    />
+
+                    {/* <Carousel.Caption>
+                    <h3>First slide label</h3>
+                    <p>
+                        Nulla vitae elit libero, a pharetra augue mollis
+                        interdum.
+                    </p>
+                </Carousel.Caption> */}
+                </Carousel.Item>
+                <Carousel.Item interval={4000} className={cx('carousel-item')}>
+                    <img
+                        src="https://res.cloudinary.com/phtuandev/image/upload/v1660547345/GoTravel/pexels-quang-nguyen-vinh-6875189_xcfrno.jpg"
+                        alt="Third slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item interval={4000} className={cx('carousel-item')}>
+                    <img
+                        src="https://res.cloudinary.com/phtuandev/image/upload/v1660544577/GoTravel/pexels-mariia-kamenska-883758_ssjycb.jpg"
+                        alt="Second slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item interval={4000} className={cx('carousel-item')}>
+                    <img
+                        src="https://res.cloudinary.com/phtuandev/image/upload/v1660547347/GoTravel/pexels-pixabay-237272_xdpjsb.jpg"
+                        alt="Third slide"
+                    />
+                </Carousel.Item>
+            </Carousel>
+            <div className={cx('search-tour')}>
+                <div className={cx('search-form')}>
                     <div className={cx('select-search')}>
                         <div className={cx('select-item')}>
                             <div className={cx('label')}>Địa điểm</div>
@@ -128,4 +146,4 @@ function Banner() {
     );
 }
 
-export default Banner;
+export default Slideshow;

@@ -3,40 +3,49 @@ $mainFamily: "Mulish", sans-serif;
 
 .catagory-home {
     //background-color: bisque;
-    padding: 0 10px;
-    margin: 0 0 100px 0;
+    padding: 0 0px;
+    margin: 0 0 90px 0;
 
     .catagory-menu {
-        padding: 20px 40px;
+        padding: 15px 60px;
         display: flex;
         justify-content: space-between;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: #fff;
         box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-        border-radius: 50px;
+        border-radius: 60px;
 
         .menu-item {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: ease-in-out 0.25s;
+            transition: ease-in-out 0.2s;
 
             &:hover {
                 cursor: pointer;
 
-                transform: scale(1.1);
-                transition: ease-in-out 0.25s;
+                img {
+                    transition: ease-in-out 0.2s;
+                    transform: scale(1.15);
+                }
+
+                .label-item {
+                    font-size: 16.5px;
+                    color: #0b9de0;
+                }
             }
 
             img {
+                transition: ease-in-out 0.2s;
                 width: 60px;
                 height: 60px;
                 margin-bottom: 10px;
             }
 
             .label-item {
-                font-size: 17px;
+                font-size: 16.5px;
                 font-weight: 700;
+                color: #5c5c5c;
                 font-family: $mainFamily;
             }
         }

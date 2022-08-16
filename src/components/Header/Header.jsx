@@ -1,5 +1,6 @@
 import { React } from 'react';
 import classNames from 'classnames/bind';
+import InputHints from 'react-input-hints';
 
 import Avatar from '@mui/material/Avatar';
 import { TbSpeedboat } from 'react-icons/tb';
@@ -17,9 +18,8 @@ function Header() {
                 />
             </div>
             <div className={cx('header-search')}>
-                <input
-                    type="text"
-                    placeholder="Nhập từ khóa tìm kiếm..."
+                <InputHints
+                    placeholders={['Nhập nơi bạn muốn đến...']}
                     className={cx('text-field')}
                 />
                 <label className={cx('label')}>

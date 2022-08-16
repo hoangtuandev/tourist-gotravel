@@ -2,6 +2,7 @@ import { React } from 'react';
 import classNames from 'classnames/bind';
 
 import Rating from '@mui/material/Rating';
+import Button from '@mui/material/Button';
 
 // import { AiFillStar } from 'react-icons/ai';
 import styles from './PreferDestination.scss';
@@ -167,6 +168,9 @@ function PreferDestination() {
                     </button>
                 </li>
             </ul>
+            <div className={cx('buttons-group')}>
+                <Button variant="outlined">Xem thêm</Button>
+            </div>
         </div>
     );
 }
