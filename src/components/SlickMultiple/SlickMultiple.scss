@@ -1,0 +1,60 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.slick-multiple-guide {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+
+    .title {
+        color: #0b9de0;
+        font-size: 18px;
+        font-weight: 800;
+        font-family: $mainFamily;
+        text-align: center;
+
+        span {
+            position: relative;
+            top: -42px;
+            background-image: linear-gradient(to right, #0b94f5 0%, #3ae1ff 45%, #1fa2ff 100%);
+            padding: 10px 50px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            border-radius: 50px;
+            color: white;
+        }
+    }
+
+    .slick-item {
+        img {
+            margin: 0 11px;
+            width: 390px;
+            height: 230px;
+        }
+        p {
+            padding: 10px 0;
+            color: #0b94f5;
+            text-align: center;
+            font-size: 18px;
+            font-family: $mainFamily;
+            font-weight: 700;
+        }
+    }
+
+    .slick-slider {
+        .slick-track {
+            display: flex;
+            justify-content: space-between;
+        }
+        .slick-prev:before,
+        .slick-next:before {
+            color: #0b9de0;
+            padding: 5px 5px;
+            font-size: 20px;
+        }
+    }
+}

@@ -1,0 +1,123 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.guide-booking {
+    background-color: #fff;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    font-family: $mainFamily;
+    border-radius: 20px;
+    padding-bottom: 10px;
+
+    .label {
+        color: #058bca;
+        font-family: $mainFamily;
+        font-size: 28px;
+        font-weight: 800;
+        text-align: center;
+        padding: 20px 0 20px 0;
+    }
+
+    ul {
+        padding: 10px 30px 10px 30px;
+        margin: 0 0;
+        list-style-type: none;
+
+        li {
+            display: flex;
+            align-items: center;
+            margin: 20px 0 40px 0;
+
+            .image-step {
+                width: 640px;
+                height: 370px;
+            }
+
+            .content-step {
+                padding-left: 30px;
+                p {
+                    margin: 0 0;
+                    font-family: $mainFamily;
+                }
+                .step-number {
+                    color: #808080;
+                    font-size: 25px;
+                    font-weight: 800;
+                }
+                .step-name {
+                    color: #0b9de0;
+                    font-size: 28px;
+                    font-weight: 800;
+                }
+                .details-step {
+                    text-align: justify;
+                    font-weight: 600;
+                    font-size: 20px;
+                    margin-top: 20px;
+
+                    p {
+                        margin: 10px 0;
+                    }
+
+                    span {
+                        color: #ff4000;
+                        font-weight: 800;
+                    }
+
+                    .icon {
+                        font-size: 25px;
+                        margin: 0 5px;
+                        color: #058bca;
+                    }
+
+                    button {
+                        background-color: #ff4000;
+                        font-family: $mainFamily;
+                        font-size: 11px;
+                        font-weight: 800;
+                        padding: 4px 8px;
+                        margin: 0 3px;
+                    }
+                }
+            }
+        }
+    }
+
+    .introduce {
+        padding: 0 30px;
+        font-family: $mainFamily;
+        font-size: 18px;
+        color: #838383;
+        font-weight: 700;
+
+        span {
+            color: #058bca;
+            font-weight: 800;
+        }
+    }
+
+    .prepare-step {
+        p {
+            margin: 0 0;
+            font-family: $mainFamily;
+            text-align: justify;
+            padding: 0 30px;
+        }
+
+        .title {
+            color: #ff4000;
+            font-size: 19px;
+            font-weight: 700;
+        }
+        .details {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 20px;
+            padding-left: 53px;
+
+            span {
+                color: #058bca;
+                font-weight: 800;
+            }
+        }
+    }
+}

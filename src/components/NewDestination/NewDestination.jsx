@@ -149,6 +149,7 @@ function NewDestination() {
                     </div>
                 </li>
             </ul>
+
             <div className={cx('buttons-group')}>
                 <Button variant="outlined">Xem thêm</Button>
             </div>

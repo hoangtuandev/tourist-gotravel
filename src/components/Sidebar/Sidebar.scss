@@ -31,12 +31,13 @@ $mainFamily: "Mulish", sans-serif;
             }
 
             .hover-box {
+                text-align: center;
                 font-size: 16px;
                 width: 110px;
-                text-align: left;
+
                 visibility: hidden;
                 position: absolute;
-                top: 5px;
+                top: 7px;
                 left: 0px;
                 color: #0676aa;
                 font-weight: 600;
@@ -47,12 +48,12 @@ $mainFamily: "Mulish", sans-serif;
                 border-top-right-radius: 5px;
                 border-bottom-right-radius: 5px;
                 z-index: -1;
-                padding: 5px 0px 5px 10px;
+                padding: 5px 0px 5px 0px;
             }
 
             &:hover {
                 background-color: #fff;
-
+                cursor: pointer;
                 .icon {
                     color: #0b9de0;
                 }

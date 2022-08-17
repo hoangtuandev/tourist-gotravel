@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import InputHints from 'react-input-hints';
 
 import Avatar from '@mui/material/Avatar';
-import { TbSpeedboat } from 'react-icons/tb';
+import { GoSearch } from 'react-icons/go';
 
 import styles from './Header.scss';
 const cx = classNames.bind(styles);
@@ -23,7 +23,7 @@ function Header() {
                     className={cx('text-field')}
                 />
                 <label className={cx('label')}>
-                    <TbSpeedboat />
+                    <GoSearch />
                 </label>
             </div>
             <div className={cx('header-user')}>

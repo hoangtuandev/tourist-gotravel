@@ -24,6 +24,21 @@ const images = [
         title: 'Kingo Retreat Resort - Phú Quốc',
         width: '33.4%',
     },
+    {
+        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1659601317/GoTravel/phu-quoc-3_rf3uv4.jpg',
+        title: 'Mia Reort - Nha Trang',
+        width: '33.3%',
+    },
+    {
+        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1659601311/GoTravel/soc-trang-1_pyqjwm.jpg',
+        title: 'Chùa Kh’leang - Sóc Trăng',
+        width: '33.3%',
+    },
+    {
+        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1659140630/GoTravel/vinh-ha-long-1_p3rab3.jpg',
+        title: 'Vịnh Hạ Long - Quảng Ninh',
+        width: '33.4%',
+    },
 ];
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({

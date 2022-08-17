@@ -42,6 +42,10 @@ function ExploreDestination() {
                                 src="https://res.cloudinary.com/phtuandev/image/upload/v1659140588/GoTravel/inspired-2_x7zaev.jpg"
                                 alt=""
                             />
+                            <img
+                                src="https://res.cloudinary.com/phtuandev/image/upload/v1660694863/GoTravel/61f0b7d7ea3eb_rbk4qa.jpg"
+                                alt=""
+                            />
                         </div>
                         <ul className={cx('col-name')}>
                             <li>Hà Nội</li>
@@ -49,12 +53,15 @@ function ExploreDestination() {
                             <li>Cát Bà Hải Phòng</li>
                             <li>Đảo Cô Tô Quảng Ninh</li>
                             <li>Hồ Ba Bể Bắc Cạn</li>
+                            <li>Tam Đảo</li>
                         </ul>
                         <ul className={cx('col-name')}>
                             <li>Vườn Quốc gia Ba Vì</li>
                             <li>Chùa Hương</li>
                             <li>ChùaTam Chúc</li>
                             <li>Thiên đường Bảo Sơn</li>
+                            <li>Mộc Châu</li>
+                            <li>Thung lũng Mai Châu</li>
                         </ul>
                     </div>
                     <div className={cx('image-destination')}>
@@ -84,6 +91,10 @@ function ExploreDestination() {
                                 src="https://res.cloudinary.com/phtuandev/image/upload/v1659600005/GoTravel/cau-rong-da-nang-3_hcbmfy.jpg"
                                 alt=""
                             />
+                            <img
+                                src="https://res.cloudinary.com/phtuandev/image/upload/v1660571025/GoTravel/pexels-lu%C3%A2n-phan-7216414_owrgvg.jpg"
+                                alt=""
+                            />
                         </div>
                         <ul className={cx('col-name')}>
                             <li>Bà Nà Hills</li>
@@ -91,6 +102,7 @@ function ExploreDestination() {
                             <li>Phong Nha Kẻ Bàng</li>
                             <li>Đảo Lý Sơn</li>
                             <li>Phố Cổ Hội An</li>
+                            <li>Đảo Bình Ba</li>
                         </ul>
                         <ul className={cx('col-name')}>
                             <li>Thánh địa Mỹ Sơn</li>
@@ -165,13 +177,18 @@ function ExploreDestination() {
                                 src="https://res.cloudinary.com/phtuandev/image/upload/v1659601310/GoTravel/soc-trang-2_dluusl.jpg"
                                 alt=""
                             />
+                            <img
+                                src="https://res.cloudinary.com/phtuandev/image/upload/v1660695763/GoTravel/v%C6%B0%E1%BB%9Dn-tr%C3%A1i-c%C3%A2y-c%E1%BA%A7n-th%C6%A1_lukmwr.jpg"
+                                alt=""
+                            />
                         </div>
                         <ul className={cx('col-name')}>
                             <li>Biển Côn Đảo </li>
                             <li>Hà Tiên</li>
                             <li>Biển Nam Phố</li>
-                            <li>Đảo Cô Tô Quảng Ninh</li>
+                            <li>Ao Bà Om</li>
                             <li>Đảo Hải Tặc</li>
+                            <li>Chùa Phật Ngọc Xá Lợi</li>
                         </ul>
                         <ul className={cx('col-name')}>
                             <li>Landmark 81</li>
@@ -179,6 +196,7 @@ function ExploreDestination() {
                             <li>Tòa Thánh Tây Ninh</li>
                             <li> Núi Bà Đen</li>
                             <li>Vũng Tàu</li>
+                            <li>Chợ nổi Cái Răng</li>
                         </ul>
                     </div>
                 </div>
