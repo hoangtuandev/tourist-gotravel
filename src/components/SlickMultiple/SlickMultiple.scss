@@ -5,7 +5,7 @@ $mainFamily: "Mulish", sans-serif;
     background-color: #fff;
     padding: 30px 40px;
     border-radius: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 
     .title {
@@ -37,7 +37,7 @@ $mainFamily: "Mulish", sans-serif;
         }
         p {
             padding: 10px 0;
-            color: #0b94f5;
+            color: #ff4000;
             text-align: center;
             font-size: 18px;
             font-family: $mainFamily;
@@ -55,6 +55,24 @@ $mainFamily: "Mulish", sans-serif;
             color: #0b9de0;
             padding: 5px 5px;
             font-size: 20px;
+        }
+    }
+
+    .buttons-group {
+        text-align: center;
+
+        button {
+            margin: 40px 0 0px 0;
+            padding: 0px 20px;
+            font-size: 15px;
+            font-family: $mainFamily;
+            font-weight: 700;
+            color: #0b94f5;
+            border: 2px solid #0b94f5;
+
+            &:hover {
+                border: 2px solid #0b94f5;
+            }
         }
     }
 }

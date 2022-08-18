@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Button from '@mui/material/Button';
 
 import styles from './SlickMultiple.scss';
 
@@ -67,6 +68,9 @@ function SlickMultiple() {
                     <p>Bước 6: Hoàn thành đặt tour</p>
                 </div>
             </Slider>
+            <div className={cx('buttons-group')}>
+                <Button variant="outlined">Xem chi tiết</Button>
+            </div>
         </div>
     );
 }

@@ -1,0 +1,67 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.auto-play-libary {
+    height: 1000px;
+    max-height: 1000px;
+
+    .slick-slider {
+        display: flex;
+        .slick-slide {
+            //background-color: #0b9de0;
+            margin: 0 5px;
+
+            ul {
+                list-style-type: none;
+                padding: 0 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                li {
+                    margin: 0 6px;
+                }
+
+                .image-stand-large {
+                    img {
+                        width: 250px;
+                        height: 330px;
+                        margin: 10px 0;
+                    }
+                }
+
+                .image-along {
+                    img {
+                        width: 280px;
+                        height: 170px;
+                        margin: 10px 0;
+                    }
+                }
+
+                .image-stand {
+                    img {
+                        width: 160px;
+                        height: 210px;
+                        margin: 10px 0;
+                    }
+                }
+
+                .image-square {
+                    img {
+                        width: 300px;
+                        height: 250px;
+                        margin: 10px 0;
+                    }
+                }
+
+                .image-along-large {
+                    img {
+                        width: 250px;
+                        height: 150px;
+                        margin: 10px 0;
+                    }
+                }
+            }
+        }
+    }
+}

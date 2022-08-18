@@ -31,8 +31,8 @@ function HomePage() {
 
                         {/* <Banner></Banner> */}
                         <Slideshow></Slideshow>
-                        <SlickMultiple></SlickMultiple>
                         <CatagoryHome></CatagoryHome>
+                        <SlickMultiple></SlickMultiple>
                         <PreferDestination></PreferDestination>
                         <NewDestination></NewDestination>
                         <ExploreDestination></ExploreDestination>

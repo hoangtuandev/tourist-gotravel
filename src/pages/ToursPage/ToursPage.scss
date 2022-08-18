@@ -2,4 +2,10 @@ $mainColor: #0b9de0;
 $mainFamily: "Mulish", sans-serif;
 
 .tours-page {
+    padding: 89px 90px 0 90px;
+
+    .content-page {
+        display: flex;
+        padding-top: 20px;
+    }
 }
