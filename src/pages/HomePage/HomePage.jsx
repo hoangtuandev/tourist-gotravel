@@ -9,7 +9,6 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 
 import styles from './HomePage.scss';
 import PreferDestination from '../../components/PreferDestination/PreferDestination';
-import CatagoryHome from '../../components/CatagoryHome/CatagoryHome';
 import Slideshow from '../../components/Slideshow/Slideshow';
 import NewDestination from '../../components/NewDestination/NewDestination';
 import ExploreDestination from '../../components/ExploreDestination/ExploreDestination';
@@ -31,7 +30,6 @@ function HomePage() {
 
                         {/* <Banner></Banner> */}
                         <Slideshow></Slideshow>
-                        <CatagoryHome></CatagoryHome>
                         <SlickMultiple></SlickMultiple>
                         <PreferDestination></PreferDestination>
                         <NewDestination></NewDestination>

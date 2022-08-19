@@ -1,0 +1,30 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.dialog {
+    .appbar {
+        background-color: $mainColor;
+        padding-left: 0px;
+
+        .toolbar {
+            .close-icon {
+                font-size: 20px;
+            }
+            .typography {
+                font-size: 18px;
+                font-family: $mainFamily;
+                font-weight: 700;
+            }
+            .button-close {
+                font-size: 14px;
+                font-family: $mainFamily;
+                font-weight: 800;
+                background-color: #fff;
+                color: $mainColor;
+            }
+        }
+    }
+}
+
+.details-tour {
+}

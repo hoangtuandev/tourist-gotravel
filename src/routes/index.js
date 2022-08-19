@@ -3,6 +3,7 @@ import SignIn from '../components/UserForm/SignIn';
 import HomePage from '../pages/HomePage/HomePage.jsx';
 import GuideBookingPage from '../pages/GuideBookingPage/GuideBookingPage';
 import ToursPage from '../pages/ToursPage/ToursPage';
+import ExplorePage from '../pages/ExplorePage/ExplorePage';
 
 export const publicRoutes = [
     { path: '/', component: HomePage },
@@ -12,6 +13,7 @@ export const publicRoutes = [
     { path: '/huong-dan', component: GuideBookingPage },
     { path: '/tours', component: ToursPage },
     { path: '/tour', component: ToursPage },
+    { path: '/kham-pha', component: ExplorePage },
     { path: '/:somestring', component: HomePage },
 ];
 

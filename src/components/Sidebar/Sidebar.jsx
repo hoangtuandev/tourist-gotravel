@@ -35,10 +35,12 @@ function Sidebar() {
                     <div className={cx('hover-box')}>Chia sẻ</div>
                     <GiShare className={cx('icon')} />
                 </li>
-                <li>
-                    <div className={cx('hover-box')}>Địa điểm</div>
-                    <BiLandscape className={cx('icon')} />
-                </li>
+                <Link to={'/kham-pha'} className={cx('link-router')}>
+                    <li>
+                        <div className={cx('hover-box')}>Khám phá</div>
+                        <BiLandscape className={cx('icon')} />
+                    </li>
+                </Link>
             </ul>
         </div>
     );

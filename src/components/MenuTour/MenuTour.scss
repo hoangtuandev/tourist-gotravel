@@ -1,0 +1,256 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.menu-tour {
+    .menu-tourism {
+        box-sizing: border-box;
+        max-width: 1293px;
+        z-index: 11;
+    }
+    .css-l31w18 {
+        position: fixed;
+        top: 75px;
+        border-radius: 5px;
+        background-color: #04a4ed;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .css-ptiqhd-MuiSvgIcon-root {
+        font-size: 25px;
+        color: #fff;
+    }
+
+    .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+        color: #f1f1f1;
+        font-size: 14px;
+        font-family: $mainFamily;
+        font-weight: 700;
+    }
+
+    .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+        color: #fff;
+        font-size: 16px;
+        font-family: $mainFamily;
+        font-weight: 800;
+    }
+
+    .css-1aquho2-MuiTabs-indicator {
+        background-color: #fff;
+        height: 3px;
+    }
+
+    .filter {
+        margin: 40px 0;
+        display: flex;
+        justify-content: space-evenly;
+
+        .label-filter {
+            text-align: center;
+            font-size: 17px;
+            font-family: $mainFamily;
+            font-weight: 700;
+        }
+
+        .filter-price {
+            width: 330px;
+            padding: 5px 20px 10px 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            // border: 1px solid #68cfff;
+            box-shadow: rgba(164, 164, 164, 0.12) 0px 2px 4px 0px, rgba(158, 158, 158, 0.32) 0px 2px 16px 0px;
+
+            .slider {
+                padding: 5px 0px;
+                margin-left: 5px;
+                margin-bottom: 10px;
+
+                .css-nnid7-MuiSlider-valueLabel {
+                    font-size: 14px;
+                }
+            }
+
+            .price-text {
+                text-align: center;
+                font-family: $mainFamily;
+                color: #606060;
+                font-weight: 700;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .icon {
+                    font-size: 25px;
+                    color: #008dce;
+                }
+
+                .value {
+                    width: 130px;
+                    border: 1px solid #d2d2d2;
+                    border-radius: 3px;
+                    padding: 4px 0px;
+                    margin: 0 5px;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .filter-departure {
+            width: 330px;
+            padding: 5px 15px 10px 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            // border: 1px solid #68cfff;
+            box-shadow: rgba(164, 164, 164, 0.12) 0px 2px 4px 0px, rgba(158, 158, 158, 0.32) 0px 2px 16px 0px;
+
+            .departure {
+                padding-left: 35px;
+                padding-top: 15px;
+                position: relative;
+
+                .icon-calendar {
+                    position: absolute;
+                    top: 27px;
+                    right: 45px;
+                    color: #606060;
+                    font-size: 20px;
+                    user-select: none;
+                    pointer-events: none;
+                }
+
+                .react-datepicker-wrapper {
+                    margin-top: 1px;
+                    .react-datepicker__input-container {
+                        input {
+                            outline: none;
+                            width: 230px;
+                            font-family: $mainFamily;
+                            font-size: 17px;
+                            font-weight: 700;
+                            color: #5b5b5b;
+                            padding: 7.5px 10px;
+                            border-radius: 4px;
+                            border: 1px solid #c0c0c0;
+                        }
+                    }
+                }
+
+                .react-datepicker-popper {
+                    padding-bottom: 15px;
+
+                    .react-datepicker {
+                        font-size: 15px;
+                        border: 0px solid #b1b1b1;
+
+                        button {
+                            margin-top: 4px;
+                        }
+
+                        .react-datepicker__month-container {
+                            width: 270px;
+                            height: 270px;
+                            padding: 0px 5px;
+                            box-shadow: 1px 1px 10px #bbbbbb;
+                            border-radius: 5px;
+                            border: 0px solid #0b9de0;
+
+                            .react-datepicker__header {
+                                font-family: $mainFamily;
+                                background-color: #fff;
+                                padding-top: 10px;
+
+                                .react-datepicker__current-month {
+                                    font-size: 16px;
+                                    color: #0b9de0;
+                                    font-weight: 800;
+                                }
+
+                                .react-datepicker__day-names {
+                                    .react-datepicker__day-name {
+                                        margin: 15px 10px 10px 9px;
+                                        color: #4a4a4a;
+                                        font-weight: 700;
+                                    }
+                                }
+                            }
+
+                            .react-datepicker__month {
+                                .react-datepicker__week {
+                                    .react-datepicker__day {
+                                        margin: 3px 5px;
+                                        padding-top: 4px;
+                                        padding-bottom: 0px;
+                                        padding-right: 1px;
+                                        width: 25px;
+                                        height: 25px;
+
+                                        font-family: $mainFamily;
+                                        border-radius: 50px;
+                                        font-size: 13.5px;
+                                    }
+
+                                    .react-datepicker__day--selected {
+                                        background-color: #0b9de0;
+                                        color: #fff;
+                                        font-weight: 600;
+                                        transition: ease-in-out 0.1s;
+                                    }
+
+                                    .react-datepicker__day:hover {
+                                        background-color: #0b9de0;
+                                        color: #fff;
+                                        font-weight: 600;
+                                        transition: ease-in-out 0.1s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .filter-time {
+            width: 330px;
+            padding: 5px 15px 10px 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            // border: 1px solid #68cfff;
+            box-shadow: rgba(164, 164, 164, 0.12) 0px 2px 4px 0px, rgba(158, 158, 158, 0.32) 0px 2px 16px 0px;
+
+            .time {
+                text-align: center;
+                .button-group {
+                    margin-top: 20px;
+                    box-shadow: none;
+
+                    button {
+                        font-family: $mainFamily;
+                        font-size: 15px;
+                        font-family: 700;
+                        border: 0px solid #008dce;
+                        padding: 5px 0px;
+                    }
+                    .button-click {
+                        border-radius: 50px;
+                        font-size: 18px;
+                        background-color: #05a3ed;
+                    }
+                    .btn-value {
+                        border-radius: 50px;
+                        width: 155px;
+                        background-color: #fff;
+                        color: #5b5b5b;
+                        font-weight: 800;
+                        font-size: 16px;
+
+                        span {
+                            text-transform: lowercase;
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
