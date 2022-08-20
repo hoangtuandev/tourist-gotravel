@@ -38,8 +38,10 @@ $mainFamily: "Mulish", sans-serif;
         flex-wrap: wrap;
 
         li {
+            height: 320px;
+            max-height: 320px;
             position: relative;
-            padding-bottom: 0px;
+            padding-bottom: 15px;
             margin-bottom: 25px;
             border-radius: 10px;
             background-color: #fff;
@@ -53,7 +55,7 @@ $mainFamily: "Mulish", sans-serif;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 width: 300px;
-                height: 200px;
+                height: 190px;
             }
 
             p {
@@ -79,6 +81,8 @@ $mainFamily: "Mulish", sans-serif;
                 }
 
                 .price-tour {
+                    position: absolute;
+                    bottom: 10px;
                     padding-top: 10px;
                     color: #ff4800;
                     font-weight: 800;
@@ -92,7 +96,7 @@ $mainFamily: "Mulish", sans-serif;
                 bottom: 15px;
                 right: 15px;
                 font-family: $mainFamily;
-                font-weight: 700;
+                font-weight: 800;
                 font-size: 12px;
 
                 text-align: center;

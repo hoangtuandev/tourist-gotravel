@@ -9,3 +9,6 @@ export const createAccountTourist = (data) =>
 
 export const getTouristAccountByUsername = (data) =>
     axios.post(`${URL}/TouristAccount/TouristAccountByUserName`, data);
+
+// TOUR
+export const getAllActiveTour = () => axios.get(`${URL}/Tour/actived`);

@@ -1,13 +1,12 @@
-import { React, forwardRef } from 'react';
+import { React, forwardRef, Fragment } from 'react';
 import classNames from 'classnames/bind';
 import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -15,8 +14,22 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 
+import { GiTwoCoins } from 'react-icons/gi';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import styles from './DetailsTour.scss';
-import { handleCloseDetailsTour, isOpenDetailsTour } from './DetailsTourSlice';
+import {
+    handleCloseDetailsTour,
+    isOpenDetailsTour,
+    tourSelected,
+} from './DetailsTourSlice';
+import SliderImage from './SliderImage';
+import ScheduleTour from './ScheduleTour';
+import ServiceTour from './ServiceTour';
+import TabsBox from './TabsBox';
+import DepartureAnother from './DepartureAnother';
+
 const cx = classNames.bind(styles);
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -25,7 +38,9 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 function DetailsTour() {
     const dispatch = useDispatch();
+    const tour = useSelector(tourSelected);
     const openDialog = useSelector(isOpenDetailsTour);
+
     return (
         <div>
             <Dialog
@@ -65,7 +80,150 @@ function DetailsTour() {
                         </Button>
                     </Toolbar>
                 </AppBar>
-                <div className={cx('details-tour')}></div>
+                <Fragment>
+                    <CssBaseline />
+                    <Container maxWidth="xl">
+                        <div className={cx('details-tour')}>
+                            <div className={cx('details-left')}>
+                                <div className={cx('images-detail')}>
+                                    <SliderImage></SliderImage>
+                                </div>
+                                <div className={cx('tourism')}>
+                                    {tour.t_loaihinh.lht_ten}
+                                </div>
+                                <div className={cx('tour-name')}>
+                                    {tour.t_ten}
+                                </div>
+                                <hr />
+                                <hr />
+                                <div className={cx('schedule-detail')}>
+                                    <p className={cx('label-schedule')}>
+                                        LỊCH TRÌNH TOUR
+                                    </p>
+                                    <ul className={cx('schedule-list')}>
+                                        {tour.t_lichtrinhtour.map(
+                                            (schedule, index) => (
+                                                <ScheduleTour
+                                                    key={index}
+                                                    schedule={schedule}
+                                                ></ScheduleTour>
+                                            )
+                                        )}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <TabsBox></TabsBox>
+                                </div>
+                            </div>
+                            <div className={cx('details-right')}>
+                                <div className={cx('sticky-div')}>
+                                    <div className={cx('infor-tour')}>
+                                        <Button
+                                            variant="contained"
+                                            className={cx('button-booking')}
+                                        >
+                                            ĐẶT TOUR
+                                        </Button>
+                                        <ul>
+                                            <li>
+                                                <span className={cx('label')}>
+                                                    Mã tour
+                                                </span>
+                                                <span className={cx('centent')}>
+                                                    {tour.t_ma}
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span className={cx('label')}>
+                                                    Loại hình tour
+                                                </span>
+                                                <span className={cx('centent')}>
+                                                    {tour.t_loaihinh.lht_ten}
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span className={cx('label')}>
+                                                    Số ngày
+                                                </span>
+                                                <span className={cx('centent')}>
+                                                    {tour.t_thoigian} ngày{' '}
+                                                    {tour.t_thoigian - 1} đêm
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span className={cx('label')}>
+                                                    Ngày khởi hành
+                                                </span>
+                                                <span className={cx('centent')}>
+                                                    {tour.t_lichkhoihanh
+                                                        .length !== 0 &&
+                                                        moment(
+                                                            tour
+                                                                .t_lichkhoihanh[0]
+                                                                .lkh_ngaykhoihanh
+                                                        ).format(
+                                                            'DD / MM / YYYY'
+                                                        )}
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span className={cx('label')}>
+                                                    Ngày kết thúc
+                                                </span>
+                                                <span className={cx('centent')}>
+                                                    {tour.t_lichkhoihanh
+                                                        .length !== 0 &&
+                                                        moment(
+                                                            tour
+                                                                .t_lichkhoihanh[0]
+                                                                .lkh_ngayketthuc
+                                                        ).format(
+                                                            'DD / MM / YYYY'
+                                                        )}
+                                                </span>
+                                            </li>
+                                            <li className={cx('price-tour')}>
+                                                <GiTwoCoins
+                                                    className={cx('icon')}
+                                                />{' '}
+                                                <span>
+                                                    {' '}
+                                                    {tour.t_gia.toLocaleString(
+                                                        'vi',
+                                                        {
+                                                            style: 'currency',
+                                                            currency: 'VND',
+                                                        }
+                                                    )}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr />
+                                    <hr />
+                                    <ServiceTour></ServiceTour>
+                                    <hr />
+                                    <hr />
+                                    <div className={cx('schedule-another')}>
+                                        <p className={cx('label-schedule')}>
+                                            LỊCH KHỞI HÀNH SẮP TỚI
+                                        </p>
+                                        <ul className={cx('schedule-list')}>
+                                            {tour.t_lichkhoihanh.map(
+                                                (departure, index) => (
+                                                    <DepartureAnother
+                                                        key={index}
+                                                        departure={departure}
+                                                    ></DepartureAnother>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Container>
+                </Fragment>
             </Dialog>
         </div>
     );

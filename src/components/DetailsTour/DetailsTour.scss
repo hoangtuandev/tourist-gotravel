@@ -3,6 +3,7 @@ $mainFamily: "Mulish", sans-serif;
 
 .dialog {
     .appbar {
+        position: fixed;
         background-color: $mainColor;
         padding-left: 0px;
 
@@ -27,4 +28,385 @@ $mainFamily: "Mulish", sans-serif;
 }
 
 .details-tour {
+    margin: 90px 45px 20px 45px;
+    display: flex;
+    justify-content: space-between;
+
+    hr {
+        color: #616161;
+    }
+
+    .details-left {
+        padding: 20px 20px 0 20px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+        .images-detail {
+            .mui-box {
+                width: 830px;
+                max-width: 830px;
+
+                .mui-paper {
+                    height: 20px;
+                    margin: 0px 0 10px 0;
+                    padding: 0 0;
+
+                    .mui-typography {
+                        color: #7d7d7d;
+                        font-size: 18px;
+                        font-family: $mainFamily;
+                        font-weight: 700;
+                    }
+                }
+
+                .mui-autoPlaySwipeableViews {
+                    img {
+                        width: 830px;
+                        max-width: 830px;
+                        height: 514px;
+                        max-height: 514px;
+                    }
+                }
+
+                .mui-mobileStepper {
+                    padding: 0 0;
+                    button {
+                        padding: 7px 0;
+                        font-family: $mainFamily;
+                        font-size: 14px;
+                        font-weight: 700;
+
+                        .MuiSvgIcon-root {
+                            width: 22px;
+                            height: 22px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tourism {
+            text-transform: uppercase;
+            margin: 10px 0 0 0;
+            font-size: 16px;
+            font-family: $mainFamily;
+            font-weight: 700;
+            color: #ff3c00;
+        }
+
+        .tour-name {
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-family: $mainFamily;
+            font-weight: 800;
+            color: #0089c8;
+        }
+
+        .schedule-detail {
+            width: 830px;
+            max-width: 830px;
+            margin: 15px 0 0 0;
+
+            .label-schedule {
+                padding: 3px 10px;
+                margin: 0px 0 20px 0;
+                font-family: $mainFamily;
+                font-size: 19px;
+                font-weight: 800;
+                border-left: 7px solid #ff3c00;
+                color: #ff3c00;
+            }
+            .schedule-list {
+                padding: 0 0;
+                list-style-type: none;
+
+                li {
+                    .name-shedule {
+                        margin: 0 0;
+                        display: flex;
+                        align-items: center;
+                        font-size: 17px;
+                        font-family: $mainFamily;
+                        font-weight: 700;
+
+                        .icon {
+                            margin-right: 10px;
+                            color: #0089c8;
+                            font-size: 22px;
+                        }
+                    }
+                    .details-schedule {
+                        font-size: 16px;
+                        font-family: $mainFamily;
+                        font-weight: 600;
+                        text-align: justify;
+
+                        table {
+                            border-collapse: collapse;
+
+                            tbody {
+                                tr {
+                                    .label {
+                                        color: #0089c8;
+                                        font-weight: 700;
+                                        width: 140px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .accordion {
+            box-shadow: rgba(152, 152, 152, 0.16) 0px 3px 6px, rgba(162, 162, 162, 0.23) 0px 3px 6px;
+            border: 1px solid #cfcfcf;
+            .accordion-summary {
+                .expandMore-icon {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .mui-tabs-box {
+            width: 830px;
+            max-width: 830px;
+
+            .MuiTabs-scroller {
+                button {
+                    font-family: $mainFamily;
+                    font-weight: 800;
+                    font-size: 16px;
+                }
+            }
+            .mui-tabs-panels {
+                p {
+                    line-height: 20px;
+                    font-family: $mainFamily;
+                    font-weight: 600;
+                    font-size: 16px;
+                }
+            }
+
+            .regulations {
+                .regulation-list {
+                    display: flex;
+                    flex-direction: column;
+
+                    .regulation-item {
+                        font-family: $mainFamily;
+                        font-weight: 500;
+                        font-size: 16px;
+                        display: flex;
+                        align-items: center;
+                        margin: 10px 0;
+                        color: #000;
+
+                        .icon {
+                            color: #0089c8;
+                            margin-right: 15px;
+                            font-size: 23px;
+                        }
+                    }
+
+                    .regulation-end {
+                        font-weight: 700;
+                        margin: 20px 0 10px 0;
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+
+    .details-right {
+        .sticky-div {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 70px;
+
+            width: 485px;
+            max-width: 485px;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 15px 20px;
+            font-size: 16px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+            .infor-tour {
+                .button-booking {
+                    background-color: #ff3c00;
+                    border-radius: 50px;
+                    width: 100%;
+                    font-family: $mainFamily;
+                    font-size: 16px;
+                    font-weight: 800;
+                    margin-bottom: 10px;
+                }
+                ul {
+                    padding: 0 0;
+                    list-style-type: none;
+
+                    li {
+                        margin: 15px 0;
+                        font-family: $mainFamily;
+
+                        .label {
+                            display: inline-block;
+                            width: 170px;
+                            color: #0089c8;
+                            font-weight: 700;
+                            font-size: 16px;
+                        }
+                        .content {
+                            font-weight: 600;
+                            font-size: 16px;
+                        }
+                    }
+
+                    .price-tour {
+                        margin: 20px 0px 20px 0;
+                        font-family: $mainFamily;
+                        font-weight: 800;
+                        font-size: 25px;
+                        color: #e6b325;
+
+                        .icon {
+                            margin-right: 5px;
+                            font-size: 27px;
+                            color: #e6b325;
+                        }
+                    }
+                }
+            }
+
+            .service-tour {
+                margin: 20px 0;
+
+                .label-service {
+                    text-align: center;
+                    color: #0089c8;
+                    font-family: $mainFamily;
+                    font-size: 20px;
+                    font-weight: 800;
+                }
+                .service-list {
+                    padding: 0 0;
+                    list-style-type: none;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    align-items: center;
+
+                    li {
+                        width: 210px;
+                        max-width: 230px;
+                        font-family: $mainFamily;
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin: 15px 0;
+
+                        .icon {
+                            font-size: 22px;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+
+            .schedule-another {
+                .schedule-list {
+                    padding: 0 0;
+                    list-style-type: none;
+                }
+            }
+
+            .schedule-another {
+                margin: 20px 0;
+
+                .label-schedule {
+                    margin-top: 10px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    font-family: $mainFamily;
+                    font-weight: 800;
+                    font-size: 19px;
+                    color: #0089c8;
+                }
+                .schedule-list {
+                    li {
+                        margin: 10px 0;
+                        .accordion {
+                            // /box-shadow: rgba(152, 152, 152, 0.16) 0px 3px 6px, rgba(162, 162, 162, 0.23) 0px 3px 6px;
+                            border: 1px solid #dfdfdf;
+
+                            .accordion-summary {
+                                .expandMore-icon {
+                                    font-size: 20px;
+                                }
+                                .typography {
+                                    display: flex;
+                                    align-items: center;
+                                    font-family: $mainFamily;
+
+                                    span {
+                                        color: #ff3c00;
+                                        font-size: 16px;
+                                        font-weight: 800;
+                                    }
+                                    .icon-departure {
+                                        font-size: 24px;
+                                        color: #0089c8;
+                                        margin-right: 30px;
+                                    }
+                                    .icon-next {
+                                        font-size: 20px;
+                                        margin: 0 10px;
+                                    }
+                                }
+                            }
+
+                            .accordion-details {
+                                position: relative;
+                                .typography {
+                                    table {
+                                        border-collapse: collapse;
+
+                                        tbody {
+                                            tr {
+                                                td {
+                                                    font-size: 15px;
+                                                }
+                                                .label {
+                                                    font-size: 14px;
+                                                    color: #0089c8;
+                                                    font-weight: 600;
+                                                    width: 110px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    button {
+                                        position: absolute;
+                                        right: 5px;
+                                        bottom: 5px;
+
+                                        background-color: #ff3c00;
+                                        padding: 3px 10px;
+                                        font-family: $mainFamily;
+                                        font-size: 12px;
+                                        font-weight: 700;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
