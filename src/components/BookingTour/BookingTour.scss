@@ -1,0 +1,356 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.booking-tour {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    ul {
+        padding:  0 0;
+        list-style-type: none;
+    }
+
+    .infor-booking {
+        padding-bottom: 40px;
+        width: 800px;
+        max-width: 800px;
+
+        .label-box {
+            color: #0b9de0;
+            margin: 0 0;
+            padding: 0px 0 0 20px;
+            font-family: $mainFamily;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .textfield-list {
+                padding: 15px 25px;
+                list-style-type: none;
+
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                li {
+                    margin: 10px 0 10px 0;
+                    display: flex;
+                    align-items: center;
+
+                    .label-gender {
+                        color: #6e6e6e;
+                        font-family: $mainFamily;
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-right: 20px;
+                    }
+
+                    .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+                        font-size: 16px;
+                        font-family: $mainFamily;
+                        font-weight: 600;
+                    }
+                    .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
+                        font-size: 18px;
+                        font-weight: 700;
+                        font-family: $mainFamily;
+                        color: #0b9de0;
+                    }
+                    .css-1ptx2yq-MuiInputBase-root-MuiInput-root {
+                        width: 350px;
+                        font-size: 16px;
+                        font-family: $mainFamily;
+                        font-weight: 600;
+                    }
+                }
+
+                .textfield-gender {
+                    margin-top: 30px;
+                    width: 750px;
+
+                    .css-j204z7-MuiFormControlLabel-root {
+                        .css-ahj2mt-MuiTypography-root {
+                            font-size: 16px;
+                            margin-right: 25px;
+                        }
+                    }
+                }
+
+                .textfield-address {
+                    .css-1ptx2yq-MuiInputBase-root-MuiInput-root {
+                        width: 730px;
+                    }
+                }
+            }
+
+        .infor-contact {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 25px;
+
+            
+        }
+
+        .passenger {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+
+            ul {
+                margin: 20px 10px;
+                padding: 0 0;
+                list-style-type: none;
+                display: flex;
+                justify-content: space-between;
+
+                li {
+                    display: flex;
+                    align-items: center;
+
+                    button {
+                        background-color: #fff;
+                        border: 2px solid #0b9de0;
+                        width: 35px;
+                        height: 35px;
+                        padding: 0 0;
+                        border-radius: 50px;
+                        color: #0b9de0;
+                        box-shadow: none;
+                        transform: scale(0.6);
+                        z-index: 5;
+
+                        .icon {
+                            font-size: 25px;
+                           
+                        }
+                    }
+
+                    .field-number {
+                        padding: 0 0px;
+                        display: flex;
+                        flex-direction: column;
+
+                        .label {
+                            margin: 0 0 5px 0;
+                            text-align: center;
+                            font-family: $mainFamily;
+                            font-size: 15px;
+                            font-weight: 600;
+                        }
+                        input {
+                            text-align: center;
+                            width: 130px;
+                            font-family: $mainFamily;
+                            font-size: 16px;
+                            font-weight: 600;
+                            outline: none;
+                            border: none;
+                            border-bottom: 1px solid #6e6e6e;
+                        }
+                        .explain {
+                            text-align: center;
+                            color: #6e6e6e;
+                            padding-top: 10px;
+                            font-family: $mainFamily;
+                            font-weight: 600;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .infor-payment {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 25px;
+        }
+
+        .way-payment {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px 10px 20px 10px;
+            margin-top: 25px;
+            margin-top: 20px;
+
+            .accordition {
+                margin-left: 15px;
+                margin-top: 20px;
+                border: 1px solid #cccccc;
+                box-shadow: none;
+                
+                .accordion-summary {
+                    .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+                        min-height: 0px; 
+                    }
+
+                    .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root{
+                         min-height: 0px; 
+                    }
+
+                    .icon-expand{font-size: 25px;}
+                    .typography{
+                        font-family: $mainFamily;
+                        font-weight: 700;
+                        font-size: 16px;
+
+                        display: flex;
+                        align-items: center;
+
+                        .icon {
+                            font-size: 25px;
+                            margin-right: 10px;
+                            color: #DAA520;
+                        }
+
+                    }
+                }
+
+                .accordion-details {
+                    .typography{
+                        display: flex;
+
+                        .css-a7yjfw-MuiButtonBase-root-MuiRadio-root {
+                            padding: 17px 0px 19px 9px;
+                        }
+
+                        li {
+                            margin: 12px  0 25px 0;
+                            img {
+                                padding: 7px 10px;
+                                border: 1px solid #a8a8a8;
+                                border-radius: 4px;
+                                width: 105px;
+                                height: 34px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .infor-tour {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 89px;
+        width: 470px;
+        max-width: 470px;
+        background-color: #fff;
+        border-radius: 10px;
+        margin-bottom: 40px;
+        padding: 10px 20px 20px 20px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+
+        font-family: $mainFamily;
+        font-size: 16px;
+        font-weight: 500;
+
+        .label-box {
+            color: #0b9de0;
+            margin: 0 0;
+            padding: 0px 0 0 0px;
+            font-family: $mainFamily;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .tour-name {
+            width: 470px;
+            max-width: 470px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0b9de0;
+        }
+
+        .detail-tour-link {
+            color: #0b9de0;
+            font-size: 15px;
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+                font-weight: 700;
+                
+            }
+        }
+
+        table {
+            margin-bottom: 20px;
+            tbody {
+                tr{
+                    td {
+                        padding: 3px 0;
+                    }
+                    .label {
+                        width: 150px;
+
+                    }
+
+                    .content {
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+        .details-price {
+            margin-top: 20px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #0b9de0;
+
+           
+        }
+         .details-list {
+                
+                .details-item {
+                    margin: 10px 0 10px 0;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    .price {
+                        font-weight: 700;
+                    }
+                }
+        }
+
+        .payment-list {
+            margin: 20px 0 20px 0;
+            li {
+                display: flex;
+                justify-content: space-between;
+
+                .prepay-value {
+                    font-size: 18px;
+                }
+
+                .total-pay-value {
+                    color: #ff4400;
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .button-payment {
+            background-color: #ff4400;
+            font-family: $mainFamily;
+            font-size: 17px;
+            font-weight: 800;
+            width: 100%;
+        }
+    }
+}
+
+

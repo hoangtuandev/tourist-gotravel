@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage/HomePage.jsx';
 import GuideBookingPage from '../pages/GuideBookingPage/GuideBookingPage';
 import ToursPage from '../pages/ToursPage/ToursPage';
 import ExplorePage from '../pages/ExplorePage/ExplorePage';
+import BookingPage from '../pages/BookingPage/BookingPage';
 
 export const publicRoutes = [
     { path: '/', component: HomePage },
@@ -14,6 +15,8 @@ export const publicRoutes = [
     { path: '/tours', component: ToursPage },
     { path: '/tour', component: ToursPage },
     { path: '/kham-pha', component: ExplorePage },
+    { path: '/dat-tour', component: ToursPage },
+    { path: '/dat-tour/:somestring', component: BookingPage },
     { path: '/:somestring', component: HomePage },
 ];
 

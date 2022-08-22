@@ -1,6 +1,7 @@
 import { React, forwardRef, Fragment } from 'react';
 import classNames from 'classnames/bind';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -118,12 +119,17 @@ function DetailsTour() {
                             <div className={cx('details-right')}>
                                 <div className={cx('sticky-div')}>
                                     <div className={cx('infor-tour')}>
-                                        <Button
-                                            variant="contained"
-                                            className={cx('button-booking')}
+                                        <Link
+                                            to={`/dat-tour/${tour.t_ma}`}
+                                            className={cx('link-router')}
                                         >
-                                            ĐẶT TOUR
-                                        </Button>
+                                            <Button
+                                                variant="contained"
+                                                className={cx('button-booking')}
+                                            >
+                                                ĐẶT TOUR
+                                            </Button>
+                                        </Link>
                                         <ul>
                                             <li>
                                                 <span className={cx('label')}>
