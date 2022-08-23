@@ -1,4 +1,4 @@
-import { React, Fragment } from 'react';
+import { React, Fragment, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,6 +13,9 @@ import styles from './ExplorePage.scss';
 const cx = classNames.bind(styles);
 
 function ExplorePage() {
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, []);
     return (
         <div>
             <Header></Header>

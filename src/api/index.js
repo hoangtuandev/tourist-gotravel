@@ -14,3 +14,7 @@ export const getTouristAccountByUsername = (data) =>
 export const getAllActiveTour = () => axios.get(`${URL}/Tour/actived`);
 
 export const getTourById = (data) => axios.post(`${URL}/Tour/getById`, data);
+
+// DEPARTURE
+export const getDepartureById = (data) =>
+    axios.post(`${URL}/Departure/getDepartureById`, data);

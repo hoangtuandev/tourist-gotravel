@@ -1,4 +1,4 @@
-import { React, Fragment } from 'react';
+import { React, Fragment, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,6 +18,9 @@ import SlickMultiple from '../../components/SlickMultiple/SlickMultiple';
 const cx = classNames.bind(styles);
 
 function HomePage() {
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, []);
     return (
         <div className={cx('home-page')}>
             <Header></Header>

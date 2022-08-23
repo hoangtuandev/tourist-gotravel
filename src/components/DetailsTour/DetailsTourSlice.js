@@ -15,7 +15,6 @@ export const DetailsTourSlice = createSlice({
         handleCloseDetailsTour: (state) => {
             state.isOpenDetailsTour = false;
         },
-
         handleSelectTour: (state, action) => {
             state.tourSelected = action.payload;
         },

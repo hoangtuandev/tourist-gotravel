@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './GuideBookingPage.scss';
@@ -9,6 +9,9 @@ import GuideBooking from '../../components/GuideBooking/GuideBooking';
 const cx = classNames.bind(styles);
 
 function GuideBookingPage() {
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, []);
     return (
         <div>
             <Header></Header>

@@ -15,8 +15,8 @@ export const publicRoutes = [
     { path: '/tours', component: ToursPage },
     { path: '/tour', component: ToursPage },
     { path: '/kham-pha', component: ExplorePage },
-    { path: '/dat-tour', component: ToursPage },
-    { path: '/dat-tour/:somestring', component: BookingPage },
+    // { path: '/dat-tour', component: ToursPage },
+    { path: '/dat-tour', component: BookingPage },
     { path: '/:somestring', component: HomePage },
 ];
 

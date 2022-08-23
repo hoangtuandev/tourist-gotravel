@@ -1,4 +1,4 @@
-import { React, Fragment } from 'react';
+import { React, Fragment, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,6 +16,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 const cx = classNames.bind(styles);
 
 function ToursPage() {
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, []);
     return (
         <div>
             <Header></Header>

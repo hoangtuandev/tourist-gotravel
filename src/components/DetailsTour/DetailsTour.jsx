@@ -1,4 +1,4 @@
-import { React, forwardRef, Fragment } from 'react';
+import { React, forwardRef, Fragment, useState } from 'react';
 import classNames from 'classnames/bind';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -14,22 +14,22 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-
 import { GiTwoCoins } from 'react-icons/gi';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './DetailsTour.scss';
-import {
-    handleCloseDetailsTour,
-    isOpenDetailsTour,
-    tourSelected,
-} from './DetailsTourSlice';
+
 import SliderImage from './SliderImage';
 import ScheduleTour from './ScheduleTour';
 import ServiceTour from './ServiceTour';
 import TabsBox from './TabsBox';
 import DepartureAnother from './DepartureAnother';
+import {
+    handleCloseDetailsTour,
+    isOpenDetailsTour,
+    tourSelected,
+} from './DetailsTourSlice';
+import { handleSetTourBooked } from '../../GlobalSlice';
 
 const cx = classNames.bind(styles);
 
@@ -41,6 +41,12 @@ function DetailsTour() {
     const dispatch = useDispatch();
     const tour = useSelector(tourSelected);
     const openDialog = useSelector(isOpenDetailsTour);
+
+    const [departure, setDeparture] = useState(tour.t_lichkhoihanh[0]);
+
+    const handleClickBookingTour = () => {
+        dispatch(handleSetTourBooked(tour));
+    };
 
     return (
         <div>
@@ -120,8 +126,11 @@ function DetailsTour() {
                                 <div className={cx('sticky-div')}>
                                     <div className={cx('infor-tour')}>
                                         <Link
-                                            to={`/dat-tour/${tour.t_ma}`}
+                                            to={`/dat-tour?tour=${tour.t_ma}&departure=${departure._id}`}
                                             className={cx('link-router')}
+                                            onClick={() =>
+                                                handleClickBookingTour()
+                                            }
                                         >
                                             <Button
                                                 variant="contained"
@@ -164,9 +173,7 @@ function DetailsTour() {
                                                     {tour.t_lichkhoihanh
                                                         .length !== 0 &&
                                                         moment(
-                                                            tour
-                                                                .t_lichkhoihanh[0]
-                                                                .lkh_ngaykhoihanh
+                                                            departure.lkh_ngaykhoihanh
                                                         ).format(
                                                             'DD / MM / YYYY'
                                                         )}
@@ -180,9 +187,7 @@ function DetailsTour() {
                                                     {tour.t_lichkhoihanh
                                                         .length !== 0 &&
                                                         moment(
-                                                            tour
-                                                                .t_lichkhoihanh[0]
-                                                                .lkh_ngayketthuc
+                                                            departure.lkh_ngayketthuc
                                                         ).format(
                                                             'DD / MM / YYYY'
                                                         )}

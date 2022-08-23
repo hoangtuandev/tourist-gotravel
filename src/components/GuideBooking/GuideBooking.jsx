@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import { GoSearch } from 'react-icons/go';
