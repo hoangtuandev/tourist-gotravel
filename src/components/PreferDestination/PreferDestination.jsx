@@ -5,10 +5,17 @@ import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 
 // import { AiFillStar } from 'react-icons/ai';
+// import * as api from '../../api';
 import styles from './PreferDestination.scss';
+// import { useEffect } from 'react';
+// import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 function PreferDestination() {
+    // const [tourPrefer, setTourPrefer] = useState([]);
+    // useEffect(() => {
+
+    // }, []);
     return (
         <div className={cx('prefer-destination')}>
             <div className={cx('title')}>

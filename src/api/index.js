@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const URL = 'http://localhost:5000';
+// const URL = 'https://server-go-travel.herokuapp.com';
 
 export const createTourist = (data) => axios.post(`${URL}/Tourist`, data);
 
