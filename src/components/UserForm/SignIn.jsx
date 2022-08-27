@@ -1,11 +1,13 @@
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import Cookies from 'universal-cookie';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import BackDropCus from '../BackDrop/BackDrop';
 
 import { RiLockPasswordLine } from 'react-icons/ri';
 import {
@@ -16,36 +18,73 @@ import {
 
 import * as api from '../../api';
 import styles from './UserForm.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    handleCloseBackdrop,
+    handleOpenBackdrop,
+    openBackdrop,
+} from '../../GlobalSlice';
 // import clientURL from '../../app/clientURL';
 
 const cx = classNames.bind(styles);
 
 function SignIn() {
+    const cookies = new Cookies();
+    const dispatch = useDispatch();
+    const isOpenBackdrop = useSelector(openBackdrop);
     const [isShowPassword, setIsShowPassword] = useState(false);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorContent, setErrorContent] = useState('');
 
-    const handleSubmitSignIn = (event) => {
+    // const handleSubmitSignIn = (event) => {
+    //     event.preventDefault();
+    //     api.getTouristAccountByUsername({ tkkdl_tendangnhap: username }).then(
+    //         (res) => {
+    //             const account = res.data[0];
+    //             if (account) {
+    //                 if (account.tkkdl_matkhau === password) {
+    //                     setErrorContent('');
+    //                     window.location.href = 'http://localhost:3000/Home';
+    //                 } else {
+    //                     setErrorContent('Mật khẩu không đúng');
+    //                 }
+    //             } else {
+    //                 setErrorContent(
+    //                     'Tài khoản không tồn tại. Vui lòng đăng ký!'
+    //                 );
+    //             }
+    //         }
+    //     );
+    // };
+
+    const handleSignIn = (event) => {
         event.preventDefault();
-        api.getTouristAccountByUsername({ tkkdl_tendangnhap: username }).then(
-            (res) => {
-                const account = res.data[0];
-                if (account) {
-                    if (account.tkkdl_matkhau === password) {
-                        setErrorContent('');
-                        window.location.href = 'http://localhost:3000/Home';
-                    } else {
-                        setErrorContent('Mật khẩu không đúng');
-                    }
-                } else {
-                    setErrorContent(
-                        'Tài khoản không tồn tại. Vui lòng đăng ký!'
-                    );
-                }
+        dispatch(handleOpenBackdrop());
+        api.signInTourist({
+            tkkdl_tendangnhap: username,
+            tkkdl_matkhau: password,
+        }).then((res) => {
+            const { data } = res;
+            console.log(data);
+            if (data.notFoundUsername) {
+                setErrorContent('Tài khoản không tồn tại. Vui lòng đăng ký!');
+            } else if (data.wrongPassword) {
+                setErrorContent('Mật khẩu không đúng');
+            } else {
+                setErrorContent('');
+                // const url = new URL(
+                //     'https://roaring-sprinkles-19120c.netlify.app/tours'
+                // );
+                // const hostname = url.hostname;
+                // console.log(hostname);
+                cookies.set('user', res.data, { path: '/' });
+                // const url = new URL(window.location.href);
+                window.location.href = '/';
+                dispatch(handleCloseBackdrop());
             }
-        );
+        });
     };
 
     return (
@@ -78,7 +117,8 @@ function SignIn() {
                             </div>
                             <form
                                 className={cx('form-control')}
-                                onSubmit={(event) => handleSubmitSignIn(event)}
+                                // onSubmit={(event) => handleSubmitSignIn(event)}
+                                onSubmit={(event) => handleSignIn(event)}
                             >
                                 <p>Đăng nhập</p>
                                 <div className={cx('form-groups')}>
@@ -175,6 +215,8 @@ function SignIn() {
                     </div>
                 </Typography>
             </Container>
+
+            {isOpenBackdrop && <BackDropCus></BackDropCus>}
         </div>
     );
 }

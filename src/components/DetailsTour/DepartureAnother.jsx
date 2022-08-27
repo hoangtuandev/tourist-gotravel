@@ -74,7 +74,7 @@ function DepartureAnother(props) {
                                     </tr>
                                 </tbody>
                             </table>
-                            <Button variant="contained">CHỌN</Button>
+                            <Button variant="contained">ĐẶT TOUR</Button>
                         </div>
                     </AccordionDetails>
                 </Accordion>

@@ -1,14 +1,18 @@
 import { React } from 'react';
 import classNames from 'classnames/bind';
 import InputHints from 'react-input-hints';
-
-import Avatar from '@mui/material/Avatar';
 import { GoSearch } from 'react-icons/go';
 
 import styles from './Header.scss';
+import AccountMenu from './AccountMenu';
+import Cookies from 'universal-cookie';
+import ButtonUser from './ButtonUser';
+
 const cx = classNames.bind(styles);
+const cookies = new Cookies();
 
 function Header() {
+    const user = cookies.get('user');
     return (
         <div className={cx('header')}>
             <div className={cx('header-logo')}>
@@ -27,11 +31,13 @@ function Header() {
                 </label>
             </div>
             <div className={cx('header-user')}>
-                <Avatar
+                {user && <AccountMenu></AccountMenu>}
+                {!user && <ButtonUser></ButtonUser>}
+                {/* <Avatar
                     alt="Remy Sharp"
                     src="https://res.cloudinary.com/phtuandev/image/upload/v1660267332/GoTravel/default_user_nmc2tx.png"
                     sx={{ width: 45, height: 45 }}
-                />
+                /> */}
             </div>
         </div>
     );

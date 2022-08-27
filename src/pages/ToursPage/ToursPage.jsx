@@ -1,4 +1,4 @@
-import { React, Fragment, useEffect } from 'react';
+import { React, Fragment, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,14 +10,21 @@ import Footer from '../../components/Footer/Footer';
 import ListTour from '../../components/ListTour/ListTour';
 import MenuTour from '../../components/MenuTour/MenuTour';
 
+import * as api from '../../api';
 import styles from './ToursPage.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const cx = classNames.bind(styles);
 
 function ToursPage() {
+    const [typeTourismList, setTypeTourismList] = useState([]);
     useEffect(() => {
         window.scroll(0, 0);
+    }, []);
+    useEffect(() => {
+        api.getAllTypeTourism().then((res) => {
+            setTypeTourismList(res.data);
+        });
     }, []);
     return (
         <div>
@@ -28,7 +35,9 @@ function ToursPage() {
                     <CssBaseline />
                     <Container maxWidth="xl">
                         <div className={cx('content-page')}>
-                            <MenuTour></MenuTour>
+                            <MenuTour
+                                typeTourismList={typeTourismList}
+                            ></MenuTour>
                             <ListTour></ListTour>
                         </div>
                     </Container>

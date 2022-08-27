@@ -30,6 +30,7 @@ import {
     tourSelected,
 } from './DetailsTourSlice';
 import { handleSetTourBooked } from '../../GlobalSlice';
+import Cookies from 'universal-cookie';
 
 const cx = classNames.bind(styles);
 
@@ -37,7 +38,10 @@ const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
+const cookies = new Cookies();
+
 function DetailsTour() {
+    const user = cookies.get('user');
     const dispatch = useDispatch();
     const tour = useSelector(tourSelected);
     const openDialog = useSelector(isOpenDetailsTour);
@@ -45,6 +49,11 @@ function DetailsTour() {
     const [departure, setDeparture] = useState(tour.t_lichkhoihanh[0]);
 
     const handleClickBookingTour = () => {
+        if (!user) {
+            window.location.href = '/dang-nhap';
+        } else {
+            window.location.href = `/dat-tour?tour=${tour.t_ma}&departure=${departure._id}`;
+        }
         dispatch(handleSetTourBooked(tour));
     };
 
@@ -125,20 +134,16 @@ function DetailsTour() {
                             <div className={cx('details-right')}>
                                 <div className={cx('sticky-div')}>
                                     <div className={cx('infor-tour')}>
-                                        <Link
-                                            to={`/dat-tour?tour=${tour.t_ma}&departure=${departure._id}`}
-                                            className={cx('link-router')}
+                                        <Button
+                                            variant="contained"
+                                            className={cx('button-booking')}
                                             onClick={() =>
                                                 handleClickBookingTour()
                                             }
                                         >
-                                            <Button
-                                                variant="contained"
-                                                className={cx('button-booking')}
-                                            >
-                                                ĐẶT TOUR
-                                            </Button>
-                                        </Link>
+                                            ĐẶT TOUR
+                                        </Button>
+
                                         <ul>
                                             <li>
                                                 <span className={cx('label')}>

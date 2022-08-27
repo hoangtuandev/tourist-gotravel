@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import DatePicker from 'react-datepicker';
 
@@ -21,19 +21,31 @@ function valueTextPriceArange(value) {
     return `${value}`;
 }
 
-function MenuTour() {
-    const [currentTourismTab, setCurrentTourismTab] = useState(0);
+function MenuTour(props) {
+    const { typeTourismList } = props;
+    const [currentIndexTourismTab, setCurrentIndexTourismTab] = useState(0);
+    const [currentTourismTab, setCurrentTourismTab] = useState({});
     const [priceArange, setPriceArange] = useState([0, 5000000]);
     const [startDate, setStartDate] = useState(new Date());
 
+    // console.log(currentTourismTab);
+
+    // useEffect(() => {
+    //     console.log(currentTourismTab);
+    // }, [currentTourismTab]);
+
     const handleChangeTourismTab = (event, newValue) => {
-        setCurrentTourismTab(newValue);
+        // setCurrentTourismTab(newValue);
+        setCurrentIndexTourismTab(newValue);
+        setCurrentTourismTab(typeTourismList[newValue - 1]);
+        // console.log(typeTourismList[newValue - 1]);
     };
 
     const handleChangePriceArange = (event, newValue) => {
         console.log(newValue);
         setPriceArange(newValue);
     };
+
     return (
         <div className={cx('menu-tour')}>
             <Box
@@ -45,7 +57,7 @@ function MenuTour() {
                 }}
             >
                 <Tabs
-                    value={currentTourismTab}
+                    value={currentIndexTourismTab}
                     onChange={handleChangeTourismTab}
                     variant="scrollable"
                     scrollButtons
@@ -57,18 +69,9 @@ function MenuTour() {
                     }}
                 >
                     <Tab label="Tất cả tour" />
-                    <Tab label="Du lịch miền Bắc" />
-                    <Tab label="Du lịch miền Trung" />
-                    <Tab label="Du lịch miền Nam" />
-                    <Tab label="Du lịch khám phá" />
-                    <Tab label="Du lịch ẩm thực" />
-                    <Tab label="Du lịch nghỉ dưỡng" />
-                    <Tab label="Du lịch miền Bắc" />
-                    <Tab label="Du lịch miền Trung" />
-                    <Tab label="Du lịch miền Nam" />
-                    <Tab label="Du lịch khám phá" />
-                    <Tab label="Du lịch ẩm thực" />
-                    <Tab label="Du lịch nghỉ dưỡng" />
+                    {typeTourismList.map((type, index) => (
+                        <Tab key={index} label={type.lht_ten} />
+                    ))}
                 </Tabs>
             </Box>
             <div className={cx('filter')}>

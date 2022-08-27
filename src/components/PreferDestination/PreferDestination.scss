@@ -32,10 +32,11 @@ $mainFamily: "Mulish", sans-serif;
 }
 
 .tour-list {
-    padding: 20px 40px 40px 40px;
+    padding: 20px 40px 20px 40px;
     margin: 0 0;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     .tour-item {
         background-color: #ffffff;
@@ -44,6 +45,7 @@ $mainFamily: "Mulish", sans-serif;
 
         position: relative;
         padding-bottom: 15px;
+        margin: 0px 0 40px 0;
         box-shadow: 0px 0px 1px #a1a1a1;
 
         display: flex;
@@ -72,8 +74,8 @@ $mainFamily: "Mulish", sans-serif;
         .image-tour {
             width: 370px;
             height: 230px;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
             overflow: hidden;
 
             .rating {
@@ -97,9 +99,9 @@ $mainFamily: "Mulish", sans-serif;
             justify-content: center;
 
             .name-tour {
-                padding: 10px 0px 0px 10px;
+                padding: 10px 10px 0px 10px;
                 font-family: $mainFamily;
-                font-size: 18px;
+                font-size: 17px;
                 font-weight: 700;
                 color: #0b9de0;
                 max-width: 370px;

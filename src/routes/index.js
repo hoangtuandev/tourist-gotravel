@@ -16,8 +16,20 @@ export const publicRoutes = [
     { path: '/tour', component: ToursPage },
     { path: '/kham-pha', component: ExplorePage },
     // { path: '/dat-tour', component: ToursPage },
-    { path: '/dat-tour', component: BookingPage },
+    // { path: '/dat-tour', component: BookingPage },
     { path: '/:somestring', component: HomePage },
 ];
 
-export const privateRoute = [];
+export const privateRoute = [
+    { path: '/', component: HomePage },
+    { path: '/dang-ky', component: SignUp },
+    { path: '/dang-nhap', component: SignIn },
+    { path: '/trang-chu', component: HomePage },
+    { path: '/huong-dan', component: GuideBookingPage },
+    { path: '/tours', component: ToursPage },
+    { path: '/tour', component: ToursPage },
+    { path: '/kham-pha', component: ExplorePage },
+    // { path: '/dat-tour', component: ToursPage },
+    { path: '/dat-tour', component: BookingPage },
+    { path: '/:somestring', component: HomePage },
+];
