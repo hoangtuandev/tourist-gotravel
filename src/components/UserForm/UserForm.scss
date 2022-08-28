@@ -86,6 +86,7 @@ $mainFamily: "Mulish", sans-serif;
             .toggle-eye {
               position: absolute;
               right: 0;
+              top: -5px;
               color: white;
               font-size: 22px;
               margin: 11px 9px 5px 9px;
@@ -221,7 +222,7 @@ $mainFamily: "Mulish", sans-serif;
 
           .text-field-confirm {
             outline: none;
-            width: 338px;
+            width: 328px;
             height: 45px;
             border-radius: 5px;
             border: 1px solid $mainColor;
@@ -247,6 +248,9 @@ $mainFamily: "Mulish", sans-serif;
           }
 
           .btn-resend {
+            position: absolute;
+            right: 0;
+            top: 37px;
             margin: 0 0 4px 10px;
             font-size: 13.5px;
             font-weight: bold;

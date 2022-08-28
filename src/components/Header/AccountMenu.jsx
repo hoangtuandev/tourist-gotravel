@@ -17,6 +17,7 @@ const cx = classNames.bind(styles);
 const cookies = new Cookies();
 
 export default function AccountMenu() {
+    const user = cookies.get('user');
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -26,9 +27,12 @@ export default function AccountMenu() {
         setAnchorEl(null);
     };
 
-    const handleSignOut = () => {};
-    cookies.remove('user');
-    // window.location.href = '/dang-nhap';
+    const handleSignOut = () => {
+        console.log('Sign-out');
+        cookies.remove('user');
+        window.location.href = '/dang-nhap';
+    };
+
     return (
         <React.Fragment>
             <Box

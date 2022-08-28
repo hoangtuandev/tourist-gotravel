@@ -29,9 +29,6 @@ function HomePage() {
                 <Fragment>
                     <CssBaseline />
                     <Container maxWidth="xl">
-                        {/* <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} /> */}
-
-                        {/* <Banner></Banner> */}
                         <Slideshow></Slideshow>
                         <SlickMultiple></SlickMultiple>
                         <PreferDestination></PreferDestination>

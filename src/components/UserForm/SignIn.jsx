@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import Cookies from 'universal-cookie';
+import { useNavigate } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -27,9 +28,10 @@ import {
 // import clientURL from '../../app/clientURL';
 
 const cx = classNames.bind(styles);
+const cookies = new Cookies();
 
 function SignIn() {
-    const cookies = new Cookies();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isOpenBackdrop = useSelector(openBackdrop);
     const [isShowPassword, setIsShowPassword] = useState(false);
@@ -38,28 +40,8 @@ function SignIn() {
     const [password, setPassword] = useState('');
     const [errorContent, setErrorContent] = useState('');
 
-    // const handleSubmitSignIn = (event) => {
-    //     event.preventDefault();
-    //     api.getTouristAccountByUsername({ tkkdl_tendangnhap: username }).then(
-    //         (res) => {
-    //             const account = res.data[0];
-    //             if (account) {
-    //                 if (account.tkkdl_matkhau === password) {
-    //                     setErrorContent('');
-    //                     window.location.href = 'http://localhost:3000/Home';
-    //                 } else {
-    //                     setErrorContent('Mật khẩu không đúng');
-    //                 }
-    //             } else {
-    //                 setErrorContent(
-    //                     'Tài khoản không tồn tại. Vui lòng đăng ký!'
-    //                 );
-    //             }
-    //         }
-    //     );
-    // };
-
     const handleSignIn = (event) => {
+        console.log('Sign-in');
         event.preventDefault();
         dispatch(handleOpenBackdrop());
         api.signInTourist({
@@ -81,7 +63,7 @@ function SignIn() {
                 // console.log(hostname);
                 cookies.set('user', res.data, { path: '/' });
                 // const url = new URL(window.location.href);
-                window.location.href = '/';
+                navigate(-1);
                 dispatch(handleCloseBackdrop());
             }
         });
@@ -98,10 +80,12 @@ function SignIn() {
                 >
                     <div className={cx('content-left')}>
                         <div className={cx('content-left_logo')}>
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1657686014/GoTravel/Screenshot_2022-07-13_111948_kotv2a.png"
-                                alt="Logo_GoTravel"
-                            />
+                            <Link to="/" className={cx('link-router')}>
+                                <img
+                                    src="https://res.cloudinary.com/phtuandev/image/upload/v1657686014/GoTravel/Screenshot_2022-07-13_111948_kotv2a.png"
+                                    alt="Logo_GoTravel"
+                                />
+                            </Link>
                         </div>
                         <div className={cx('content-left_slogan')}>
                             Cùng bạn khám phá Việt Nam !!!
@@ -204,7 +188,7 @@ function SignIn() {
                                 <div className={cx('signin-link')}>
                                     Bạn chưa có tài khoản?
                                     <Link
-                                        to="/SignUp"
+                                        to="/dang-ky"
                                         className={cx('router-link')}
                                     >
                                         Đăng ký
@@ -216,7 +200,7 @@ function SignIn() {
                 </Typography>
             </Container>
 
-            {isOpenBackdrop && <BackDropCus></BackDropCus>}
+            {/* {isOpenBackdrop && <BackDropCus></BackDropCus>} */}
         </div>
     );
 }

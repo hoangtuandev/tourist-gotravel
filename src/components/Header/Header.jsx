@@ -7,6 +7,7 @@ import styles from './Header.scss';
 import AccountMenu from './AccountMenu';
 import Cookies from 'universal-cookie';
 import ButtonUser from './ButtonUser';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 const cookies = new Cookies();
@@ -16,10 +17,12 @@ function Header() {
     return (
         <div className={cx('header')}>
             <div className={cx('header-logo')}>
-                <img
-                    src="https://res.cloudinary.com/phtuandev/image/upload/v1660352742/GoTravel/24324_ihmxj2.png"
-                    alt=""
-                />
+                <Link to="/" className={cx('link-router')}>
+                    <img
+                        src="https://res.cloudinary.com/phtuandev/image/upload/v1660352742/GoTravel/24324_ihmxj2.png"
+                        alt=""
+                    />
+                </Link>
             </div>
             <div className={cx('header-search')}>
                 <InputHints

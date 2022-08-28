@@ -436,7 +436,7 @@ function SignUp() {
                                         Bạn đã có tài khoản?
                                         <Link
                                             className={cx('router-link')}
-                                            to="/SignIn"
+                                            to="/dang-nhap"
                                         >
                                             Đăng nhập
                                         </Link>
@@ -458,7 +458,7 @@ function SignUp() {
                                     </h1>
 
                                     <Link
-                                        to="/SignIn"
+                                        to="/dang-nhap"
                                         className={cx('router-link')}
                                     >
                                         <Button

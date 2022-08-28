@@ -13,7 +13,7 @@ function Sidebar() {
     return (
         <div className={cx('sidebar')}>
             <ul className={cx('sidebar-menu')}>
-                <Link to={'/trang-chu'} className={cx('link-router')}>
+                <Link to={'/'} className={cx('link-router')}>
                     <li>
                         <div className={cx('hover-box')}>Trang chủ</div>
                         <FaHome className={cx('icon')} />
