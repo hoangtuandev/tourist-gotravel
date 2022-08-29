@@ -17,10 +17,16 @@ export const signInTourist = (data) =>
 // TOURISM
 export const getAllTypeTourism = () => axios.get(`${URL}/TypeTourism`);
 
+export const getTypeTourismById = (data) =>
+    axios.post(`${URL}/TypeTourism/getById`, data);
+
 // TOUR
 export const getAllActiveTour = () => axios.get(`${URL}/Tour/actived`);
 
 export const getTourById = (data) => axios.post(`${URL}/Tour/getById`, data);
+
+export const getTourByTypeTourism = (data) =>
+    axios.post(`${URL}/Tour/getTourByTypeTourism`, data);
 
 export const getPreferTour = () => axios.get(`${URL}/Tour/getPreferTour`);
 

@@ -63,7 +63,8 @@ function SignIn() {
                 // console.log(hostname);
                 cookies.set('user', res.data, { path: '/' });
                 // const url = new URL(window.location.href);
-                navigate(-1);
+                console.log(navigate(-1));
+                // navigate(-1);
                 dispatch(handleCloseBackdrop());
             }
         });

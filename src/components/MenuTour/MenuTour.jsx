@@ -1,7 +1,7 @@
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import classNames from 'classnames/bind';
 import DatePicker from 'react-datepicker';
-
+import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -14,6 +14,11 @@ import { TiMinus, TiPlus } from 'react-icons/ti';
 
 import styles from './MenuTour.scss';
 import 'react-datepicker/dist/react-datepicker.css';
+import {
+    handleChangePriceTourFilter,
+    handleSetTabMenuCurrentTour,
+    priceTourFilter,
+} from '../../GlobalSlice';
 
 const cx = classNames.bind(styles);
 
@@ -23,27 +28,29 @@ function valueTextPriceArange(value) {
 
 function MenuTour(props) {
     const { typeTourismList } = props;
+    const dispatch = useDispatch();
+    const priceFilter = useSelector(priceTourFilter);
     const [currentIndexTourismTab, setCurrentIndexTourismTab] = useState(0);
-    const [currentTourismTab, setCurrentTourismTab] = useState({});
-    const [priceArange, setPriceArange] = useState([0, 5000000]);
     const [startDate, setStartDate] = useState(new Date());
 
-    // console.log(currentTourismTab);
-
-    // useEffect(() => {
-    //     console.log(currentTourismTab);
-    // }, [currentTourismTab]);
-
     const handleChangeTourismTab = (event, newValue) => {
-        // setCurrentTourismTab(newValue);
         setCurrentIndexTourismTab(newValue);
-        setCurrentTourismTab(typeTourismList[newValue - 1]);
-        // console.log(typeTourismList[newValue - 1]);
+        if (typeTourismList[newValue - 1]) {
+            dispatch(
+                handleSetTabMenuCurrentTour(typeTourismList[newValue - 1])
+            );
+        } else {
+            dispatch(
+                handleSetTabMenuCurrentTour({
+                    lht_ma: 'all',
+                    lht_ten: 'Tất cả tour',
+                })
+            );
+        }
     };
 
     const handleChangePriceArange = (event, newValue) => {
-        console.log(newValue);
-        setPriceArange(newValue);
+        dispatch(handleChangePriceTourFilter(newValue));
     };
 
     return (
@@ -83,14 +90,14 @@ function MenuTour(props) {
                         min={0}
                         max={20000000}
                         step={500000}
-                        value={priceArange}
+                        value={priceFilter}
                         onChange={handleChangePriceArange}
                         valueLabelDisplay="auto"
                         getAriaValueText={valueTextPriceArange}
                     />
                     <div className={cx('price-text')}>
                         <span className={cx('value')}>
-                            {priceArange[0].toLocaleString('vi', {
+                            {priceFilter[0].toLocaleString('vi', {
                                 style: 'currency',
                                 currency: 'VND',
                             })}
@@ -99,7 +106,7 @@ function MenuTour(props) {
                             <CgArrowLongRightC className="icon" />
                         </span>
                         <span className={cx('value')}>
-                            {priceArange[1].toLocaleString('vi', {
+                            {priceFilter[1].toLocaleString('vi', {
                                 style: 'currency',
                                 currency: 'VND',
                             })}
