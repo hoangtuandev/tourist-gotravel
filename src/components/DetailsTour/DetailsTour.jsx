@@ -46,7 +46,7 @@ function DetailsTour() {
     const tour = useSelector(tourSelected);
     const openDialog = useSelector(isOpenDetailsTour);
 
-    const [departure, setDeparture] = useState(tour.t_lichkhoihanh[0]);
+    const [departure, setDeparture] = useState(tour.t_lichkhoihanh[0] || {});
 
     const handleClickBookingTour = () => {
         if (!user) {

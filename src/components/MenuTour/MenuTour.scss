@@ -50,9 +50,18 @@ $mainFamily: "Mulish", sans-serif;
             font-weight: 700;
         }
 
+        .css-j204z7-MuiFormControlLabel-root {
+            margin-left: -4px;
+            .css-ahj2mt-MuiTypography-root {
+                font-size: 14px;
+                font-family: $mainFamily;
+                font-weight: 600;
+            }
+        }
+
         .filter-price {
             width: 330px;
-            padding: 5px 20px 10px 20px;
+            padding: 5px 20px 0px 20px;
             border-radius: 10px;
             background-color: #fff;
             // border: 1px solid #68cfff;
@@ -96,21 +105,21 @@ $mainFamily: "Mulish", sans-serif;
 
         .filter-departure {
             width: 330px;
-            padding: 5px 15px 10px 15px;
+            padding: 5px 15px 0px 15px;
             border-radius: 10px;
             background-color: #fff;
             // border: 1px solid #68cfff;
             box-shadow: rgba(164, 164, 164, 0.12) 0px 2px 4px 0px, rgba(158, 158, 158, 0.32) 0px 2px 16px 0px;
 
             .departure {
-                padding-left: 35px;
+                padding-left: 5px;
                 padding-top: 15px;
                 position: relative;
 
                 .icon-calendar {
                     position: absolute;
                     top: 27px;
-                    right: 45px;
+                    right: 20px;
                     color: #606060;
                     font-size: 20px;
                     user-select: none;
@@ -122,7 +131,7 @@ $mainFamily: "Mulish", sans-serif;
                     .react-datepicker__input-container {
                         input {
                             outline: none;
-                            width: 230px;
+                            width: 290px;
                             font-family: $mainFamily;
                             font-size: 17px;
                             font-weight: 700;
@@ -211,7 +220,7 @@ $mainFamily: "Mulish", sans-serif;
 
         .filter-time {
             width: 330px;
-            padding: 5px 15px 10px 15px;
+            padding: 5px 15px 0px 15px;
             border-radius: 10px;
             background-color: #fff;
             // border: 1px solid #68cfff;
@@ -225,15 +234,15 @@ $mainFamily: "Mulish", sans-serif;
 
                     button {
                         font-family: $mainFamily;
-                        font-size: 15px;
                         font-family: 700;
                         border: 0px solid #008dce;
                         padding: 5px 0px;
                     }
                     .button-click {
+                        padding: 0 0;
                         border-radius: 50px;
-                        font-size: 18px;
-                        background-color: #05a3ed;
+                        font-size: 17px;
+                        // background-color: #05a3ed;
                     }
                     .btn-value {
                         border-radius: 50px;

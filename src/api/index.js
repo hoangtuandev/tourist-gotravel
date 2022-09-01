@@ -30,6 +30,12 @@ export const getTourByTypeTourism = (data) =>
 
 export const getPreferTour = () => axios.get(`${URL}/Tour/getPreferTour`);
 
+export const getTourByParamsFilter = (data) =>
+    axios.post(`${URL}/Tour/getTourByParamsFilter`, data);
+
+export const searchingTour = (data) =>
+    axios.post(`${URL}/Tour/searchingTour`, data);
+
 // DEPARTURE
 export const getDepartureById = (data) =>
     axios.post(`${URL}/Departure/getDepartureById`, data);

@@ -10,7 +10,12 @@ import DetailsTour from '../DetailsTour/DetailsTour';
 import * as api from '../../api';
 import ItemTour from './ItemTour';
 import {
+    checkedAllDeparture,
+    checkedAllPrice,
+    checkedAllTime,
     handleSetTabMenuCurrentTour,
+    maxPriceTours,
+    paramsTourFilter,
     priceTourFilter,
     tabMenuCurrentTour,
 } from '../../GlobalSlice';
@@ -19,14 +24,51 @@ const cx = classNames.bind(styles);
 
 function ListTour() {
     const dispatch = useDispatch();
-    const priceFilter = useSelector(priceTourFilter);
+    const maxPriceTour = useSelector(maxPriceTours);
+    const paramsFilter = useSelector(paramsTourFilter);
+    const checkedPriceAll = useSelector(checkedAllPrice);
+    const checkedDepartureAll = useSelector(checkedAllDeparture);
+    const checkedTimeAll = useSelector(checkedAllTime);
     const tabMenuTour = useSelector(tabMenuCurrentTour);
     const openDetailsTour = useSelector(isOpenDetailsTour);
     const [listTour, setListTour] = useState([]);
 
     useEffect(() => {
-        console.log(priceFilter);
-    }, [priceFilter]);
+        const { price, departure, time } = paramsFilter;
+        console.log(price, departure, time);
+        console.log(checkedPriceAll, checkedDepartureAll, checkedTimeAll);
+
+        api.getTourByParamsFilter({
+            maxPriceTour,
+            price,
+            departure,
+            time,
+            checkedPriceAll,
+            checkedDepartureAll,
+            checkedTimeAll,
+        }).then((res) => {
+            console.log(res.data);
+        });
+    }, [
+        maxPriceTour,
+        paramsFilter,
+        checkedPriceAll,
+        checkedDepartureAll,
+        checkedTimeAll,
+    ]);
+
+    // useEffect(() => {
+    //     const { price, departure, time } = paramsFilter;
+    //     api.getTourByParamsFilter({
+    //         minPrice: price[0],
+    //         maxPrice: price[1],
+    //         departure,
+    //         time,
+    //     }).then((res) => {
+    //         // console.log(res.data);
+    //         setListTour(res.data);
+    //     });
+    // }, [paramsFilter]);
 
     useEffect(() => {
         if (tabMenuTour.lht_ma === 'all') {
@@ -51,12 +93,6 @@ function ListTour() {
             );
         }
     }, [tabMenuTour, dispatch]);
-
-    // useEffect(() => {
-    //     api.getAllActiveTour().then((res) => {
-    //         setListTour(res.data);
-    //     });
-    // }, []);
 
     return (
         <div className={cx('list-tour')}>

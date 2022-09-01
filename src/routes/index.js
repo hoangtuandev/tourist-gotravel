@@ -5,11 +5,13 @@ import GuideBookingPage from '../pages/GuideBookingPage/GuideBookingPage';
 import ToursPage from '../pages/ToursPage/ToursPage';
 import ExplorePage from '../pages/ExplorePage/ExplorePage';
 import BookingPage from '../pages/BookingPage/BookingPage';
+import ResultSearchingPage from '../pages/ResultSearchingPage/ResultSearchingPage';
 
 export const publicRoutes = [
     { path: '/', component: HomePage },
     { path: '/dang-ky', component: SignUp },
     { path: '/dang-nhap', component: SignIn },
+    { path: '/tim-kiem', component: ResultSearchingPage },
     { path: '/huong-dan', component: GuideBookingPage },
     { path: '/tours', component: ToursPage },
     { path: '/tour', component: ToursPage },
@@ -23,6 +25,7 @@ export const privateRoute = [
     { path: '/', component: HomePage },
     { path: '/dang-ky', component: SignUp },
     { path: '/dang-nhap', component: SignIn },
+    { path: '/tim-kiem', component: ResultSearchingPage },
     { path: '/huong-dan', component: GuideBookingPage },
     { path: '/tours', component: ToursPage },
     { path: '/tour', component: ToursPage },

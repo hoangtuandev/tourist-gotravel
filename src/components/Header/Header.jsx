@@ -1,5 +1,6 @@
 import { React } from 'react';
 import classNames from 'classnames/bind';
+import { useSelector, useDispatch } from 'react-redux';
 import InputHints from 'react-input-hints';
 import { GoSearch } from 'react-icons/go';
 
@@ -8,12 +9,27 @@ import AccountMenu from './AccountMenu';
 import Cookies from 'universal-cookie';
 import ButtonUser from './ButtonUser';
 import { Link } from 'react-router-dom';
+import {
+    handleChangeKeySearching,
+    handleSetSearchingTour,
+    keySearching,
+} from '../../GlobalSlice';
+import * as api from '../../api';
 
 const cx = classNames.bind(styles);
 const cookies = new Cookies();
 
 function Header() {
     const user = cookies.get('user');
+    const dispatch = useDispatch();
+    const keySearch = useSelector(keySearching);
+
+    const handleSearchingTour = () => {
+        api.searchingTour({ keySearch }).then((res) => {
+            dispatch(handleSetSearchingTour(res.data));
+        });
+    };
+
     return (
         <div className={cx('header')}>
             <div className={cx('header-logo')}>
@@ -28,10 +44,19 @@ function Header() {
                 <InputHints
                     placeholders={['Nhập nơi bạn muốn đến...']}
                     className={cx('text-field')}
+                    value={keySearch}
+                    onChange={(e) =>
+                        dispatch(handleChangeKeySearching(e.target.value))
+                    }
                 />
-                <label className={cx('label')}>
-                    <GoSearch />
-                </label>
+                <Link to="/tim-kiem" className={cx('link-router')}>
+                    <label
+                        className={cx('label')}
+                        onClick={() => handleSearchingTour()}
+                    >
+                        <GoSearch />
+                    </label>
+                </Link>
             </div>
             <div className={cx('header-user')}>
                 {user && <AccountMenu></AccountMenu>}

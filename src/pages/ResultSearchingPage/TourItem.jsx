@@ -1,35 +1,45 @@
-import { React } from 'react';
-import classNames from 'classnames/bind';
+import { React, useState, Fragment } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import classNames from 'classnames/bind';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 
-import styles from './ListTour.scss';
-import 'react-datepicker/dist/react-datepicker.css';
+import { resultSearchingTour } from '../../GlobalSlice';
+import Header from '../../components/Header/Header';
+import Sidebar from '../../components/Sidebar/Sidebar';
 import {
     handleOpenDetailsTour,
     handleSelectTour,
-} from '../DetailsTour/DetailsTourSlice';
-
+    tourSelected,
+} from '../../components/DetailsTour/DetailsTourSlice';
+import DetailsTour from '../../components/DetailsTour/DetailsTour';
+import styles from './ResultSearchingPage.scss';
 const cx = classNames.bind(styles);
 
-function ItemTour(props) {
+function TourItem(props) {
     const { tour } = props;
     const dispatch = useDispatch();
+    const tourSelect = useSelector(tourSelected);
 
     const handleViewDetailsTour = () => {
+        console.log('view');
         dispatch(handleSelectTour(tour));
         dispatch(handleOpenDetailsTour());
     };
 
     return (
-        <li onClick={() => handleViewDetailsTour()}>
+        <li className={cx('item-tour')} onClick={() => handleViewDetailsTour()}>
             <img src={tour.t_hinhanh[0]} alt="" />
             <div className={cx('infor-tour')}>
                 <p className={cx('name-tour')}>{tour.t_ten}</p>
                 <p className={cx('time-tour')}>
+                    {' '}
                     {tour.t_thoigian} ngày {tour.t_thoigian - 1} đêm
                 </p>
                 <p className={cx('price-tour')}>
+                    {' '}
                     {tour.t_gia.toLocaleString('vi', {
                         style: 'currency',
                         currency: 'VND',
@@ -39,8 +49,7 @@ function ItemTour(props) {
             <Button
                 type="button"
                 variant="contained"
-                className={cx('button-booking')}
-                onClick={() => handleViewDetailsTour()}
+                className={cx('button-view')}
             >
                 CHI TIẾT
             </Button>
@@ -48,4 +57,4 @@ function ItemTour(props) {
     );
 }
 
-export default ItemTour;
+export default TourItem;

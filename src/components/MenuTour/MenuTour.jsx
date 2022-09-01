@@ -1,6 +1,8 @@
 import { React, useState } from 'react';
 import classNames from 'classnames/bind';
 import DatePicker from 'react-datepicker';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
@@ -15,9 +17,18 @@ import { TiMinus, TiPlus } from 'react-icons/ti';
 import styles from './MenuTour.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
-    handleChangePriceTourFilter,
+    checkedAllDeparture,
+    checkedAllPrice,
+    checkedAllTime,
+    handleChangeCheckboxAllDeparture,
+    handleChangeCheckboxAllPrice,
+    handleChangeCheckboxAllTime,
+    handleChangeParamsFilter,
+    handleChangeTimeTourFilter,
     handleSetTabMenuCurrentTour,
-    priceTourFilter,
+    maxPriceTours,
+    paramsTourFilter,
+    timeTourFilter,
 } from '../../GlobalSlice';
 
 const cx = classNames.bind(styles);
@@ -29,9 +40,16 @@ function valueTextPriceArange(value) {
 function MenuTour(props) {
     const { typeTourismList } = props;
     const dispatch = useDispatch();
-    const priceFilter = useSelector(priceTourFilter);
+    const checkedPriceAll = useSelector(checkedAllPrice);
+    const checkedDepartureAll = useSelector(checkedAllDeparture);
+    const checkedTimeAll = useSelector(checkedAllTime);
+    const maxPriceTour = useSelector(maxPriceTours);
+    const paramsFilter = useSelector(paramsTourFilter);
+    const timeFilter = useSelector(timeTourFilter);
     const [currentIndexTourismTab, setCurrentIndexTourismTab] = useState(0);
     const [startDate, setStartDate] = useState(new Date());
+
+    useState(true);
 
     const handleChangeTourismTab = (event, newValue) => {
         setCurrentIndexTourismTab(newValue);
@@ -50,7 +68,61 @@ function MenuTour(props) {
     };
 
     const handleChangePriceArange = (event, newValue) => {
-        dispatch(handleChangePriceTourFilter(newValue));
+        dispatch(handleChangeCheckboxAllPrice(false));
+        dispatch(
+            handleChangeParamsFilter({
+                price: newValue,
+                departure: paramsFilter.departure,
+                time: paramsFilter.time,
+            })
+        );
+    };
+
+    const handleChangeCheckboxAllPriceFilter = () => {
+        dispatch(handleChangeCheckboxAllPrice(!checkedPriceAll));
+    };
+
+    const handleChangeDeparture = (date) => {
+        dispatch(handleChangeCheckboxAllDeparture(false));
+        dispatch(
+            handleChangeParamsFilter({
+                price: paramsFilter.price,
+                departure: date.getTime(),
+                time: paramsFilter.time,
+            })
+        );
+    };
+
+    const handleChangeCheckboxDepartureFilter = () => {
+        dispatch(handleChangeCheckboxAllDeparture(!checkedDepartureAll));
+    };
+
+    const handlePlusTimeFilter = () => {
+        dispatch(handleChangeCheckboxAllTime(false));
+        // dispatch(handleChangeTimeTourFilter(timeFilter + 1));
+        dispatch(
+            handleChangeParamsFilter({
+                price: paramsFilter.price,
+                departure: paramsFilter.departure,
+                time: paramsFilter.time + 1,
+            })
+        );
+    };
+
+    const handleMinusTimeFilter = () => {
+        dispatch(handleChangeCheckboxAllTime(false));
+        // dispatch(handleChangeTimeTourFilter(timeFilter - 1));
+        dispatch(
+            handleChangeParamsFilter({
+                price: paramsFilter.price,
+                departure: paramsFilter.departure,
+                time: paramsFilter.time - 1,
+            })
+        );
+    };
+
+    const handleChangeCheckboxAllTimeFilter = () => {
+        dispatch(handleChangeCheckboxAllTime(!checkedTimeAll));
     };
 
     return (
@@ -88,16 +160,16 @@ function MenuTour(props) {
                         className={cx('slider')}
                         getAriaLabel={() => 'Temperature range'}
                         min={0}
-                        max={20000000}
+                        max={maxPriceTour}
                         step={500000}
-                        value={priceFilter}
+                        value={paramsFilter.price}
                         onChange={handleChangePriceArange}
                         valueLabelDisplay="auto"
                         getAriaValueText={valueTextPriceArange}
                     />
                     <div className={cx('price-text')}>
                         <span className={cx('value')}>
-                            {priceFilter[0].toLocaleString('vi', {
+                            {paramsFilter.price[0].toLocaleString('vi', {
                                 style: 'currency',
                                 currency: 'VND',
                             })}
@@ -106,12 +178,29 @@ function MenuTour(props) {
                             <CgArrowLongRightC className="icon" />
                         </span>
                         <span className={cx('value')}>
-                            {priceFilter[1].toLocaleString('vi', {
+                            {paramsFilter.price[1].toLocaleString('vi', {
                                 style: 'currency',
                                 currency: 'VND',
                             })}
                         </span>
                     </div>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                className={cx('checkbox-select-all')}
+                                checked={checkedPriceAll}
+                                onChange={() =>
+                                    handleChangeCheckboxAllPriceFilter()
+                                }
+                                // checked={paramsFilter.checkedAllPrice}
+                                // onChange={() =>
+                                //     handleChangeCheckboxAllPriceFilter()
+                                // }
+                                sx={{ '& .MuiSvgIcon-root': { fontSize: 20 } }}
+                            />
+                        }
+                        label="Tất cả"
+                    />
                 </div>
                 <div className={cx('filter-departure')}>
                     <p className={cx('label-filter')}>Chọn ngày khởi hành</p>
@@ -119,13 +208,32 @@ function MenuTour(props) {
                         <DatePicker
                             dateFormat="dd / MM / yyyy"
                             placeholderText="ngày / tháng / năm"
-                            selected={startDate}
+                            selected={paramsFilter.departure}
                             onChange={(date) => {
-                                return setStartDate(date);
+                                handleChangeDeparture(date);
                             }}
                         />
                         <BsCalendar3 className={cx('icon-calendar')} />
                     </div>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                className={cx('checkbox-select-all')}
+                                checked={checkedDepartureAll}
+                                onChange={() =>
+                                    handleChangeCheckboxDepartureFilter()
+                                }
+                                // checked={checkedAllDepartureFilter}
+                                // onChange={() =>
+                                //     setCheckedAllDepartureFilter(
+                                //         !checkedAllDepartureFilter
+                                //     )
+                                // }
+                                sx={{ '& .MuiSvgIcon-root': { fontSize: 20 } }}
+                            />
+                        }
+                        label="Tất cả"
+                    />
                 </div>
                 <div className={cx('filter-time')}>
                     <p className={cx('label-filter')}>Thời gian trải nghiệm</p>
@@ -135,18 +243,40 @@ function MenuTour(props) {
                             variant="contained"
                             aria-label="outlined primary button group"
                         >
-                            <Button className={cx('button-click')}>
+                            <Button
+                                disabled={paramsFilter.time === 1}
+                                className={cx('button-click')}
+                                onClick={() => handleMinusTimeFilter()}
+                            >
                                 <TiMinus />
                             </Button>
                             <Button className={cx('btn-value')}>
-                                2<span>&nbsp;ngày</span>
-                                &nbsp;&nbsp;1<span>&nbsp;đêm</span>
+                                {paramsFilter.time}
+                                <span>&nbsp;ngày</span>
+                                &nbsp;&nbsp;{paramsFilter.time - 1}
+                                <span>&nbsp;đêm</span>
                             </Button>
-                            <Button className={cx('button-click')}>
+                            <Button
+                                className={cx('button-click')}
+                                onClick={() => handlePlusTimeFilter()}
+                            >
                                 <TiPlus />
                             </Button>
                         </ButtonGroup>
                     </div>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                className={cx('checkbox-select-all')}
+                                checked={checkedTimeAll}
+                                onChange={() =>
+                                    handleChangeCheckboxAllTimeFilter()
+                                }
+                                sx={{ '& .MuiSvgIcon-root': { fontSize: 20 } }}
+                            />
+                        }
+                        label="Tất cả"
+                    />
                 </div>
             </div>
         </div>
