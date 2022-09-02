@@ -1,7 +1,6 @@
 import { React, forwardRef, Fragment, useState } from 'react';
 import classNames from 'classnames/bind';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -29,7 +28,10 @@ import {
     isOpenDetailsTour,
     tourSelected,
 } from './DetailsTourSlice';
-import { handleSetTourBooked } from '../../GlobalSlice';
+import {
+    handleSetTourBooked,
+    handleSetDepartureBooked,
+} from '../../GlobalSlice';
 import Cookies from 'universal-cookie';
 
 const cx = classNames.bind(styles);
@@ -45,7 +47,6 @@ function DetailsTour() {
     const dispatch = useDispatch();
     const tour = useSelector(tourSelected);
     const openDialog = useSelector(isOpenDetailsTour);
-
     const [departure, setDeparture] = useState(tour.t_lichkhoihanh[0] || {});
 
     const handleClickBookingTour = () => {
@@ -53,8 +54,9 @@ function DetailsTour() {
             window.location.href = '/dang-nhap';
         } else {
             window.location.href = `/dat-tour?tour=${tour.t_ma}&departure=${departure._id}`;
+            dispatch(handleSetTourBooked(tour));
+            dispatch(handleSetDepartureBooked(departure));
         }
-        dispatch(handleSetTourBooked(tour));
     };
 
     return (

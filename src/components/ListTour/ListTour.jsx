@@ -16,7 +16,6 @@ import {
     handleSetTabMenuCurrentTour,
     maxPriceTours,
     paramsTourFilter,
-    priceTourFilter,
     tabMenuCurrentTour,
 } from '../../GlobalSlice';
 

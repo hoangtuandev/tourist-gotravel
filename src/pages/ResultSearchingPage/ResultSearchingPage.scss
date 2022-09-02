@@ -27,6 +27,28 @@ $mainFamily: "Mulish", sans-serif;
         }
     }
 
+    .empty-tourList {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(129, 129, 129, 0.23) 0px 3px 6px;
+        background-color: #fff;
+        border-radius: 15px;
+        text-align: center;
+        padding: 70px 0 20px 0;
+
+        p {
+            font-family: $mainFamily;
+            font-weight: 700;
+            font-size: 23px;
+            margin: 0 0;
+            color: #606060;
+        }
+
+        img {
+            margin-top: 20px;
+            width: 500px;
+            height: 300px;
+        }
+    }
+
     .list-tour {
         padding: 50px 10px;
         margin: 0 0 0 0;

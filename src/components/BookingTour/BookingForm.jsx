@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import classNames from 'classnames/bind';
 import TextField from '@mui/material/TextField';
 import Radio from '@mui/material/Radio';
@@ -17,18 +17,49 @@ import styles from './BookingTour.scss';
 const cx = classNames.bind(styles);
 
 function BookingForm() {
+    const [inforContactFirstname, setInforContactFirstname] = useState('');
+    const [inforContactLastname, setInforContactLastname] = useState('');
+    const [inforContactGender, setInforContactGender] = useState('');
+    const [inforContactEmail, setInforContactEmail] = useState('');
+    const [inforContactPhone, setInforContactPhone] = useState('');
+    const [inforContactAddress, setInforContactAddress] = useState('');
+
+    const [amountAdult, setAmountAdult] = useState(1);
+    const [amountChildren, setamountChildren] = useState(0);
+    const [amountBaby, setAmountBaby] = useState(0);
+
+    const [inforPaymentFirstname, setInforPaymentFirstname] = useState('');
+    const [inforPaymentLastname, setInforPaymentLastname] = useState('');
+    const [inforPaymentGender, setInforPaymentGender] = useState('');
+    const [inforPaymentEmail, setInforPaymentEmail] = useState('');
+    const [inforPaymentPhone, setInforPaymentPhone] = useState('');
+    const [inforPaymentAddress, setInforPaymentAddress] = useState('');
+
+    const [typePayment, setTypePayment] = useState('');
+
     return (
         <div className={cx('infor-booking')}>
             <div className={cx('infor-contact')}>
                 <p className={cx('label-box')}>Thông tin liên hệ</p>
                 <ul className={cx('textfield-list')}>
                     <li>
-                        <TextField label="Họ *" variant="standard" />
+                        <TextField
+                            label="Họ *"
+                            variant="standard"
+                            value={inforContactFirstname}
+                            onChange={(e) =>
+                                setInforContactFirstname(e.target.value)
+                            }
+                        />
                     </li>
                     <li>
                         <TextField
                             label="Tên đệm và tên *"
                             variant="standard"
+                            value={inforContactLastname}
+                            onChange={(e) =>
+                                setInforContactLastname(e.target.value)
+                            }
                         />
                     </li>
                     <li className={cx('textfield-gender')}>
@@ -37,6 +68,10 @@ function BookingForm() {
                             row
                             aria-labelledby="demo-row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
+                            value={inforContactGender}
+                            onChange={(e) =>
+                                setInforContactGender(e.target.value)
+                            }
                         >
                             <FormControlLabel
                                 value="female"
@@ -80,16 +115,34 @@ function BookingForm() {
                         </RadioGroup>
                     </li>
                     <li>
-                        <TextField label="Email" variant="standard" />
+                        <TextField
+                            label="Email"
+                            variant="standard"
+                            value={inforContactEmail}
+                            onChange={(e) =>
+                                setInforContactEmail(e.target.value)
+                            }
+                        />
                     </li>
                     <li>
-                        <TextField label="Số điện thoại *" variant="standard" />
+                        <TextField
+                            label="Số điện thoại *"
+                            variant="standard"
+                            value={inforContactPhone}
+                            onChange={(e) =>
+                                setInforContactPhone(e.target.value)
+                            }
+                        />
                     </li>
                     <li>
                         <TextField
                             className={cx('textfield-address')}
                             label="Địa chỉ *"
                             variant="standard"
+                            value={inforContactAddress}
+                            onChange={(e) =>
+                                setInforContactAddress(e.target.value)
+                            }
                         />
                     </li>
                 </ul>
@@ -98,47 +151,88 @@ function BookingForm() {
                 <p className={cx('label-box')}>Số lượng hành khách</p>
                 <ul>
                     <li>
-                        <Fab size="small" color="secondary" aria-label="add">
+                        <Fab
+                            disabled={amountAdult === 1}
+                            size="small"
+                            color="secondary"
+                            aria-label="add"
+                            onClick={() => setAmountAdult(amountAdult - 1)}
+                        >
                             <AddIcon className={cx('icon')} />
                         </Fab>
                         <div className={cx('field-number')}>
                             <p className={cx('label')}>Người lớn</p>
-                            <input readOnly type="text" />
+                            <input readOnly type="text" value={amountAdult} />
                             <p className={cx('explain')}>
                                 <i>Trên 12 tuổi</i>
                             </p>
                         </div>
-                        <Fab size="small" color="secondary" aria-label="add">
+                        <Fab
+                            size="small"
+                            color="secondary"
+                            aria-label="add"
+                            onClick={() => setAmountAdult(amountAdult + 1)}
+                        >
                             <RemoveIcon className={cx('icon')} />
                         </Fab>
                     </li>
                     <li>
-                        <Fab size="small" color="secondary" aria-label="add">
+                        <Fab
+                            size="small"
+                            color="secondary"
+                            aria-label="add"
+                            disabled={amountChildren === 0}
+                            onClick={() =>
+                                setamountChildren(amountChildren - 1)
+                            }
+                        >
                             <AddIcon className={cx('icon')} />
                         </Fab>
                         <div className={cx('field-number')}>
                             <p className={cx('label')}>Trẻ em</p>
-                            <input readOnly type="text" />
+                            <input
+                                readOnly
+                                type="text"
+                                value={amountChildren}
+                            />
                             <p className={cx('explain')}>
                                 <i>2 - 11 tuổi</i>
                             </p>
                         </div>
-                        <Fab size="small" color="secondary" aria-label="add">
+                        <Fab
+                            size="small"
+                            color="secondary"
+                            aria-label="add"
+                            onClick={() =>
+                                setamountChildren(amountChildren + 1)
+                            }
+                        >
                             <RemoveIcon className={cx('icon')} />
                         </Fab>
                     </li>
                     <li>
-                        <Fab size="small" color="secondary" aria-label="add">
+                        <Fab
+                            size="small"
+                            color="secondary"
+                            aria-label="add"
+                            disabled={amountBaby === 0}
+                            onClick={() => setAmountBaby(amountBaby - 1)}
+                        >
                             <AddIcon className={cx('icon')} />
                         </Fab>
                         <div className={cx('field-number')}>
                             <p className={cx('label')}>Em bé</p>
-                            <input readOnly type="text" />
+                            <input readOnly type="text" value={amountBaby} />
                             <p className={cx('explain')}>
                                 <i>Dưới 2 tuổi</i>
                             </p>
                         </div>
-                        <Fab size="small" color="secondary" aria-label="add">
+                        <Fab
+                            size="small"
+                            color="secondary"
+                            aria-label="add"
+                            onClick={() => setAmountBaby(amountBaby + 1)}
+                        >
                             <RemoveIcon className={cx('icon')} />
                         </Fab>
                     </li>
@@ -148,12 +242,23 @@ function BookingForm() {
                 <p className={cx('label-box')}>Thông tin người thanh toán</p>
                 <ul className={cx('textfield-list')}>
                     <li>
-                        <TextField label="Họ *" variant="standard" />
+                        <TextField
+                            label="Họ *"
+                            variant="standard"
+                            value={inforPaymentFirstname}
+                            onChange={(e) =>
+                                setInforPaymentFirstname(e.target.value)
+                            }
+                        />
                     </li>
                     <li>
                         <TextField
                             label="Tên đệm và tên *"
                             variant="standard"
+                            value={inforPaymentLastname}
+                            onChange={(e) =>
+                                setInforPaymentLastname(e.target.value)
+                            }
                         />
                     </li>
                     <li className={cx('textfield-gender')}>
@@ -162,6 +267,10 @@ function BookingForm() {
                             row
                             aria-labelledby="demo-row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
+                            value={inforPaymentGender}
+                            onChange={(e) =>
+                                setInforPaymentGender(e.target.value)
+                            }
                         >
                             <FormControlLabel
                                 value="female"
@@ -205,16 +314,34 @@ function BookingForm() {
                         </RadioGroup>
                     </li>
                     <li>
-                        <TextField label="Email" variant="standard" />
+                        <TextField
+                            label="Email"
+                            variant="standard"
+                            value={inforPaymentEmail}
+                            onChange={(e) =>
+                                setInforPaymentEmail(e.target.value)
+                            }
+                        />
                     </li>
                     <li>
-                        <TextField label="Số điện thoại *" variant="standard" />
+                        <TextField
+                            label="Số điện thoại *"
+                            variant="standard"
+                            value={inforPaymentPhone}
+                            onChange={(e) =>
+                                setInforPaymentPhone(e.target.value)
+                            }
+                        />
                     </li>
                     <li>
                         <TextField
                             className={cx('textfield-address')}
                             label="Địa chỉ *"
                             variant="standard"
+                            value={inforPaymentAddress}
+                            onChange={(e) =>
+                                setInforPaymentAddress(e.target.value)
+                            }
                         />
                     </li>
                 </ul>
@@ -240,6 +367,8 @@ function BookingForm() {
                                 aria-labelledby="demo-radio-buttons-group-label"
                                 defaultValue="female"
                                 name="radio-buttons-group"
+                                value={typePayment}
+                                onChange={(e) => setTypePayment(e.target.value)}
                             >
                                 <FormControlLabel
                                     value="paypal"

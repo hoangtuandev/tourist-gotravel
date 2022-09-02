@@ -1,30 +1,20 @@
-import { React, useState, Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import { React } from 'react';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames/bind';
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 
-import { resultSearchingTour } from '../../GlobalSlice';
-import Header from '../../components/Header/Header';
-import Sidebar from '../../components/Sidebar/Sidebar';
 import {
     handleOpenDetailsTour,
     handleSelectTour,
-    tourSelected,
 } from '../../components/DetailsTour/DetailsTourSlice';
-import DetailsTour from '../../components/DetailsTour/DetailsTour';
 import styles from './ResultSearchingPage.scss';
 const cx = classNames.bind(styles);
 
 function TourItem(props) {
     const { tour } = props;
     const dispatch = useDispatch();
-    const tourSelect = useSelector(tourSelected);
 
     const handleViewDetailsTour = () => {
-        console.log('view');
         dispatch(handleSelectTour(tour));
         dispatch(handleOpenDetailsTour());
     };

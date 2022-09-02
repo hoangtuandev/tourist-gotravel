@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     tourBooked: {},
+    departureBooked: {},
     openBackdrop: false,
     keySearching: '',
     resultSearchingTour: [],
@@ -27,6 +28,10 @@ export const GlobalSlice = createSlice({
         handleSetTourBooked: (state, action) => {
             state.tourBooked = action.payload;
         },
+        handleSetDepartureBooked: (state, action) => {
+            state.departureBooked = action.payload;
+        },
+
         handleOpenBackdrop: (state, action) => {
             state.openBackdrop = true;
         },
@@ -72,6 +77,7 @@ export const GlobalSlice = createSlice({
 
 export const {
     handleSetTourBooked,
+    handleSetDepartureBooked,
     handleOpenBackdrop,
     handleCloseBackdrop,
     handleSetTabMenuCurrentTour,
@@ -87,6 +93,7 @@ export const {
 } = GlobalSlice.actions;
 
 export const tourBooked = (state) => state.global.tourBooked;
+export const departureBooked = (state) => state.global.departureBooked;
 export const openBackdrop = (state) => state.global.openBackdrop;
 export const tabMenuCurrentTour = (state) => state.global.tabMenuCurrentTour;
 export const priceTourFilter = (state) => state.global.priceTourFilter;

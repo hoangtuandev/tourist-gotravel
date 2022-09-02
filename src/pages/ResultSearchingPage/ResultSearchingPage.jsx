@@ -1,9 +1,8 @@
-import { React, useState, Fragment } from 'react';
+import { React, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 
 import { resultSearchingTour } from '../../GlobalSlice';
 import Header from '../../components/Header/Header';
@@ -17,7 +16,7 @@ const cx = classNames.bind(styles);
 function ResultSearchingPage() {
     const resultSearching = useSelector(resultSearchingTour);
     const openViewDialog = useSelector(isOpenDetailsTour);
-    console.log(resultSearching);
+
     return (
         <div>
             <Header></Header>
@@ -29,11 +28,25 @@ function ResultSearchingPage() {
                         <p className={cx('title')}>
                             <span>Kết quả tìm kiếm</span>
                         </p>
-                        <ul className={cx('list-tour')}>
-                            {resultSearching.map((tour, index) => (
-                                <TourItem key={index} tour={tour}></TourItem>
-                            ))}
-                        </ul>
+                        {resultSearching.length === 0 && (
+                            <div className={cx('empty-tourList')}>
+                                <p>Không tìm thấy tour phù hợp!</p>
+                                <img
+                                    src="https://res.cloudinary.com/phtuandev/image/upload/v1660285963/GoTravel/undraw_Explore_re_8l4v_lvunn9.png   "
+                                    alt=""
+                                />
+                            </div>
+                        )}
+                        {resultSearching.length !== 0 && (
+                            <ul className={cx('list-tour')}>
+                                {resultSearching.map((tour, index) => (
+                                    <TourItem
+                                        key={index}
+                                        tour={tour}
+                                    ></TourItem>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                 </Container>
             </Fragment>
