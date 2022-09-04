@@ -351,3 +351,60 @@ $mainFamily: "Mulish", sans-serif;
         }
     }
 }
+
+.dialog {
+    .appbar {
+        position: fixed;
+        background-color: $mainColor;
+        padding-left: 0px;
+
+        .toolbar {
+            .close-icon {
+                color: #fff;
+                font-size: 22px;
+            }
+            .typography {
+                font-size: 18px;
+                font-family: $mainFamily;
+                font-weight: 700;
+            }
+            .button-close {
+                padding: 4px 10px;
+                font-size: 14px;
+                font-family: $mainFamily;
+                font-weight: 800;
+                background-color: #fff;
+                color: $mainColor;
+            }
+        }
+    }
+
+    .control {
+        text-align: center;
+        padding-top: 100px;
+
+        p {
+            font-family: $mainFamily;
+            font-size: 30px;
+            font-weight: 800;
+            color: #1bbc71;
+        }
+        img {
+            width: 600px;
+            height: 500px;
+        }
+
+        .button-control {
+            display: flex;
+            justify-content: center;
+
+            button {
+                margin: 20px 30px;
+                width: 150px;
+                font-family: $mainFamily;
+                font-weight: 800;
+                font-size: 13.5px;
+            }
+        }
+    }
+}

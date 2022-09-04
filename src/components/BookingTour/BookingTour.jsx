@@ -1,6 +1,8 @@
 import { React, useState } from 'react';
 import classNames from 'classnames/bind';
 import moment from 'moment';
+import Cookies from 'universal-cookie';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -15,16 +17,21 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { MdPayments } from 'react-icons/md';
-
+import { handleSuccessPaymentTour, successPayment } from '../../GlobalSlice';
 import * as api from '../../api';
 import styles from './BookingTour.scss';
 import { useEffect } from 'react';
+import PayPal from '../PayPal/PayPal';
+import SuccessPayment from './SuccessPayment';
 
 const cx = classNames.bind(styles);
+const cookies = new Cookies();
 
 function BookingTour(props) {
     const { tour, departure } = props;
-
+    const dispatch = useDispatch();
+    const user = cookies.get('user');
+    const isSuccessPay = useSelector(successPayment);
     const [inforContactFirstname, setInforContactFirstname] = useState('');
     const [inforContactLastname, setInforContactLastname] = useState('');
     const [inforContactGender, setInforContactGender] = useState('');
@@ -54,6 +61,12 @@ function BookingTour(props) {
         );
     }, [tour.t_gia, amountAdult, amountChildren, amountBaby]);
 
+    // const handleChangeTypePayment = () => {
+    //     if(typePayment === 'paypal' ) {
+
+    //     }
+    // }
+
     const handlePayBookingTour = () => {
         const current = new Date();
         const randomID = `BT00${current.getTime()}`;
@@ -79,6 +92,7 @@ function BookingTour(props) {
                 address: inforPaymentAddress,
                 type: typePayment,
             },
+            bt_taikhoan: user.others,
             bt_ngaydat: current,
             bt_soluonghanhkhach: {
                 adult: amountAdult,
@@ -89,6 +103,7 @@ function BookingTour(props) {
             bt_trangthai: 1,
         }).then((res) => {
             console.log(res.data);
+            dispatch(handleSuccessPaymentTour(true));
         });
     };
 
@@ -642,31 +657,39 @@ function BookingTour(props) {
                     <p className={cx('alert-typing')}>
                         ** Vui lòng nhập đầy đủ thông tin để THANH TOÁN
                     </p>
-                    <Button
-                        disabled={
-                            !inforContactFirstname ||
-                            !inforContactLastname ||
-                            !inforContactGender ||
-                            !inforContactEmail ||
-                            !inforContactPhone ||
-                            !inforContactAddress ||
-                            !inforContactFirstname ||
-                            !inforContactLastname ||
-                            !inforContactGender ||
-                            !inforContactEmail ||
-                            !inforContactPhone ||
-                            !inforContactAddress ||
-                            !typePayment
-                        }
-                        variant="contained"
-                        color="error"
-                        className={cx('button-payment')}
-                        onClick={() => handlePayBookingTour()}
-                    >
-                        THANH TOÁN
-                    </Button>
+                    {typePayment !== 'paypal' && (
+                        <Button
+                            disabled={
+                                !inforContactFirstname ||
+                                !inforContactLastname ||
+                                !inforContactGender ||
+                                !inforContactEmail ||
+                                !inforContactPhone ||
+                                !inforContactAddress ||
+                                !inforContactFirstname ||
+                                !inforContactLastname ||
+                                !inforContactGender ||
+                                !inforContactEmail ||
+                                !inforContactPhone ||
+                                !inforContactAddress ||
+                                !typePayment
+                            }
+                            variant="contained"
+                            color="error"
+                            className={cx('button-payment')}
+                            onClick={() => handlePayBookingTour()}
+                        >
+                            THANH TOÁN
+                        </Button>
+                    )}
+                    {typePayment === 'paypal' && (
+                        <PayPal
+                            handlePayBookingTour={handlePayBookingTour}
+                        ></PayPal>
+                    )}
                 </div>
             </div>
+            {isSuccessPay && <SuccessPayment></SuccessPayment>}
         </div>
     );
 }

@@ -19,6 +19,7 @@ const initialState = {
     priceTourFilter: [0, 5000000],
     departureTourFilter: new Date().getTime(),
     timeTourFilter: 2,
+    successPayment: false,
 };
 
 export const GlobalSlice = createSlice({
@@ -72,6 +73,9 @@ export const GlobalSlice = createSlice({
         handleSetSearchingTour: (state, action) => {
             state.resultSearchingTour = action.payload;
         },
+        handleSuccessPaymentTour: (state, action) => {
+            state.successPayment = action.payload;
+        },
     },
 });
 
@@ -90,6 +94,7 @@ export const {
     handleChangeCheckboxAllTime,
     handleChangeKeySearching,
     handleSetSearchingTour,
+    handleSuccessPaymentTour,
 } = GlobalSlice.actions;
 
 export const tourBooked = (state) => state.global.tourBooked;
@@ -106,5 +111,6 @@ export const checkedAllDeparture = (state) => state.global.checkedAllDeparture;
 export const checkedAllTime = (state) => state.global.checkedAllTime;
 export const keySearching = (state) => state.global.keySearching;
 export const resultSearchingTour = (state) => state.global.resultSearchingTour;
+export const successPayment = (state) => state.global.successPayment;
 
 export default GlobalSlice.reducer;

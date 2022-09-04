@@ -37,7 +37,7 @@ export const searchingTour = (data) =>
     axios.post(`${URL}/Tour/searchingTour`, data);
 
 export const bookingTour = (data) =>
-    axios.post(`${URL}/Tour/bookingTour`, data);
+    axios.post(`${URL}/BookingTour/bookingTour`, data);
 
 // DEPARTURE
 export const getDepartureById = (data) =>
