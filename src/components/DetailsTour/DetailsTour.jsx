@@ -33,6 +33,7 @@ import {
     handleSetDepartureBooked,
 } from '../../GlobalSlice';
 import Cookies from 'universal-cookie';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -45,9 +46,25 @@ const cookies = new Cookies();
 function DetailsTour() {
     const user = cookies.get('user');
     const dispatch = useDispatch();
+    const currentDate = new Date();
     const tour = useSelector(tourSelected);
     const openDialog = useSelector(isOpenDetailsTour);
-    const [departure, setDeparture] = useState(tour.t_lichkhoihanh[0] || {});
+    const [currentDepartures, setCurrentDepartures] = useState(
+        tour.t_lichkhoihanh
+    );
+    const [departure, setDeparture] = useState(currentDepartures[0] || {});
+
+    useEffect(() => {
+        setCurrentDepartures(currentDepartures.filter(updateCurrentDepartures));
+        setDeparture(currentDepartures.filter(updateCurrentDepartures)[0]);
+    }, []);
+
+    const updateCurrentDepartures = (departure) => {
+        const start = new Date(departure.lkh_ngaykhoihanh);
+        return start > currentDate;
+    };
+
+    console.log(departure);
 
     const handleClickBookingTour = () => {
         if (!user) {
@@ -136,16 +153,31 @@ function DetailsTour() {
                             <div className={cx('details-right')}>
                                 <div className={cx('sticky-div')}>
                                     <div className={cx('infor-tour')}>
-                                        <Button
-                                            variant="contained"
-                                            className={cx('button-booking')}
-                                            onClick={() =>
-                                                handleClickBookingTour()
-                                            }
-                                        >
-                                            ĐẶT TOUR
-                                        </Button>
-
+                                        {currentDepartures.length !== 0 && (
+                                            <Button
+                                                color="error"
+                                                variant="contained"
+                                                className={cx('button-booking')}
+                                                onClick={() =>
+                                                    handleClickBookingTour()
+                                                }
+                                            >
+                                                ĐẶT TOUR
+                                            </Button>
+                                        )}
+                                        {currentDepartures.length === 0 && (
+                                            <Button
+                                                disabled
+                                                color="primary"
+                                                variant="contained"
+                                                className={cx('button-booking')}
+                                                onClick={() =>
+                                                    handleClickBookingTour()
+                                                }
+                                            >
+                                                LỊCH KHỞI HÀNH ĐANG CẬP NHẬT
+                                            </Button>
+                                        )}
                                         <ul>
                                             <li>
                                                 <span className={cx('label')}>
@@ -177,13 +209,15 @@ function DetailsTour() {
                                                     Ngày khởi hành
                                                 </span>
                                                 <span className={cx('centent')}>
-                                                    {tour.t_lichkhoihanh
-                                                        .length !== 0 &&
+                                                    {currentDepartures.length !==
+                                                        0 &&
                                                         moment(
                                                             departure.lkh_ngaykhoihanh
                                                         ).format(
                                                             'DD / MM / YYYY'
                                                         )}
+                                                    {currentDepartures.length ===
+                                                        0 && 'Đang cập nhật...'}
                                                 </span>
                                             </li>
                                             <li>
@@ -191,13 +225,15 @@ function DetailsTour() {
                                                     Ngày kết thúc
                                                 </span>
                                                 <span className={cx('centent')}>
-                                                    {tour.t_lichkhoihanh
-                                                        .length !== 0 &&
+                                                    {currentDepartures.length !==
+                                                        0 &&
                                                         moment(
                                                             departure.lkh_ngayketthuc
                                                         ).format(
                                                             'DD / MM / YYYY'
                                                         )}
+                                                    {currentDepartures.length ===
+                                                        0 && 'Đang cập nhật...'}
                                                 </span>
                                             </li>
                                             <li className={cx('price-tour')}>
@@ -227,7 +263,7 @@ function DetailsTour() {
                                             LỊCH KHỞI HÀNH SẮP TỚI
                                         </p>
                                         <ul className={cx('schedule-list')}>
-                                            {tour.t_lichkhoihanh.map(
+                                            {currentDepartures.map(
                                                 (departure, index) => (
                                                     <DepartureAnother
                                                         key={index}
