@@ -27,6 +27,7 @@ function Header() {
     const handleSearchingTour = () => {
         api.searchingTour({ keySearch }).then((res) => {
             dispatch(handleSetSearchingTour(res.data));
+            dispatch(handleChangeKeySearching(''));
         });
     };
 

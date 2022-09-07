@@ -6,6 +6,7 @@ import ToursPage from '../pages/ToursPage/ToursPage';
 import ExplorePage from '../pages/ExplorePage/ExplorePage';
 import BookingPage from '../pages/BookingPage/BookingPage';
 import ResultSearchingPage from '../pages/ResultSearchingPage/ResultSearchingPage';
+import HistoryBookingPage from '../pages/HistoryBookingPage/HistoryBookingPage';
 
 export const publicRoutes = [
     { path: '/', component: HomePage },
@@ -32,5 +33,6 @@ export const privateRoute = [
     { path: '/kham-pha', component: ExplorePage },
     // { path: '/dat-tour', component: ToursPage },
     { path: '/dat-tour', component: BookingPage },
+    { path: '/lich-su-dat-tour', component: HistoryBookingPage },
     { path: '/:somestring', component: HomePage },
 ];

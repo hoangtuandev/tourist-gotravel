@@ -30,10 +30,11 @@ function TourItem(props) {
                 </p>
                 <p className={cx('price-tour')}>
                     {' '}
-                    {tour.t_gia.toLocaleString('vi', {
-                        style: 'currency',
-                        currency: 'VND',
-                    })}
+                    {tour.t_gia >= 0 &&
+                        tour.t_gia.toLocaleString('vi', {
+                            style: 'currency',
+                            currency: 'VND',
+                        })}
                 </p>
             </div>
             <Button

@@ -1,0 +1,87 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.history-booking {
+    padding: 20px 20px;
+    // background-color: #fff;
+    border-radius: 15px;
+    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    .list-bookings {
+        display: flex;
+        justify-content: space-between;
+
+        width: 391px;
+        padding: 0 0 0px 0;
+        border-radius: 15px;
+        list-style-type: none;
+
+        .item-booking {
+            position: relative;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 15px;
+            margin: 0 13px;
+
+            img {
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+                width: 391px;
+                height: 270px;
+            }
+            p {
+                margin: 2px 0;
+                font-family: $mainFamily;
+                font-size: 15px;
+                font-weight: 600;
+            }
+            .infor-booking {
+                padding: 5px 10px;
+
+                .name-tour {
+                    max-width: 391px;
+                    font-size: 17px;
+                    font-weight: 700;
+                    color: #0b9de0;
+                }
+
+                .time-booking {
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    font-weight: 700;
+                    color: #797979;
+                    margin: 0px 0 7px 0;
+
+                    .icon {
+                        font-size: 17px;
+                        margin-right: 5px;
+                    }
+                }
+
+                .status-booking {
+                    display: inline-block;
+                    margin-top: 15px;
+                    margin-bottom: 5px;
+                    background-color: #e4f5e6;
+                    color: #17b140;
+                    padding: 3px 10px;
+                    font-size: 14.5px;
+                    font-weight: 700;
+                    border-radius: 50px;
+                }
+            }
+
+            .button-groups {
+                position: absolute;
+                bottom: 7px;
+                right: 5px;
+
+                button {
+                    font-family: $mainFamily;
+                    font-weight: 800;
+                    font-size: 12.5px;
+                }
+            }
+        }
+    }
+}

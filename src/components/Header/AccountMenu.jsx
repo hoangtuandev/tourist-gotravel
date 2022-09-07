@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -100,12 +101,15 @@ export default function AccountMenu() {
                     </ListItemIcon>
                     Add another account
                 </MenuItem>
-                <MenuItem className={cx('menu-item')}>
-                    <ListItemIcon>
-                        <Settings className={cx('icon')} />
-                    </ListItemIcon>
-                    Settings
-                </MenuItem>
+
+                <Link to="/lich-su-dat-tour" className={cx('link-router')}>
+                    <MenuItem className={cx('menu-item')}>
+                        <ListItemIcon>
+                            <Settings className={cx('icon')} />
+                        </ListItemIcon>
+                        Tour đã đặt
+                    </MenuItem>
+                </Link>
                 <MenuItem
                     className={cx('menu-item')}
                     onClick={() => handleSignOut()}
