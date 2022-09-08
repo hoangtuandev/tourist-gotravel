@@ -9,24 +9,35 @@ $mainFamily: "Mulish", sans-serif;
 
     .list-bookings {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
-
+        // flex-wrap: wrap;
         width: 391px;
         padding: 0 0 0px 0;
         border-radius: 15px;
         list-style-type: none;
 
         .item-booking {
+            width: 391px;
+            max-width: 391px;
             position: relative;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 15px;
             margin: 0 13px;
+            transition: ease-in-out 0.2s;
+            padding-bottom: 35px;
+
+            &:hover {
+                cursor: pointer;
+                transition: ease-in-out 0.2s;
+                transform: scale(1.01);
+            }
 
             img {
                 border-top-left-radius: 15px;
                 border-top-right-radius: 15px;
                 width: 391px;
-                height: 270px;
+                height: 255px;
             }
             p {
                 margin: 2px 0;
@@ -41,7 +52,7 @@ $mainFamily: "Mulish", sans-serif;
                     max-width: 391px;
                     font-size: 17px;
                     font-weight: 700;
-                    color: #0b9de0;
+                    color: #0079b1;
                 }
 
                 .time-booking {
@@ -57,18 +68,46 @@ $mainFamily: "Mulish", sans-serif;
                         margin-right: 5px;
                     }
                 }
+            }
+            .status-booking {
+                position: absolute;
+                bottom: 5px;
+                left: 10px;
+                font-family: $mainFamily;
+                display: inline-block;
+                margin-top: 15px;
+                margin-bottom: 5px;
+                background-color: #e4f5e6;
+                color: #17b140;
+                padding: 3px 10px;
+                font-size: 14px;
+                font-weight: 800;
+                border-radius: 50px;
+            }
 
-                .status-booking {
-                    display: inline-block;
-                    margin-top: 15px;
-                    margin-bottom: 5px;
-                    background-color: #e4f5e6;
-                    color: #17b140;
-                    padding: 3px 10px;
-                    font-size: 14.5px;
-                    font-weight: 700;
-                    border-radius: 50px;
-                }
+            .cancel-status {
+                background-color: #f5e7e4;
+                color: #fa0000;
+            }
+
+            .await-status {
+                background-color: #f5f0e4;
+                color: #fa5c00;
+            }
+
+            .accepted-status {
+                background-color: #f5e4f4;
+                color: #d400fa;
+            }
+
+            .working-status {
+                background-color: #e4f1f5;
+                color: #00af38;
+            }
+
+            .finish-status {
+                background-color: #f3fff4;
+                color: #6f6f6f;
             }
 
             .button-groups {
@@ -77,9 +116,188 @@ $mainFamily: "Mulish", sans-serif;
                 right: 5px;
 
                 button {
+                    padding-top: 3px;
+                    padding-bottom: 3px;
                     font-family: $mainFamily;
                     font-weight: 800;
-                    font-size: 12.5px;
+                    font-size: 13.5px;
+                }
+            }
+        }
+    }
+}
+
+.dialog {
+    .appbar {
+        position: fixed;
+        background-color: $mainColor;
+        padding-left: 0px;
+
+        .toolbar {
+            .close-icon {
+                color: #fff;
+                font-size: 22px;
+            }
+            .typography {
+                font-size: 18px;
+                font-family: $mainFamily;
+                font-weight: 700;
+            }
+
+            .btn-accept {
+                width: 100px;
+                color: #32a948;
+                padding: 4px 10px;
+                font-size: 14px;
+                font-family: $mainFamily;
+                font-weight: 800;
+                background-color: #fff;
+            }
+            .btn-decline {
+                width: 100px;
+                color: #ef392f;
+                padding: 4px 10px;
+                font-size: 14px;
+                font-family: $mainFamily;
+                font-weight: 800;
+                background-color: #fff;
+            }
+        }
+    }
+
+    .detail-booking {
+        padding: 80px 70px 0 70px;
+
+        .infor-booking {
+            display: flex;
+            justify-content: space-between;
+
+            .infor-item {
+                display: flex;
+                align-items: center;
+                font-family: $mainFamily;
+                font-weight: 600;
+                font-size: 17px;
+
+                .label {
+                    margin-right: 10px;
+                    color: #0079b2;
+                    font-weight: 800;
+                }
+
+                .button-status {
+                    font-family: $mainFamily;
+                    font-weight: 700;
+                    background-color: #e7ffed;
+                    color: #32a948;
+                    padding: 5px 10px;
+                    border-radius: 50px;
+                    outline: none;
+                    border: 0px solid #0079b2;
+                }
+
+                .cancel-status {
+                    background-color: #f5e7e4;
+                    color: #fa0000;
+                }
+
+                .await-status {
+                    background-color: #f5f0e4;
+                    color: #fa5c00;
+                }
+
+                .accepted-status {
+                    background-color: #f5e4f4;
+                    color: #d400fa;
+                }
+
+                .working-status {
+                    background-color: #e4f1f5;
+                    color: #00af38;
+                }
+
+                .finish-status {
+                    background-color: #f3fff4;
+                    color: #6f6f6f;
+                }
+
+                .price {
+                    color: #ef392f;
+                    font-size: 18px;
+                    font-weight: 800;
+                }
+            }
+        }
+
+        .line {
+            margin-top: 25px;
+            border: 1px solid #b1b1b1;
+        }
+
+        .infor-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0px;
+            margin-bottom: 0px;
+
+            p {
+                color: #0079b2;
+                border-left: 4px solid #0079b2;
+                padding-left: 10px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                font-family: $mainFamily;
+                font-size: 19px;
+                font-weight: 700;
+                margin-top: 10px;
+            }
+            table {
+                margin-top: 5px;
+                tbody {
+                    tr {
+                        font-family: $mainFamily;
+                        font-size: 16px;
+                        font-weight: 600;
+
+                        td {
+                            padding: 3px 30px 3px 0px;
+                            max-width: 400px;
+                        }
+                    }
+                }
+            }
+
+            // .detail-left {
+            //     .detail-tour {
+            //     }
+            //     .detail-departure {
+            //     }
+            //     .detail-passenger {
+            //     }
+            // }
+            // .detail-right {
+            // }
+        }
+
+        .rating-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+
+            .rating-button-group {
+                text-align: center;
+
+                button {
+                    font-family: $mainFamily;
+                    font-weight: 700;
+                    padding: 8px 0;
+                    font-size: 14px;
+                    width: 300px;
+
+                    .icon {
+                        font-size: 20px;
+                        margin-right: 10px;
+                    }
                 }
             }
         }

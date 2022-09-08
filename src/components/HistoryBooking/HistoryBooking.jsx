@@ -1,105 +1,32 @@
-import { React } from 'react';
+import { React, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Box from '@mui/material/Box';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-
+import Cookies from 'universal-cookie';
 import styles from './HistoryBooking.scss';
+import BookingItem from './BookingItem';
+import * as api from '../../api';
 
 const cx = classNames.bind(styles);
 
+const cookies = new Cookies();
+
 function HistoryBooking() {
+    const user = cookies.get('user');
+    const [bookingList, setBookingList] = useState([]);
+
+    useEffect(() => {
+        api.getBookingTourByTouristAccount({ _id: user.others._id }).then(
+            (res) => {
+                setBookingList(res.data);
+            }
+        );
+    }, [user.others._id]);
+
     return (
         <div className={cx('history-booking')}>
             <ul className={cx('list-bookings')}>
-                <li className={cx('item-booking')}>
-                    <img
-                        src="https://res.cloudinary.com/phtuandev/image/upload/v1661299169/GoTravel/istockphoto-1178095816-1024x1024_hanqa1.jpg"
-                        alt=""
-                    />
-                    <div className={cx('infor-booking')}>
-                        <p className={cx('name-tour')}>Nha trang-Da lat</p>
-                        <p className={cx('time-booking')}>
-                            <CalendarMonthIcon className={cx('icon')} />
-                            <span> 20/07/20022</span>
-                        </p>
-                        <p className={cx('departure-start')}>
-                            Ngày khởi hành: <span>20/07/20022</span>
-                        </p>
-                        <p className={cx('departure-end')}>
-                            Ngày kết thúc: <span>20/07/20022</span>
-                        </p>
-                        <div className={cx('status-booking')}>Đã kết thúc</div>
-                    </div>
-                    <ButtonGroup
-                        className={cx('button-groups')}
-                        variant="text"
-                        aria-label="text button group"
-                    >
-                        <Button>Xem</Button>
-                        <Button>Two</Button>
-                        <Button>Đánh giá</Button>
-                    </ButtonGroup>
-                </li>
-                <li className={cx('item-booking')}>
-                    <img
-                        src="https://res.cloudinary.com/phtuandev/image/upload/v1661299169/GoTravel/istockphoto-1178095816-1024x1024_hanqa1.jpg"
-                        alt=""
-                    />
-                    <div className={cx('infor-booking')}>
-                        <p className={cx('name-tour')}>Nha trang-Da lat</p>
-                        <p className={cx('time-booking')}>
-                            <CalendarMonthIcon className={cx('icon')} />
-                            <span> 20/07/20022</span>
-                        </p>
-                        <p className={cx('departure-start')}>
-                            Ngày khởi hành: <span>20/07/20022</span>
-                        </p>
-                        <p className={cx('departure-end')}>
-                            Ngày kết thúc: <span>20/07/20022</span>
-                        </p>
-                        <div className={cx('status-booking')}>Đã kết thúc</div>
-                    </div>
-                    <ButtonGroup
-                        className={cx('button-groups')}
-                        variant="text"
-                        aria-label="text button group"
-                    >
-                        <Button>Xem</Button>
-                        <Button>Two</Button>
-                        <Button>Đánh giá</Button>
-                    </ButtonGroup>
-                </li>
-                <li className={cx('item-booking')}>
-                    <img
-                        src="https://res.cloudinary.com/phtuandev/image/upload/v1661299169/GoTravel/istockphoto-1178095816-1024x1024_hanqa1.jpg"
-                        alt=""
-                    />
-                    <div className={cx('infor-booking')}>
-                        <p className={cx('name-tour')}>Nha trang-Da lat</p>
-                        <p className={cx('time-booking')}>
-                            <CalendarMonthIcon className={cx('icon')} />
-                            <span> 20/07/20022</span>
-                        </p>
-                        <p className={cx('departure-start')}>
-                            Ngày khởi hành: <span>20/07/20022</span>
-                        </p>
-                        <p className={cx('departure-end')}>
-                            Ngày kết thúc: <span>20/07/20022</span>
-                        </p>
-                        <div className={cx('status-booking')}>Đã kết thúc</div>
-                    </div>
-                    <ButtonGroup
-                        className={cx('button-groups')}
-                        variant="text"
-                        aria-label="text button group"
-                    >
-                        <Button>Xem</Button>
-                        <Button>Two</Button>
-                        <Button>Đánh giá</Button>
-                    </ButtonGroup>
-                </li>
+                {bookingList.map((item, index) => (
+                    <BookingItem key={index} item={item}></BookingItem>
+                ))}
             </ul>
         </div>
     );
