@@ -2,7 +2,7 @@ import { React, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import emailjs from '@emailjs/browser';
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { BsPerson, BsCheckLg } from 'react-icons/bs';
 import { RiLockPasswordLine, RiMailSendLine } from 'react-icons/ri';
 import {
@@ -29,6 +29,7 @@ function SignUp() {
     const [isWrongComfirmID, setIsWrongComfirmID] = useState(false);
     const [isSignUpComplete, setIsSignUpComplete] = useState(false);
     const [isShowFormInformations, setisShowFormInformations] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const [fullname, setFullname] = useState('');
     const [contact, setContact] = useState('');
@@ -38,6 +39,7 @@ function SignUp() {
     const [comfirmID, setComfirmID] = useState('');
 
     const handleContinueSignUp = (event) => {
+        setIsLoading(true);
         event.preventDefault();
         // CHECK PASSWORD
         password === comfirmPassword
@@ -61,6 +63,7 @@ function SignUp() {
                     .then(
                         function () {
                             setIsShowComfirmBox(true);
+                            setIsLoading(false);
                         },
                         function (error) {
                             console.log('FAILED...', error);
@@ -71,6 +74,7 @@ function SignUp() {
     };
 
     const handleSubmitSignUp = (event) => {
+        setIsLoading(true);
         event.preventDefault();
         if (randomID === comfirmID || !contact.includes('@')) {
             setIsWrongComfirmID(false);
@@ -95,6 +99,7 @@ function SignUp() {
                     setIsShowComfirmBox(false);
                     setIsSignUpComplete(true);
                     setisShowFormInformations(false);
+                    setIsLoading(false);
                 });
             });
         } else {
@@ -130,10 +135,12 @@ function SignUp() {
                 >
                     <div className={cx('content-left')}>
                         <div className={cx('content-left_logo')}>
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1657686014/GoTravel/Screenshot_2022-07-13_111948_kotv2a.png"
-                                alt="Logo_GoTravel"
-                            />
+                            <Link to="/" className={cx('link-router')}>
+                                <img
+                                    src="https://res.cloudinary.com/phtuandev/image/upload/v1657686014/GoTravel/Screenshot_2022-07-13_111948_kotv2a.png"
+                                    alt="Logo_GoTravel"
+                                />
+                            </Link>
                         </div>
                         <div className={cx('content-left_slogan')}>
                             Cùng bạn khám phá Việt Nam !!!
@@ -323,28 +330,48 @@ function SignUp() {
                                         </div>
                                     </div>
                                     <div className={cx('btns-form')}>
-                                        <Button
-                                            disabled={
-                                                !fullname ||
-                                                !contact ||
-                                                !password ||
-                                                !comfirmPassword
-                                            }
-                                            type="submit"
-                                            className={cx('button-form')}
-                                            variant="contained"
-                                            size="small"
-                                            color="primary"
-                                        >
-                                            TIẾP TỤC
-                                        </Button>
+                                        {!isLoading && (
+                                            <Button
+                                                disabled={
+                                                    !fullname ||
+                                                    !contact ||
+                                                    !password ||
+                                                    !comfirmPassword
+                                                }
+                                                type="submit"
+                                                className={cx('button-form')}
+                                                variant="contained"
+                                                size="small"
+                                                color="primary"
+                                            >
+                                                TIẾP TỤC
+                                            </Button>
+                                        )}
+                                        {isLoading && (
+                                            <Button
+                                                disabled
+                                                type="submit"
+                                                className={cx('button-form')}
+                                                variant="contained"
+                                                size="small"
+                                            >
+                                                <CircularProgress
+                                                    color="inherit"
+                                                    size={22}
+                                                    className={cx(
+                                                        'circular-progress'
+                                                    )}
+                                                />
+                                                TIẾP TỤC
+                                            </Button>
+                                        )}
                                     </div>
 
                                     <div className={cx('signin-link')}>
                                         Bạn đã có tài khoản?
                                         <Link
                                             className={cx('router-link')}
-                                            to="/SignIn"
+                                            to="/dang-nhap"
                                         >
                                             Đăng nhập
                                         </Link>
@@ -410,15 +437,35 @@ function SignUp() {
                                         </div>
                                     </div>
                                     <div className={cx('btns-form')}>
-                                        <Button
-                                            type="submit"
-                                            className={cx('button-form')}
-                                            variant="contained"
-                                            size="small"
-                                            color="secondary"
-                                        >
-                                            ĐĂNG KÝ
-                                        </Button>
+                                        {!isLoading && (
+                                            <Button
+                                                type="submit"
+                                                className={cx('button-form')}
+                                                variant="contained"
+                                                size="small"
+                                                color="secondary"
+                                            >
+                                                ĐĂNG KÝ
+                                            </Button>
+                                        )}
+                                        {isLoading && (
+                                            <Button
+                                                type="submit"
+                                                className={cx('button-form')}
+                                                variant="contained"
+                                                size="small"
+                                                color="secondary"
+                                            >
+                                                <CircularProgress
+                                                    color="inherit"
+                                                    size={22}
+                                                    className={cx(
+                                                        'circular-progress'
+                                                    )}
+                                                />
+                                                ĐĂNG KÝ
+                                            </Button>
+                                        )}
                                     </div>
                                     <div className={cx('term')}>
                                         <span>

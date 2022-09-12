@@ -39,15 +39,16 @@ $mainFamily: "Mulish", sans-serif;
     }
 
     .filter {
-        margin: 40px 0;
+        margin: 30px 0 30px 0;
         display: flex;
         justify-content: space-evenly;
 
         .label-filter {
             text-align: center;
-            font-size: 17px;
+            font-size: 16px;
             font-family: $mainFamily;
             font-weight: 700;
+            margin-bottom: 10px;
         }
 
         .css-j204z7-MuiFormControlLabel-root {
@@ -73,7 +74,7 @@ $mainFamily: "Mulish", sans-serif;
                 margin-bottom: 10px;
 
                 .css-nnid7-MuiSlider-valueLabel {
-                    font-size: 14px;
+                    font-size: 12px;
                 }
             }
 
@@ -88,24 +89,24 @@ $mainFamily: "Mulish", sans-serif;
                 justify-content: center;
 
                 .icon {
-                    font-size: 25px;
+                    font-size: 22px;
                     color: #008dce;
                 }
 
                 .value {
-                    width: 130px;
+                    width: 120px;
                     border: 1px solid #d2d2d2;
                     border-radius: 3px;
-                    padding: 4px 0px;
-                    margin: 0 5px;
-                    font-size: 16px;
+                    padding: 3px 0px;
+                    margin: 0 7px;
+                    font-size: 15px;
                 }
             }
         }
 
         .filter-departure {
             width: 330px;
-            padding: 5px 15px 0px 15px;
+            padding: 5px 20px 0px 20px;
             border-radius: 10px;
             background-color: #fff;
             // border: 1px solid #68cfff;
@@ -113,13 +114,13 @@ $mainFamily: "Mulish", sans-serif;
 
             .departure {
                 padding-left: 5px;
-                padding-top: 15px;
+                padding-top: 10px;
                 position: relative;
 
                 .icon-calendar {
                     position: absolute;
-                    top: 27px;
-                    right: 20px;
+                    top: 25px;
+                    right: 5px;
                     color: #606060;
                     font-size: 20px;
                     user-select: none;
@@ -127,16 +128,16 @@ $mainFamily: "Mulish", sans-serif;
                 }
 
                 .react-datepicker-wrapper {
-                    margin-top: 1px;
+                    margin-top: 10px;
                     .react-datepicker__input-container {
                         input {
                             outline: none;
                             width: 290px;
                             font-family: $mainFamily;
-                            font-size: 17px;
+                            font-size: 16px;
                             font-weight: 700;
                             color: #5b5b5b;
-                            padding: 7.5px 10px;
+                            padding: 5px 10px;
                             border-radius: 4px;
                             border: 1px solid #c0c0c0;
                         }
@@ -220,46 +221,73 @@ $mainFamily: "Mulish", sans-serif;
 
         .filter-time {
             width: 330px;
-            padding: 5px 15px 0px 15px;
+            padding: 10px 20px 0px 20px;
             border-radius: 10px;
             background-color: #fff;
             // border: 1px solid #68cfff;
             box-shadow: rgba(164, 164, 164, 0.12) 0px 2px 4px 0px, rgba(158, 158, 158, 0.32) 0px 2px 16px 0px;
 
-            .time {
-                text-align: center;
-                .button-group {
-                    margin-top: 20px;
+            .field-text {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                margin-bottom: 5px;
+                align-items: center;
+
+                .fab {
+                    width: 35px;
+                    height: 20px;
+                    z-index: 1;
                     box-shadow: none;
+                    background-color: #0b9de0;
+                    color: #fff;
+                }
+                .input-field {
+                    font-family: $mainFamily;
+                    font-size: 15px;
+                    font-weight: 700;
+                    margin: 0 15px;
+                }
 
-                    button {
-                        font-family: $mainFamily;
-                        font-family: 700;
-                        border: 0px solid #008dce;
-                        padding: 5px 0px;
-                    }
-                    .button-click {
-                        padding: 0 0;
-                        border-radius: 50px;
-                        font-size: 17px;
-                        // background-color: #05a3ed;
-                    }
-                    .btn-value {
-                        border-radius: 50px;
-                        width: 155px;
-                        background-color: #fff;
-                        color: #5b5b5b;
-                        font-weight: 800;
-                        font-size: 16px;
-
-                        span {
-                            text-transform: lowercase;
-                            font-size: 16px;
-                            font-weight: 700;
-                        }
-                    }
+                .icon {
+                    font-size: 20px;
                 }
             }
+
+            // .time {
+            //     text-align: center;
+            //     .button-group {
+            //         margin-top: 20px;
+            //         box-shadow: none;
+
+            //         button {
+            //             font-family: $mainFamily;
+            //             font-family: 700;
+            //             border: 0px solid #008dce;
+            //             padding: 5px 0px;
+            //         }
+            //         .button-click {
+            //             padding: 0 0;
+            //             border-radius: 50px;
+            //             font-size: 17px;
+            //             // background-color: #05a3ed;
+            //         }
+            //         .btn-value {
+            //             border-radius: 50px;
+            //             width: 155px;
+            //             background-color: #fff;
+            //             color: #5b5b5b;
+            //             font-weight: 800;
+            //             font-size: 16px;
+
+            //             span {
+            //                 text-transform: lowercase;
+            //                 font-size: 16px;
+            //                 font-weight: 700;
+            //             }
+            //         }
+            //     }
+            // }
         }
     }
 }

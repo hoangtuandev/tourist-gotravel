@@ -9,7 +9,6 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import styles from './HistoryBooking.scss';
 import ViewBookingTour from './ViewBookingTour';
 import {
-    bookingSelected,
     handleSetBookingSelected,
     handleToggleViewHistoryBooking,
     openViewBooking,

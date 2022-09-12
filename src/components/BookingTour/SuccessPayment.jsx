@@ -28,7 +28,7 @@ export default function SuccessPayment() {
     const isSuccessPay = useSelector(successPayment);
     return (
         <div>
-            <Button variant="outlined">Open full-screen dialog</Button>
+            {/* <Button variant="outlined">Open full-screen dialog</Button> */}
             <Dialog
                 fullScreen
                 TransitionComponent={Transition}
@@ -76,8 +76,15 @@ export default function SuccessPayment() {
                 <div className={cx('control')}>
                     <p>ĐẶT TOUR THÀNH CÔNG !</p>
                     <div className="button-control">
-                        <Button variant="outlined">VỀ TRANG CHỦ</Button>
-                        <Button variant="contained">XEM TOUR ĐẶT</Button>
+                        <Link to="/" className={cx('link-router')}>
+                            <Button variant="outlined">VỀ TRANG CHỦ</Button>
+                        </Link>
+                        <Link
+                            to="/lich-su-dat-tour"
+                            className={cx('link-router')}
+                        >
+                            <Button variant="contained">XEM TOUR ĐẶT</Button>
+                        </Link>
                     </div>
                     <img
                         src="https://res.cloudinary.com/phtuandev/image/upload/v1662259138/GoTravel/undraw_Done_re_oak4_llrfyg.png"

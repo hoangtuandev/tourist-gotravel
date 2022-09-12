@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import moment from 'moment';
+import Cookies from 'universal-cookie';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -17,24 +18,45 @@ import * as api from '../../api';
 import styles from './HistoryBooking.scss';
 import {
     bookingSelected,
+    handleToggleAddRatingTour,
+    handleToggleUpdateRatingTour,
     handleToggleViewHistoryBooking,
     openViewBooking,
 } from './HistoryBookingSlice';
+import UpdateRating from './UpdateRating';
+import AddRating from './AddRating';
 
 const cx = classNames.bind(styles);
+const cookies = new Cookies();
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function ViewBookingTour(props) {
+    const user = cookies.get('user');
     const dispatch = useDispatch();
     const openView = useSelector(openViewBooking);
     const booking = useSelector(bookingSelected);
+    const [ratingTour, setRatingTour] = useState({});
+
+    const handleRatingTour = () => {
+        api.getRatingTourByTourist({
+            tourist: user.others,
+            tour: booking.bt_tour,
+        }).then((res) => {
+            if (res.data.length !== 0) {
+                dispatch(handleToggleUpdateRatingTour(true));
+                setRatingTour(res.data[0]);
+            } else {
+                dispatch(handleToggleAddRatingTour(true));
+                setRatingTour(res.data[0]);
+            }
+        });
+    };
 
     return (
         <div>
-            <Button variant="outlined">Open full-screen dialog</Button>
             <Dialog
                 fullScreen
                 TransitionComponent={Transition}
@@ -85,7 +107,10 @@ export default function ViewBookingTour(props) {
                             aria-label="outlined primary button group"
                             className={cx('rating-button-group')}
                         >
-                            <Button color="error">
+                            <Button
+                                color="error"
+                                onClick={() => handleRatingTour()}
+                            >
                                 <StarIcon className={cx('icon')} />
                                 ĐÁNH GIÁ TRẢI NGHIỆM TOUR
                             </Button>
@@ -95,6 +120,7 @@ export default function ViewBookingTour(props) {
                             </Button>
                         </ButtonGroup>
                     </div>
+
                     <div className={cx('infor-booking')}>
                         <div className={cx('infor-item')}>
                             <p className={cx('label')}>Mã:</p>
@@ -522,6 +548,10 @@ export default function ViewBookingTour(props) {
                     </div>
                 </div>
             </Dialog>
+            {!ratingTour && <AddRating></AddRating>}
+            {ratingTour && (
+                <UpdateRating ratingTour={ratingTour}></UpdateRating>
+            )}
         </div>
     );
 }

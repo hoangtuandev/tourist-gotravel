@@ -8,27 +8,17 @@ import Box from '@mui/material/Box';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Slider from '@mui/material/Slider';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import { CgArrowLongRightC } from 'react-icons/cg';
 import { BsCalendar3 } from 'react-icons/bs';
-import { TiMinus, TiPlus } from 'react-icons/ti';
-
 import styles from './MenuTour.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
-    checkedAllDeparture,
-    checkedAllPrice,
-    checkedAllTime,
-    handleChangeCheckboxAllDeparture,
-    handleChangeCheckboxAllPrice,
-    handleChangeCheckboxAllTime,
     handleChangeParamsFilter,
-    handleChangeTimeTourFilter,
     handleSetTabMenuCurrentTour,
-    maxPriceTours,
     paramsTourFilter,
-    timeTourFilter,
 } from '../../GlobalSlice';
 
 const cx = classNames.bind(styles);
@@ -40,14 +30,9 @@ function valueTextPriceArange(value) {
 function MenuTour(props) {
     const { typeTourismList } = props;
     const dispatch = useDispatch();
-    const checkedPriceAll = useSelector(checkedAllPrice);
-    const checkedDepartureAll = useSelector(checkedAllDeparture);
-    const checkedTimeAll = useSelector(checkedAllTime);
-    const maxPriceTour = useSelector(maxPriceTours);
+
     const paramsFilter = useSelector(paramsTourFilter);
-    const timeFilter = useSelector(timeTourFilter);
     const [currentIndexTourismTab, setCurrentIndexTourismTab] = useState(0);
-    const [startDate, setStartDate] = useState(new Date());
 
     useState(true);
 
@@ -68,61 +53,94 @@ function MenuTour(props) {
     };
 
     const handleChangePriceArange = (event, newValue) => {
-        dispatch(handleChangeCheckboxAllPrice(false));
         dispatch(
             handleChangeParamsFilter({
                 price: newValue,
                 departure: paramsFilter.departure,
                 time: paramsFilter.time,
+                allPrice: false,
+                allDeparture: paramsFilter.allDeparture,
+                allTime: paramsFilter.allTime,
             })
         );
     };
 
-    const handleChangeCheckboxAllPriceFilter = () => {
-        dispatch(handleChangeCheckboxAllPrice(!checkedPriceAll));
+    const handleCheckAllPriceFilter = () => {
+        dispatch(
+            handleChangeParamsFilter({
+                price: [0, 20000000],
+                departure: paramsFilter.departure,
+                time: paramsFilter.time,
+                allPrice: !paramsFilter.allPrice,
+                allDeparture: paramsFilter.allDeparture,
+                allTime: paramsFilter.allTime,
+            })
+        );
     };
 
-    const handleChangeDeparture = (date) => {
-        dispatch(handleChangeCheckboxAllDeparture(false));
+    const handleChangeDeparture = (newDate) => {
         dispatch(
             handleChangeParamsFilter({
                 price: paramsFilter.price,
-                departure: date.getTime(),
+                departure: newDate.getTime(),
                 time: paramsFilter.time,
+                allPrice: paramsFilter.allPrice,
+                allDeparture: false,
+                allTime: paramsFilter.allTime,
             })
         );
     };
 
-    const handleChangeCheckboxDepartureFilter = () => {
-        dispatch(handleChangeCheckboxAllDeparture(!checkedDepartureAll));
+    const handleCheckAllDepartureFilter = () => {
+        dispatch(
+            handleChangeParamsFilter({
+                price: paramsFilter.price,
+                departure: paramsFilter.departure,
+                time: paramsFilter.time,
+                allPrice: paramsFilter.allPrice,
+                allDeparture: !paramsFilter.allDeparture,
+                allTime: paramsFilter.allTime,
+            })
+        );
     };
 
-    const handlePlusTimeFilter = () => {
-        dispatch(handleChangeCheckboxAllTime(false));
-        // dispatch(handleChangeTimeTourFilter(timeFilter + 1));
+    const handleCheckAllTimeFilter = () => {
+        dispatch(
+            handleChangeParamsFilter({
+                price: paramsFilter.price,
+                departure: paramsFilter.departure,
+                time: paramsFilter.time,
+                allPrice: paramsFilter.allPrice,
+                allDeparture: paramsFilter.allDeparture,
+                allTime: !paramsFilter.allTime,
+            })
+        );
+    };
+
+    const handlePlusTimeTourFilter = () => {
         dispatch(
             handleChangeParamsFilter({
                 price: paramsFilter.price,
                 departure: paramsFilter.departure,
                 time: paramsFilter.time + 1,
+                allPrice: paramsFilter.allPrice,
+                allDeparture: paramsFilter.allDeparture,
+                allTime: false,
             })
         );
     };
 
-    const handleMinusTimeFilter = () => {
-        dispatch(handleChangeCheckboxAllTime(false));
-        // dispatch(handleChangeTimeTourFilter(timeFilter - 1));
+    const handleRemoveTimeTourFilter = () => {
         dispatch(
             handleChangeParamsFilter({
                 price: paramsFilter.price,
                 departure: paramsFilter.departure,
                 time: paramsFilter.time - 1,
+                allPrice: paramsFilter.allPrice,
+                allDeparture: paramsFilter.allDeparture,
+                allTime: false,
             })
         );
-    };
-
-    const handleChangeCheckboxAllTimeFilter = () => {
-        dispatch(handleChangeCheckboxAllTime(!checkedTimeAll));
     };
 
     return (
@@ -131,7 +149,6 @@ function MenuTour(props) {
                 className={cx('menu-tourism')}
                 sx={{
                     flexGrow: 1,
-                    // maxWidth: {},
                     bgcolor: 'background.paper',
                 }}
             >
@@ -155,13 +172,14 @@ function MenuTour(props) {
             </Box>
             <div className={cx('filter')}>
                 <div className={cx('filter-price')}>
-                    <p className={cx('label-filter')}>Lọc theo giá tour</p>
+                    <p className={cx('label-filter')}>Tổng thanh toán</p>
                     <Slider
                         className={cx('slider')}
                         getAriaLabel={() => 'Temperature range'}
+                        size="small"
                         min={0}
-                        max={maxPriceTour}
-                        step={500000}
+                        max={20000000}
+                        step={1000000}
                         value={paramsFilter.price}
                         onChange={handleChangePriceArange}
                         valueLabelDisplay="auto"
@@ -188,14 +206,8 @@ function MenuTour(props) {
                         control={
                             <Checkbox
                                 className={cx('checkbox-select-all')}
-                                checked={checkedPriceAll}
-                                onChange={() =>
-                                    handleChangeCheckboxAllPriceFilter()
-                                }
-                                // checked={paramsFilter.checkedAllPrice}
-                                // onChange={() =>
-                                //     handleChangeCheckboxAllPriceFilter()
-                                // }
+                                checked={paramsFilter.allPrice}
+                                onChange={() => handleCheckAllPriceFilter()}
                                 sx={{ '& .MuiSvgIcon-root': { fontSize: 20 } }}
                             />
                         }
@@ -203,7 +215,7 @@ function MenuTour(props) {
                     />
                 </div>
                 <div className={cx('filter-departure')}>
-                    <p className={cx('label-filter')}>Chọn ngày khởi hành</p>
+                    <p className={cx('label-filter')}>Ngày khởi hành</p>
                     <div className={cx('departure')}>
                         <DatePicker
                             dateFormat="dd / MM / yyyy"
@@ -219,16 +231,8 @@ function MenuTour(props) {
                         control={
                             <Checkbox
                                 className={cx('checkbox-select-all')}
-                                checked={checkedDepartureAll}
-                                onChange={() =>
-                                    handleChangeCheckboxDepartureFilter()
-                                }
-                                // checked={checkedAllDepartureFilter}
-                                // onChange={() =>
-                                //     setCheckedAllDepartureFilter(
-                                //         !checkedAllDepartureFilter
-                                //     )
-                                // }
+                                checked={paramsFilter.allDeparture}
+                                onChange={() => handleCheckAllDepartureFilter()}
                                 sx={{ '& .MuiSvgIcon-root': { fontSize: 20 } }}
                             />
                         }
@@ -236,42 +240,36 @@ function MenuTour(props) {
                     />
                 </div>
                 <div className={cx('filter-time')}>
-                    <p className={cx('label-filter')}>Thời gian trải nghiệm</p>
-                    <div className={cx('time')}>
-                        <ButtonGroup
-                            className={cx('button-group')}
-                            variant="contained"
-                            aria-label="outlined primary button group"
+                    <p className={cx('label-filter')}>Thời gian</p>
+                    <div className={cx('field-text')}>
+                        <Fab
+                            className={cx('fab')}
+                            color="primary"
+                            size="small"
+                            aria-label="add"
+                            onClick={() => handleRemoveTimeTourFilter()}
                         >
-                            <Button
-                                disabled={paramsFilter.time === 1}
-                                className={cx('button-click')}
-                                onClick={() => handleMinusTimeFilter()}
-                            >
-                                <TiMinus />
-                            </Button>
-                            <Button className={cx('btn-value')}>
-                                {paramsFilter.time}
-                                <span>&nbsp;ngày</span>
-                                &nbsp;&nbsp;{paramsFilter.time - 1}
-                                <span>&nbsp;đêm</span>
-                            </Button>
-                            <Button
-                                className={cx('button-click')}
-                                onClick={() => handlePlusTimeFilter()}
-                            >
-                                <TiPlus />
-                            </Button>
-                        </ButtonGroup>
+                            <RemoveIcon className={cx('icon')} />
+                        </Fab>
+                        <span className={cx('input-field')}>
+                            {paramsFilter.time} ngày {paramsFilter.time - 1} đêm
+                        </span>
+                        <Fab
+                            className={cx('fab')}
+                            color="primary"
+                            size="small"
+                            aria-label="add"
+                            onClick={() => handlePlusTimeTourFilter()}
+                        >
+                            <AddIcon className={cx('icon')} />
+                        </Fab>
                     </div>
                     <FormControlLabel
                         control={
                             <Checkbox
                                 className={cx('checkbox-select-all')}
-                                checked={checkedTimeAll}
-                                onChange={() =>
-                                    handleChangeCheckboxAllTimeFilter()
-                                }
+                                checked={paramsFilter.allTime}
+                                onChange={() => handleCheckAllTimeFilter()}
                                 sx={{ '& .MuiSvgIcon-root': { fontSize: 20 } }}
                             />
                         }
