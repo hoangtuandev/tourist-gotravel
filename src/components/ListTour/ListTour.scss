@@ -6,7 +6,7 @@ $mainFamily: "Mulish", sans-serif;
     background-color: #fff;
     border-radius: 15px;
     padding: 20px 10px;
-    margin-top: 50px;
+    margin-top: 10px;
     // max-width: 1290px;
 
     .label-list {
@@ -137,6 +137,28 @@ $mainFamily: "Mulish", sans-serif;
             margin-top: 20px;
             width: 500px;
             height: 300px;
+        }
+    }
+}
+
+.filter-tours {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: right;
+
+    .toggle-button-group {
+        button {
+            color: #4a4a4a;
+            font-size: 13px;
+            font-family: $mainFamily;
+            font-weight: 800;
+            padding: 7px 10px;
+        }
+
+        .css-17pma60-MuiButtonBase-root-MuiToggleButton-root.Mui-selected {
+            color: #ef0404;
+            background-color: #f6f6f6;
         }
     }
 }
