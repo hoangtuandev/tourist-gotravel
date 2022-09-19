@@ -67,3 +67,8 @@ export const updateRatingTour = (data) =>
 
 export const getRatingTourByTourist = (data) =>
     axios.post(`${URL}/RatingTour/getRatingTourByTourist`, data);
+
+// ADVERTISEMENT
+
+export const getActiveAdvertisement = (data) =>
+    axios.post(`${URL}/Advertisement/getActiveAdvertisement`, data);

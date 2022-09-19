@@ -9,6 +9,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Footer from '../../components/Footer/Footer';
 
 import styles from './ExplorePage.scss';
+import Advertisement from '../../components/Advertisement/Advertisement';
 
 const cx = classNames.bind(styles);
 
@@ -24,7 +25,9 @@ function ExplorePage() {
                 <Fragment>
                     <CssBaseline />
                     <Container maxWidth="xl">
-                        <div className={cx('content-page')}>EXPLORE</div>
+                        <div className={cx('content-page')}>
+                            <Advertisement></Advertisement>
+                        </div>
                     </Container>
                 </Fragment>
             </div>

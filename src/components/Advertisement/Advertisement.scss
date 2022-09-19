@@ -1,0 +1,121 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+.advertisement {
+    text-align: center;
+    padding: 0 30px 0 30px;
+
+    .advertisement-list {
+        border-radius: 5px;
+        padding: 0 0;
+        list-style-type: none;
+
+        .advertisement-item {
+            display: flex;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin: 0 0 40px 0;
+
+            .images-list {
+                img {
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    width: 610px;
+                    height: 400px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .detailts {
+                display: flex;
+                flex-direction: column;
+                padding: 0 15px;
+
+                .title {
+                    margin: 10px 0;
+                    padding-left: 5px;
+                    font-family: $mainFamily;
+                    font-weight: 700;
+                    font-size: 20px;
+                    display: flex;
+                    align-items: center;
+
+                    &:hover {
+                        cursor: pointer;
+                        span {
+                            transform: scale(1.02);
+                            transition: ease-in-out 0.15s;
+                            color: #007ab3;
+                        }
+                    }
+
+                    span {
+                        color: #0b9de0;
+                    }
+                    .icon {
+                        color: #ff3300;
+                        font-size: 25px;
+                        margin-right: 10px;
+                    }
+                }
+                .content {
+                    height: 275px;
+                    max-height: 275px;
+                    padding: 10px 5px 10px 10px;
+                    text-align: justify;
+                    font-family: $mainFamily;
+                    font-weight: 600;
+                    font-size: 16px;
+                    margin-bottom: 20px;
+
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 11;
+                    -webkit-box-orient: vertical;
+                }
+                .interact {
+                    border-top: 1px solid #c5c5c5;
+                    padding: 1px 0 0 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .interact-heart {
+                        display: flex;
+                        align-items: center;
+
+                        .checkbox-heart {
+                            .favorite-border {
+                                font-size: 28px;
+                            }
+                            .favorite {
+                                font-size: 28px;
+                                color: #ff0077;
+                            }
+                        }
+
+                        span {
+                            font-family: $mainFamily;
+                            font-weight: 700;
+                            font-size: 17px;
+                            color: #5a5a5a;
+                        }
+                    }
+
+                    .interact-orther {
+                        .bookmark-border {
+                            font-size: 32px;
+                        }
+                        .bookmark {
+                            font-size: 32px;
+                            color: #0bc06e;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
