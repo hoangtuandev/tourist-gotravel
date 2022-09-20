@@ -119,3 +119,143 @@ $mainFamily: "Mulish", sans-serif;
         }
     }
 }
+
+.dialog {
+    .dialog-title {
+        font-family: $mainFamily;
+        font-weight: 700;
+        font-size: 19px;
+    }
+    .dialog-content {
+        padding: 0px 20px;
+        margin-bottom: 10px;
+
+        table {
+            padding-top: 20px;
+            td {
+                padding: 0px 0;
+                margin: 0 0;
+                font-family: $mainFamily;
+            }
+
+            .title-td {
+                padding: 0px 0 10px 0;
+                font-weight: 700;
+                color: #0b9de0;
+                padding-right: 30px;
+            }
+
+            .content-td {
+                padding: 0px 0 10px 0;
+                font-weight: 600;
+            }
+
+            .expired-td {
+                font-weight: 700;
+                color: #ef0404;
+            }
+        }
+    }
+
+    .dialog-actions {
+        button {
+            padding: 4px 0px;
+            width: 90px;
+            font-family: $mainFamily;
+            font-size: 13px;
+            font-weight: 700;
+        }
+    }
+}
+
+.view-advertisement {
+    margin: 70px 250px 0 250px;
+
+    .infor-advertisement {
+        border-bottom: 1px solid #e3e3e3;
+        padding: 0 0 0 0px 0;
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            font-family: $mainFamily;
+            display: flex;
+            align-items: center;
+
+            span {
+                font-size: 20px;
+                font-weight: 700;
+                color: #5a5a5a;
+            }
+
+            .checkbox-heart {
+                .favorite-border {
+                    font-size: 28px;
+                }
+
+                .favorite {
+                    font-size: 28px;
+                    color: #ff0077;
+                }
+            }
+
+            .checkbox-save {
+                .bookmark-border {
+                    font-size: 32px;
+                }
+                .bookmark {
+                    font-size: 32px;
+                    color: #0bc06e;
+                }
+            }
+        }
+    }
+
+    .title-advetisement {
+        font-size: $mainFamily;
+        font-size: 25px;
+        font-weight: 600;
+        color: #ff6f00;
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            font-size: 30px;
+            margin-right: 10px;
+        }
+    }
+
+    .content-advertisement {
+        text-align: justify;
+        width: 100%;
+        font-size: 17px;
+        font-family: $mainFamily;
+        color: black;
+
+        .images-advertisement {
+            text-align: center;
+
+            img {
+                margin: 15px 0;
+                border-radius: 5px;
+                width: 800px;
+                height: 400px;
+            }
+        }
+
+        .paragraph {
+            .image {
+                text-align: center;
+
+                img {
+                    margin: 15px 0;
+                    border-radius: 5px;
+                    width: 800px;
+                    height: 400px;
+                }
+            }
+        }
+    }
+}

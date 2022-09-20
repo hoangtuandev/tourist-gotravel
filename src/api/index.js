@@ -69,6 +69,36 @@ export const getRatingTourByTourist = (data) =>
     axios.post(`${URL}/RatingTour/getRatingTourByTourist`, data);
 
 // ADVERTISEMENT
-
 export const getActiveAdvertisement = (data) =>
     axios.post(`${URL}/Advertisement/getActiveAdvertisement`, data);
+
+export const likeAdvertisement = (data) =>
+    axios.post(`${URL}/Advertisement/likeAdvertisement`, data);
+
+export const dislikeAdvertisement = (data) =>
+    axios.post(`${URL}/Advertisement/dislikeAdvertisement`, data);
+
+// INTERACT ADVERTISEMENT
+export const getInteractAdvertisementByAccount = (data) =>
+    axios.post(
+        `${URL}/InteractAdvertisement/getInteractAdvertisementByAccount`,
+        data
+    );
+
+export const getInteractAdvertisementByParams = (data) =>
+    axios.post(
+        `${URL}/InteractAdvertisement/getInteractAdvertisementByParams`,
+        data
+    );
+
+export const createInteractAdvertisement = (data) =>
+    axios.post(
+        `${URL}/InteractAdvertisement/createInteractAdvertisement`,
+        data
+    );
+
+export const updateLikeInteractAdvertisement = (data) =>
+    axios.post(
+        `${URL}/InteractAdvertisement/updateLikeInteractAdvertisement`,
+        data
+    );

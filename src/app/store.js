@@ -3,6 +3,7 @@ import couterReducer from '../components/Counter/CounterSlice';
 import detailsTourReducer from '../components/DetailsTour/DetailsTourSlice';
 import globalReducer from '../GlobalSlice';
 import historyBookingReducer from '../components/HistoryBooking/HistoryBookingSlice';
+import advertisementReducer from '../components/Advertisement/AdvertisementSlice';
 
 export const store = configureStore({
     reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
         detailsTour: detailsTourReducer,
         global: globalReducer,
         historyBooking: historyBookingReducer,
+        advertisement: advertisementReducer,
     },
 });
