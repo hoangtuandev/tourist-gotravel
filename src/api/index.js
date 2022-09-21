@@ -102,3 +102,15 @@ export const updateLikeInteractAdvertisement = (data) =>
         `${URL}/InteractAdvertisement/updateLikeInteractAdvertisement`,
         data
     );
+
+export const updateSaveInteractAdvertisement = (data) =>
+    axios.post(
+        `${URL}/InteractAdvertisement/updateSaveInteractAdvertisement`,
+        data
+    );
+
+export const deleteInteractAdvertisement = (data) =>
+    axios.post(
+        `${URL}/InteractAdvertisement/deleteInteractAdvertisement`,
+        data
+    );

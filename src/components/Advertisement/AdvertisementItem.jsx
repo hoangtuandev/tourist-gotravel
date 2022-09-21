@@ -25,17 +25,56 @@ function AdvertisementItem(props) {
     const userID = cookies.get('user').others._id;
 
     const [interactAdvertisements, setInteractAdvertisements] = useState({});
+    const [isLiked, setIsLiked] = useState(false);
+    const [isSaved, setIsSaved] = useState(false);
 
     useEffect(() => {
-        api.getInteractAdvertisementByAccount({
+        api.deleteInteractAdvertisement();
+    }, []);
+
+    useEffect(() => {
+        api.getInteractAdvertisementByParams({
             userID: userID,
             advertisement: advertisement,
         }).then((res) => {
-            setInteractAdvertisements(res.data);
+            setInteractAdvertisements(res.data[0]);
+            res.data.length === 0 ||
+            (res.data.length !== 0 && res.data[0].ttbqb_dathich === false)
+                ? setIsLiked(false)
+                : setIsLiked(true);
         });
-    }, [userID, advertisement]);
+    }, [advertisement, userID]);
 
-    console.log(interactAdvertisements);
+    useEffect(() => {
+        api.getInteractAdvertisementByParams({
+            userID: userID,
+            advertisement: advertisement,
+        }).then((res) => {
+            setInteractAdvertisements(res.data[0]);
+            res.data.length === 0 ||
+            (res.data.length !== 0 && res.data[0].ttbqb_daluu === false)
+                ? setIsSaved(false)
+                : setIsSaved(true);
+        });
+    }, [advertisement, userID]);
+
+    const resetInteractAdvertisement = () => {
+        api.getInteractAdvertisementByParams({
+            userID: userID,
+            advertisement: advertisement,
+        }).then((res) => {
+            setInteractAdvertisements(res.data[0]);
+            res.data.length === 0 ||
+            (res.data.length !== 0 && res.data[0].ttbqb_dathich === false)
+                ? setIsLiked(false)
+                : setIsLiked(true);
+
+            res.data.length === 0 ||
+            (res.data.length !== 0 && res.data[0].ttbqb_daluu === false)
+                ? setIsSaved(false)
+                : setIsSaved(true);
+        });
+    };
 
     const handleViewAdvertisement = () => {
         dispatch(handleSelectAdvertisement(advertisement));
@@ -43,53 +82,144 @@ function AdvertisementItem(props) {
     };
 
     const handleToggleLikeAdvertisement = (checked) => {
-        console.log(checked);
-        if (checked) {
-            // if (interactAdvertisements === {}) {
-            //     api.createInteractAdvertisement({
-            //         ttbqb_taikhoan: userID,
-            //         ttbqb_baiviet: advertisement,
-            //         ttbqb_daluu: false,
-            //         ttbqb_dathich: true,
-            //     }).then((res) => {
-            //         api.likeAdvertisement({
-            //             _id: advertisement._id,
-            //             bvqb_luotthich: advertisement.bvqb_luotthich,
-            //         }).then((res) => {
-            //             api.getActiveAdvertisement().then((res) => {
-            //                 setAdvertisementList(res.data);
-            //             });
-            //         });
-            //     });
-            // } else {
-            //     api.updateLikeInteractAdvertisement({
-            //         interactID: interactAdvertisements._id,
-            //         status: true,
-            //     }).then((res) => {
-            //         api.likeAdvertisement({
-            //             _id: advertisement._id,
-            //             bvqb_luotthich: advertisement.bvqb_luotthich,
-            //         }).then((res) => {
-            //             api.getActiveAdvertisement().then((res) => {
-            //                 setAdvertisementList(res.data);
-            //             });
-            //         });
-            //     });
-            // }
-            api.likeAdvertisement({
-                _id: advertisement._id,
-                bvqb_luotthich: advertisement.bvqb_luotthich,
+        // console.log(checked);
+        // console.log(interactAdvertisements);
+        // console.log('-------------');
+
+        if (checked && !interactAdvertisements) {
+            api.createInteractAdvertisement({
+                ttbqb_taikhoan: userID,
+                ttbqb_baiviet: advertisement,
+                ttbqb_daluu: false,
+                ttbqb_dathich: true,
+            }).then((res) => {
+                api.likeAdvertisement({
+                    _id: advertisement._id,
+                    bvqb_luotthich: advertisement.bvqb_luotthich,
+                }).then((res) => {
+                    api.getActiveAdvertisement().then((res) => {
+                        resetInteractAdvertisement();
+                        setAdvertisementList(res.data);
+                    });
+                });
+            });
+        } else if (!checked && !interactAdvertisements) {
+            api.updateLikeInteractAdvertisement({
+                interactID: interactAdvertisements._id,
+                status: false,
+            }).then((res) => {
+                api.dislikeAdvertisement({
+                    _id: advertisement._id,
+                    bvqb_luotthich: advertisement.bvqb_luotthich,
+                }).then((res) => {
+                    api.getActiveAdvertisement().then((res) => {
+                        resetInteractAdvertisement();
+                        setAdvertisementList(res.data);
+                    });
+                });
+            });
+        } else if (!checked && interactAdvertisements.ttbqb_dathich) {
+            api.updateLikeInteractAdvertisement({
+                interactID: interactAdvertisements._id,
+                status: false,
+            }).then((res) => {
+                api.dislikeAdvertisement({
+                    _id: advertisement._id,
+                    bvqb_luotthich: advertisement.bvqb_luotthich,
+                }).then((res) => {
+                    api.getActiveAdvertisement().then((res) => {
+                        resetInteractAdvertisement();
+                        setAdvertisementList(res.data);
+                    });
+                });
+            });
+        } else if (checked && interactAdvertisements.ttbqb_dathich) {
+            api.updateLikeInteractAdvertisement({
+                interactID: interactAdvertisements._id,
+                status: false,
+            }).then((res) => {
+                api.dislikeAdvertisement({
+                    _id: advertisement._id,
+                    bvqb_luotthich: advertisement.bvqb_luotthich,
+                }).then((res) => {
+                    api.getActiveAdvertisement().then((res) => {
+                        resetInteractAdvertisement();
+                        setAdvertisementList(res.data);
+                    });
+                });
+            });
+        } else if (checked && !interactAdvertisements.ttbqb_dathich) {
+            api.updateLikeInteractAdvertisement({
+                interactID: interactAdvertisements._id,
+                status: true,
+            }).then((res) => {
+                api.likeAdvertisement({
+                    _id: advertisement._id,
+                    bvqb_luotthich: advertisement.bvqb_luotthich,
+                }).then((res) => {
+                    api.getActiveAdvertisement().then((res) => {
+                        resetInteractAdvertisement();
+                        setAdvertisementList(res.data);
+                    });
+                });
+            });
+        }
+    };
+
+    const handleToggleSaveAdvertisement = (checked) => {
+        // console.log(checked);
+        // console.log(interactAdvertisements);
+        // console.log('-------------');
+
+        if (checked && !interactAdvertisements) {
+            api.createInteractAdvertisement({
+                ttbqb_taikhoan: userID,
+                ttbqb_baiviet: advertisement,
+                ttbqb_daluu: true,
+                ttbqb_dathich: false,
             }).then((res) => {
                 api.getActiveAdvertisement().then((res) => {
+                    resetInteractAdvertisement();
                     setAdvertisementList(res.data);
                 });
             });
-        } else {
-            api.dislikeAdvertisement({
-                _id: advertisement._id,
-                bvqb_luotthich: advertisement.bvqb_luotthich,
+        } else if (!checked && !interactAdvertisements) {
+            api.updateSaveInteractAdvertisement({
+                interactID: interactAdvertisements._id,
+                status: false,
             }).then((res) => {
                 api.getActiveAdvertisement().then((res) => {
+                    resetInteractAdvertisement();
+                    setAdvertisementList(res.data);
+                });
+            });
+        } else if (!checked && interactAdvertisements.ttbqb_daluu) {
+            api.updateSaveInteractAdvertisement({
+                interactID: interactAdvertisements._id,
+                status: false,
+            }).then((res) => {
+                api.getActiveAdvertisement().then((res) => {
+                    resetInteractAdvertisement();
+                    setAdvertisementList(res.data);
+                });
+            });
+        } else if (checked && interactAdvertisements.ttbqb_daluu) {
+            api.updateSaveInteractAdvertisement({
+                interactID: interactAdvertisements._id,
+                status: false,
+            }).then((res) => {
+                api.getActiveAdvertisement().then((res) => {
+                    resetInteractAdvertisement();
+                    setAdvertisementList(res.data);
+                });
+            });
+        } else if (checked && !interactAdvertisements.ttbqb_daluu) {
+            api.updateSaveInteractAdvertisement({
+                interactID: interactAdvertisements._id,
+                status: true,
+            }).then((res) => {
+                api.getActiveAdvertisement().then((res) => {
+                    resetInteractAdvertisement();
                     setAdvertisementList(res.data);
                 });
             });
@@ -117,38 +247,92 @@ function AdvertisementItem(props) {
                 </div>
                 <div className={cx('interact')}>
                     <div className={cx('interact-heart')}>
-                        <Checkbox
-                            // defaultChecked={interactAdvertisements !== {}}
-                            className={cx('checkbox-heart')}
-                            {...label}
-                            icon={
-                                <FavoriteBorder
-                                    className={cx('favorite-border')}
-                                />
-                            }
-                            checkedIcon={
-                                <Favorite className={cx('favorite')} />
-                            }
-                            onChange={(e) =>
-                                handleToggleLikeAdvertisement(e.target.checked)
-                            }
-                        />
+                        {isLiked && (
+                            <Checkbox
+                                defaultChecked
+                                className={cx('checkbox-heart')}
+                                {...label}
+                                icon={
+                                    <FavoriteBorder
+                                        className={cx('favorite-border')}
+                                    />
+                                }
+                                checkedIcon={
+                                    <Favorite className={cx('favorite')} />
+                                }
+                                onChange={(e) =>
+                                    handleToggleLikeAdvertisement(
+                                        e.target.checked
+                                    )
+                                }
+                            />
+                        )}
+                        {!isLiked && (
+                            <Checkbox
+                                className={cx('checkbox-heart')}
+                                {...label}
+                                icon={
+                                    <FavoriteBorder
+                                        className={cx('favorite-border')}
+                                    />
+                                }
+                                checkedIcon={
+                                    <Favorite className={cx('favorite')} />
+                                }
+                                onChange={(e) =>
+                                    handleToggleLikeAdvertisement(
+                                        e.target.checked
+                                    )
+                                }
+                            />
+                        )}
 
                         <span>{advertisement.bvqb_luotthich}</span>
                     </div>
                     <div className={cx('interact-orther')}>
-                        <Checkbox
-                            className={cx('checkbox-heart')}
-                            {...label}
-                            icon={
-                                <BookmarkBorderIcon
-                                    className={cx('bookmark-border')}
-                                />
-                            }
-                            checkedIcon={
-                                <BookmarkAddedIcon className={cx('bookmark')} />
-                            }
-                        />
+                        {isSaved && (
+                            <Checkbox
+                                defaultChecked
+                                className={cx('checkbox-heart')}
+                                {...label}
+                                icon={
+                                    <BookmarkBorderIcon
+                                        className={cx('bookmark-border')}
+                                    />
+                                }
+                                checkedIcon={
+                                    <BookmarkAddedIcon
+                                        className={cx('bookmark')}
+                                    />
+                                }
+                                onChange={(e) =>
+                                    handleToggleSaveAdvertisement(
+                                        e.target.checked
+                                    )
+                                }
+                            />
+                        )}
+                        {!isSaved && (
+                            <Checkbox
+                                className={cx('checkbox-heart')}
+                                {...label}
+                                icon={
+                                    <BookmarkBorderIcon
+                                        className={cx('bookmark-border')}
+                                    />
+                                }
+                                checkedIcon={
+                                    <BookmarkAddedIcon
+                                        className={cx('bookmark')}
+                                    />
+                                }
+                                onChange={(e) =>
+                                    handleToggleSaveAdvertisement(
+                                        e.target.checked
+                                    )
+                                }
+                            />
+                        )}
                     </div>
                 </div>
             </div>

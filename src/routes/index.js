@@ -7,6 +7,7 @@ import ExplorePage from '../pages/ExplorePage/ExplorePage';
 import BookingPage from '../pages/BookingPage/BookingPage';
 import ResultSearchingPage from '../pages/ResultSearchingPage/ResultSearchingPage';
 import HistoryBookingPage from '../pages/HistoryBookingPage/HistoryBookingPage';
+import SavedAdvertisementPage from '../pages/SavedAdvertisementPage/SavedAdvertisementPage';
 
 export const publicRoutes = [
     { path: '/', component: HomePage },
@@ -34,5 +35,6 @@ export const privateRoute = [
     // { path: '/dat-tour', component: ToursPage },
     { path: '/dat-tour', component: BookingPage },
     { path: '/lich-su-dat-tour', component: HistoryBookingPage },
+    { path: '/dia-diem-da-luu', component: SavedAdvertisementPage },
     { path: '/:somestring', component: HomePage },
 ];

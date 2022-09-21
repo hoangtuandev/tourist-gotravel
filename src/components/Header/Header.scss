@@ -76,13 +76,21 @@ $mainFamily: "Mulish", sans-serif;
 
 .account-menu {
     .menu-item {
-        color: #7a7a7a;
+        color: #666666;
         font-size: 16px;
         font-family: $mainFamily;
         font-weight: 700;
 
         .icon {
             font-size: 20px;
+        }
+    }
+
+    .logout-option {
+        color: #d50b00;
+
+        .icon {
+            color: #d50b00;
         }
     }
 }

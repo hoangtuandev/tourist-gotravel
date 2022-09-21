@@ -7,10 +7,11 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import { GiSailboat } from 'react-icons/gi';
+import { BiLandscape } from 'react-icons/bi';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import styles from './Header.scss';
 
@@ -99,19 +100,27 @@ export default function AccountMenu() {
                     <ListItemIcon>
                         <PersonAdd className={cx('icon')} />
                     </ListItemIcon>
-                    Add another account
+                    Quản lý tài khoản
                 </MenuItem>
 
                 <Link to="/lich-su-dat-tour" className={cx('link-router')}>
                     <MenuItem className={cx('menu-item')}>
                         <ListItemIcon>
-                            <Settings className={cx('icon')} />
+                            <GiSailboat className={cx('icon')} />
                         </ListItemIcon>
                         Tour đã đặt
                     </MenuItem>
                 </Link>
+                <Link to="/dia-diem-da-luu" className={cx('link-router')}>
+                    <MenuItem className={cx('menu-item')}>
+                        <ListItemIcon>
+                            <BiLandscape className={cx('icon')} />
+                        </ListItemIcon>
+                        Địa điểm đã lưu
+                    </MenuItem>
+                </Link>
                 <MenuItem
-                    className={cx('menu-item')}
+                    className={cx('menu-item logout-option')}
                     onClick={() => handleSignOut()}
                 >
                     <ListItemIcon>
