@@ -23,11 +23,22 @@ function HistoryBooking() {
 
     return (
         <div className={cx('history-booking')}>
-            <ul className={cx('list-bookings')}>
-                {bookingList.map((item, index) => (
-                    <BookingItem key={index} item={item}></BookingItem>
-                ))}
-            </ul>
+            {bookingList.length !== 0 && (
+                <ul className={cx('list-bookings')}>
+                    {bookingList.map((item, index) => (
+                        <BookingItem key={index} item={item}></BookingItem>
+                    ))}
+                </ul>
+            )}
+            {bookingList.length === 0 && (
+                <div className={cx('empty-list')}>
+                    <p>Bạn vẫn chưa đặt tour nào !</p>
+                    <img
+                        src="https://res.cloudinary.com/phtuandev/image/upload/v1660285963/GoTravel/undraw_Explore_re_8l4v_lvunn9.png"
+                        alt="empty list"
+                    />
+                </div>
+            )}
         </div>
     );
 }

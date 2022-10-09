@@ -118,6 +118,24 @@ $mainFamily: "Mulish", sans-serif;
             }
         }
     }
+
+    .empty-list {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+        text-align: center;
+        p {
+            padding: 20px 0;
+            font-family: $mainFamily;
+            font-size: 25px;
+            font-weight: 700;
+        }
+        img {
+            width: 700px;
+            height: 400px;
+        }
+    }
 }
 
 .dialog {
@@ -169,7 +187,7 @@ $mainFamily: "Mulish", sans-serif;
 }
 
 .view-advertisement {
-    margin: 70px 250px 0 250px;
+    margin: 70px 250px 50px 250px;
 
     .infor-advertisement {
         border-bottom: 1px solid #e3e3e3;

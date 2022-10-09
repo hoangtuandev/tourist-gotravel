@@ -40,7 +40,7 @@ export default function AddRating() {
         api.createRatingTour({
             dgt_ma: randomID,
             dgt_khachdulich: user.others,
-            dgt_tour: booking.bt_tour,
+            dgt_tour: booking.bt_tour._id,
             dgt_thoigian: current,
             dgt_saodanhgia: ratingValue,
             dgt_nhanxet: ratingComment,
@@ -84,6 +84,7 @@ export default function AddRating() {
                                         cols="20"
                                         rows="5"
                                         value={ratingComment}
+                                        placeholder="Trải nghiệm về chuyến đi của bạn..."
                                         onChange={(e) =>
                                             setRatingComment(e.target.value)
                                         }

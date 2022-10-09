@@ -59,6 +59,10 @@ export const getBookingTourByTouristAccount = (data) =>
 export const getDepartureById = (data) =>
     axios.post(`${URL}/Departure/getDepartureById`, data);
 
+// CALENDAR GUIDE
+export const getCalendarGuideByDeparture = (data) =>
+    axios.post(`${URL}/CalendarGuide/getCalendarGuideByDeparture`, data);
+
 // RATING TOUR
 export const createRatingTour = (data) => axios.post(`${URL}/RatingTour`, data);
 
@@ -67,6 +71,10 @@ export const updateRatingTour = (data) =>
 
 export const getRatingTourByTourist = (data) =>
     axios.post(`${URL}/RatingTour/getRatingTourByTourist`, data);
+
+// RATING GUIDE
+export const createRatingGuide = (data) =>
+    axios.post(`${URL}/createRatingGuide`, data);
 
 // ADVERTISEMENT
 export const getActiveAdvertisement = (data) =>

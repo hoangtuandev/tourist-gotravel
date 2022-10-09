@@ -9,22 +9,32 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import EmailIcon from '@mui/icons-material/Email';
+import CakeIcon from '@mui/icons-material/Cake';
+import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import StarIcon from '@mui/icons-material/Star';
 import Slide from '@mui/material/Slide';
 import * as api from '../../api';
 import styles from './HistoryBooking.scss';
 import {
     bookingSelected,
+    handleToggleAddRatingGuide,
     handleToggleAddRatingTour,
     handleToggleUpdateRatingTour,
     handleToggleViewHistoryBooking,
+    openAddRatingGuide,
     openViewBooking,
 } from './HistoryBookingSlice';
 import UpdateRating from './UpdateRating';
 import AddRating from './AddRating';
+import AddGuideRating from './AddGuideRating';
 
 const cx = classNames.bind(styles);
 const cookies = new Cookies();
@@ -37,8 +47,18 @@ export default function ViewBookingTour(props) {
     const user = cookies.get('user');
     const dispatch = useDispatch();
     const openView = useSelector(openViewBooking);
+    const openGuideRating = useSelector(openAddRatingGuide);
     const booking = useSelector(bookingSelected);
     const [ratingTour, setRatingTour] = useState({});
+    const [calendarGuide, setCalendarGuide] = useState(null);
+
+    React.useEffect(() => {
+        api.getCalendarGuideByDeparture({
+            _id: booking.bt_lichkhoihanh._id,
+        }).then((res) => {
+            setCalendarGuide(res.data[0]);
+        });
+    }, [booking]);
 
     const handleRatingTour = () => {
         api.getRatingTourByTourist({
@@ -55,6 +75,10 @@ export default function ViewBookingTour(props) {
         });
     };
 
+    const handleRatingGuide = () => {
+        dispatch(handleToggleAddRatingGuide(true));
+    };
+
     return (
         <div>
             <Dialog
@@ -69,7 +93,7 @@ export default function ViewBookingTour(props) {
                         {/* <Link to="/booking-tour" className={cx('link-router')}> */}
                         <IconButton
                             edge="start"
-                            color="inherit"
+                            color="inherit" 
                             aria-label="close"
                             className={cx('icon-button')}
                             onClick={() =>
@@ -101,25 +125,30 @@ export default function ViewBookingTour(props) {
                 </AppBar>
 
                 <div className={cx('detail-booking')}>
-                    <div className={cx('rating-buttons')}>
-                        <ButtonGroup
-                            variant="contained"
-                            aria-label="outlined primary button group"
-                            className={cx('rating-button-group')}
-                        >
-                            <Button
-                                color="error"
-                                onClick={() => handleRatingTour()}
+                    {booking.bt_trangthai === 4 && calendarGuide && (
+                        <div className={cx('rating-buttons')}>
+                            <ButtonGroup
+                                variant="contained"
+                                aria-label="outlined primary button group"
+                                className={cx('rating-button-group')}
                             >
-                                <StarIcon className={cx('icon')} />
-                                ĐÁNH GIÁ TRẢI NGHIỆM TOUR
-                            </Button>
-                            <Button color="success">
-                                <StarIcon className={cx('icon')} />
-                                ĐÁNH GIÁ HƯỚNG DẪN VIÊN
-                            </Button>
-                        </ButtonGroup>
-                    </div>
+                                <Button
+                                    color="error"
+                                    onClick={() => handleRatingTour()}
+                                >
+                                    <StarIcon className={cx('icon')} />
+                                    ĐÁNH GIÁ TRẢI NGHIỆM TOUR
+                                </Button>
+                                <Button
+                                    color="success"
+                                    onClick={() => handleRatingGuide()}
+                                >
+                                    <StarIcon className={cx('icon')} />
+                                    ĐÁNH GIÁ HƯỚNG DẪN VIÊN
+                                </Button>
+                            </ButtonGroup>
+                        </div>
+                    )}
 
                     <div className={cx('infor-booking')}>
                         <div className={cx('infor-item')}>
@@ -532,7 +561,7 @@ export default function ViewBookingTour(props) {
                                         </tr>
                                         <tr>
                                             <td className={cx('label')}>
-                                                Hình thức thanh toán
+                                                Thanh toán
                                             </td>
                                             <td className={cx('content')}>
                                                 {
@@ -546,11 +575,113 @@ export default function ViewBookingTour(props) {
                             </div>
                         </div>
                     </div>
+                    {calendarGuide && (
+                        <div>
+                            <p className={cx('label-guide-list')}>
+                                HƯỚNG DẪN VIÊN
+                            </p>
+                            <ul className={cx('guide-list')}>
+                                {calendarGuide.ldt_huongdanvien.map(
+                                    (guide, index) => (
+                                        <li key={index}>
+                                            <Accordion
+                                                className={cx('accordition')}
+                                            >
+                                                <AccordionSummary
+                                                    expandIcon={
+                                                        <ExpandMoreIcon
+                                                            className={cx(
+                                                                'expandIcon'
+                                                            )}
+                                                        />
+                                                    }
+                                                    aria-controls="panel1a-content"
+                                                    id="panel1a-header"
+                                                    className={cx(
+                                                        'accordition-summary'
+                                                    )}
+                                                >
+                                                    <p className={cx('rating')}>
+                                                        <span>4.5</span>
+                                                        <StarIcon className="iconStart" />
+                                                    </p>
+                                                    <div
+                                                        className={cx(
+                                                            'accordition-guide'
+                                                        )}
+                                                    >
+                                                        <img
+                                                            src={
+                                                                guide.tkhdv_anhdaidien
+                                                            }
+                                                            alt=""
+                                                        />
+                                                        <span>
+                                                            {
+                                                                guide
+                                                                    .tkhdv_huongdanvien
+                                                                    .hdv_hoten
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                </AccordionSummary>
+                                                <AccordionDetails
+                                                    className={cx(
+                                                        'accordition-details'
+                                                    )}
+                                                >
+                                                    <ul
+                                                        className={cx(
+                                                            'guide-details'
+                                                        )}
+                                                    >
+                                                        <li>
+                                                            <CakeIcon className="icon" />
+                                                            <span className="content">
+                                                                {
+                                                                    guide
+                                                                        .tkhdv_huongdanvien
+                                                                        .hdv_namsinh
+                                                                }
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <LocalPhoneIcon className="icon" />
+                                                            <span className="content">
+                                                                {
+                                                                    guide
+                                                                        .tkhdv_huongdanvien
+                                                                        .hdv_sodienthoai
+                                                                }
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <EmailIcon className="icon" />
+                                                            <span className="content">
+                                                                {
+                                                                    guide
+                                                                        .tkhdv_huongdanvien
+                                                                        .hdv_mail
+                                                                }
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </AccordionDetails>
+                                            </Accordion>
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </Dialog>
             {!ratingTour && <AddRating></AddRating>}
             {ratingTour && (
                 <UpdateRating ratingTour={ratingTour}></UpdateRating>
+            )}
+            {openGuideRating && (
+                <AddGuideRating calendarGuide={calendarGuide}></AddGuideRating>
             )}
         </div>
     );

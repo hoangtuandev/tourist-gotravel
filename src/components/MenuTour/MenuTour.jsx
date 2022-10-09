@@ -172,7 +172,7 @@ function MenuTour(props) {
             </Box>
             <div className={cx('filter')}>
                 <div className={cx('filter-price')}>
-                    <p className={cx('label-filter')}>Tổng thanh toán</p>
+                    <p className={cx('label-filter')}>Giá tour</p>
                     <Slider
                         className={cx('slider')}
                         getAriaLabel={() => 'Temperature range'}
