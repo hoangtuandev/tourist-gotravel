@@ -9,22 +9,21 @@ import DialogTitle from '@mui/material/DialogTitle';
 import styles from './HistoryBooking.scss';
 import {
     handleSuccessSaveRatingGuide,
-    handleToggleAddRatingGuide,
     handleToggleLoading,
     handleToggleSaveRatingGuide,
+    handleToggleUpdateRatingGuide,
     isLoading,
     isSaved,
-    openAddRatingGuide,
+    openUpdateRatingGuide,
 } from './HistoryBookingSlice';
-import GuideRatingDetails from './GuideRatingDetails';
+import UpdateGuideRatingDetails from './UpdateGuideRatingDetails';
 
 const cx = classNames.bind(styles);
 
-export default function AddGuideRating(props) {
-    const { calendarGuide } = props;
+export default function UpdateGuideRating(props) {
+    const { ratingGuide } = props;
     const dispatch = useDispatch();
-    const openDialog = useSelector(openAddRatingGuide);
-
+    const openDialog = useSelector(openUpdateRatingGuide);
     const loading = useSelector(isLoading);
     const successSave = useSelector(isSaved);
 
@@ -37,7 +36,7 @@ export default function AddGuideRating(props) {
         dispatch(handleToggleLoading(false));
         dispatch(handleSuccessSaveRatingGuide(false));
         dispatch(handleToggleSaveRatingGuide(false));
-        dispatch(handleToggleAddRatingGuide(false));
+        dispatch(handleToggleUpdateRatingGuide(false));
     };
 
     return (
@@ -48,16 +47,16 @@ export default function AddGuideRating(props) {
                 onClose={() => handleCloseDialog()}
             >
                 <DialogTitle className={cx('dialog-title')}>
-                    Đánh giá hướng dẫn viên
+                    Cập nhật đánh giá hướng dẫn viên
                 </DialogTitle>
                 <DialogContent
                     className={cx('dialog-content dialog-content-guide')}
                 >
-                    {calendarGuide.ldt_huongdanvien.map((guide, index) => (
-                        <GuideRatingDetails
+                    {ratingGuide.map((rating, index) => (
+                        <UpdateGuideRatingDetails
                             key={index}
-                            guide={guide}
-                        ></GuideRatingDetails>
+                            rating={rating}
+                        ></UpdateGuideRatingDetails>
                     ))}
                 </DialogContent>
                 <DialogActions className={cx('button-groups')}>
@@ -68,7 +67,7 @@ export default function AddGuideRating(props) {
                             className={cx(' button-save')}
                             onClick={() => handleSaveRatingGuide()}
                         >
-                            LƯU
+                            CẬP NHẬT
                         </Button>
                     )}
                     {loading && !successSave && (
@@ -90,6 +89,7 @@ export default function AddGuideRating(props) {
                             ĐÃ LƯU
                         </Button>
                     )}
+
                     <Button
                         variant="contained"
                         color="error"

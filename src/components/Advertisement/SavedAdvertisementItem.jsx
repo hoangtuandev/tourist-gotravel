@@ -82,9 +82,9 @@ function AdvertisementItem(props) {
     };
 
     const handleToggleLikeAdvertisement = (checked) => {
-        console.log(checked);
-        console.log(interactAdvertisements);
-        console.log('-------------');
+        // console.log(checked);
+        // console.log(interactAdvertisements);
+        // console.log('-------------');
 
         if (checked && !interactAdvertisements) {
             api.createInteractAdvertisement({
@@ -307,7 +307,7 @@ function AdvertisementItem(props) {
                             />
                         )}
 
-                        <span>{advertisement.bvqb_luotthich}</span>
+                        {/* <span>{advertisement.bvqb_luotthich}</span> */}
                     </div>
                     <div className={cx('interact-orther')}>
                         {isSaved && (

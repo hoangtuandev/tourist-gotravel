@@ -48,12 +48,24 @@ export const filterTourByTime = (data) =>
 export const filterTourByParams = (data) =>
     axios.post(`${URL}/Tour/filterTourByParams`, data);
 
+export const getTourByIdentify = (data) =>
+    axios.post(`${URL}/Tour/getTourByIdentify`, data);
+
+export const filterTopTourRating = () =>
+    axios.get(`${URL}/Tour/filterTopTourRating`);
+
 // BOOKING
 export const bookingTour = (data) =>
     axios.post(`${URL}/BookingTour/bookingTour`, data);
 
 export const getBookingTourByTouristAccount = (data) =>
     axios.post(`${URL}/BookingTour/getBookingTourByTouristAccount`, data);
+
+export const searchingBookingByTour = (data) =>
+    axios.post(`${URL}/BookingTour/searchingBookingByTour`, data);
+
+export const filterBookingTourByStatus = (data) =>
+    axios.post(`${URL}/BookingTour/filterBookingTourByStatus`, data);
 
 // DEPARTURE
 export const getDepartureById = (data) =>
@@ -74,7 +86,16 @@ export const getRatingTourByTourist = (data) =>
 
 // RATING GUIDE
 export const createRatingGuide = (data) =>
-    axios.post(`${URL}/createRatingGuide`, data);
+    axios.post(`${URL}/RatingGuide/createRatingGuide`, data);
+
+export const getRatingGuideByBooking = (data) =>
+    axios.post(`${URL}/RatingGuide/getRatingGuideByBooking`, data);
+
+export const updateRatingGuide = (data) =>
+    axios.post(`${URL}/RatingGuide/updateRatingGuide`, data);
+
+export const updateStartGuide = (data) =>
+    axios.post(`${URL}/QualityGuide/updateStartGuide`, data);
 
 // ADVERTISEMENT
 export const getActiveAdvertisement = (data) =>
@@ -85,6 +106,9 @@ export const likeAdvertisement = (data) =>
 
 export const dislikeAdvertisement = (data) =>
     axios.post(`${URL}/Advertisement/dislikeAdvertisement`, data);
+
+export const getLimitActiveAdvertisement = (data) =>
+    axios.post(`${URL}/Advertisement/getLimitActiveAdvertisement`, data);
 
 // INTERACT ADVERTISEMENT
 export const getInteractAdvertisementByAccount = (data) =>

@@ -82,8 +82,31 @@ $mainFamily: "Mulish", sans-serif;
                 position: absolute;
                 right: 0;
                 z-index: 1;
-                padding: 5px 5px;
-                font-size: 23px;
+
+                display: flex;
+            }
+
+            .ratingStar {
+                font-size: 24px;
+                margin: 6px 5px;
+            }
+
+            .ratingDetail {
+                text-align: center;
+                background-color: #fff;
+                font-family: $mainFamily;
+                font-weight: 700;
+                font-size: 15px;
+                border-radius: 50px;
+                color: #fbb400;
+                display: flex;
+                align-items: center;
+                padding: 0 3px;
+                margin: 4px 5px 0 0;
+
+                .icon {
+                    font-size: 17px;
+                }
             }
 
             img {

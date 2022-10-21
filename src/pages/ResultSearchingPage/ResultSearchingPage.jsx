@@ -28,6 +28,7 @@ function ResultSearchingPage() {
                         <p className={cx('title')}>
                             <span>Kết quả tìm kiếm</span>
                         </p>
+
                         {resultSearching.length === 0 && (
                             <div className={cx('empty-tourList')}>
                                 <p>Không tìm thấy tour phù hợp!</p>

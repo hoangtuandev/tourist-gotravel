@@ -27,14 +27,17 @@ import {
     bookingSelected,
     handleToggleAddRatingGuide,
     handleToggleAddRatingTour,
+    handleToggleUpdateRatingGuide,
     handleToggleUpdateRatingTour,
     handleToggleViewHistoryBooking,
     openAddRatingGuide,
+    openUpdateRatingGuide,
     openViewBooking,
 } from './HistoryBookingSlice';
 import UpdateRating from './UpdateRating';
 import AddRating from './AddRating';
 import AddGuideRating from './AddGuideRating';
+import UpdateGuideRating from './UpdateGuideRating';
 
 const cx = classNames.bind(styles);
 const cookies = new Cookies();
@@ -47,9 +50,11 @@ export default function ViewBookingTour(props) {
     const user = cookies.get('user');
     const dispatch = useDispatch();
     const openView = useSelector(openViewBooking);
-    const openGuideRating = useSelector(openAddRatingGuide);
+    const openAddGuide = useSelector(openAddRatingGuide);
+    const openUpdateGuide = useSelector(openUpdateRatingGuide);
     const booking = useSelector(bookingSelected);
     const [ratingTour, setRatingTour] = useState({});
+    const [ratingGuide, setRatingGuide] = useState([]);
     const [calendarGuide, setCalendarGuide] = useState(null);
 
     React.useEffect(() => {
@@ -76,8 +81,19 @@ export default function ViewBookingTour(props) {
     };
 
     const handleRatingGuide = () => {
-        dispatch(handleToggleAddRatingGuide(true));
+        api.getRatingGuideByBooking({ _id: booking._id }).then((res) => {
+            if (res.data.length !== 0) {
+                setRatingGuide(res.data);
+                dispatch(handleToggleUpdateRatingGuide(true));
+            } else {
+                dispatch(handleToggleAddRatingGuide(true));
+            }
+        });
     };
+
+    // const handleRatingGuide = () => {
+    //     dispatch(handleToggleAddRatingGuide(true));
+    // };
 
     return (
         <div>
@@ -93,7 +109,7 @@ export default function ViewBookingTour(props) {
                         {/* <Link to="/booking-tour" className={cx('link-router')}> */}
                         <IconButton
                             edge="start"
-                            color="inherit" 
+                            color="inherit"
                             aria-label="close"
                             className={cx('icon-button')}
                             onClick={() =>
@@ -601,10 +617,10 @@ export default function ViewBookingTour(props) {
                                                         'accordition-summary'
                                                     )}
                                                 >
-                                                    <p className={cx('rating')}>
+                                                    {/* <p className={cx('rating')}>
                                                         <span>4.5</span>
                                                         <StarIcon className="iconStart" />
-                                                    </p>
+                                                    </p> */}
                                                     <div
                                                         className={cx(
                                                             'accordition-guide'
@@ -680,8 +696,13 @@ export default function ViewBookingTour(props) {
             {ratingTour && (
                 <UpdateRating ratingTour={ratingTour}></UpdateRating>
             )}
-            {openGuideRating && (
+            {openAddGuide && (
                 <AddGuideRating calendarGuide={calendarGuide}></AddGuideRating>
+            )}
+            {openUpdateGuide && (
+                <UpdateGuideRating
+                    ratingGuide={ratingGuide}
+                ></UpdateGuideRating>
             )}
         </div>
     );

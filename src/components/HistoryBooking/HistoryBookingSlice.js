@@ -10,6 +10,8 @@ const initialState = {
     ratingGuideList: [],
     bookingSelected: {},
     isLoading: false,
+    isSaveRatingGuide: false,
+    isSaved: false,
 };
 
 export const HistoryBookingSlice = createSlice({
@@ -41,7 +43,13 @@ export const HistoryBookingSlice = createSlice({
             state.isLoading = action.payload;
         },
         handleChangeRatingGuideList: (state, action) => {
-            state.ratingGuideList = action.payload;
+            state.ratingGuideList.push(action.payload);
+        },
+        handleToggleSaveRatingGuide: (state, action) => {
+            state.isSaveRatingGuide = action.payload;
+        },
+        handleSuccessSaveRatingGuide: (state, action) => {
+            state.isSaved = action.payload;
         },
     },
 });
@@ -56,6 +64,8 @@ export const {
     handleToggleAddRatingGuide,
     handleToggleUpdateRatingGuide,
     handleChangeRatingGuideList,
+    handleToggleSaveRatingGuide,
+    handleSuccessSaveRatingGuide,
 } = HistoryBookingSlice.actions;
 
 export const openViewBooking = (state) => state.historyBooking.openViewBooking;
@@ -71,5 +81,9 @@ export const openUpdateRatingGuide = (state) =>
     state.historyBooking.openUpdateRatingGuide;
 export const isLoading = (state) => state.historyBooking.isLoading;
 export const ratingGuideList = (state) => state.historyBooking.ratingGuideList;
+export const isSaveRatingGuide = (state) =>
+    state.historyBooking.isSaveRatingGuide;
+
+export const isSaved = (state) => state.historyBooking.isSaved;
 
 export default HistoryBookingSlice.reducer;

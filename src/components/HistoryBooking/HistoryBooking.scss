@@ -3,8 +3,181 @@ $mainFamily: "Mulish", sans-serif;
 
 .history-booking {
     padding: 20px 0px;
-
     border-radius: 15px;
+
+    .filter-admin {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 20px;
+
+        .select-filter {
+            display: flex;
+            margin-left: 20px;
+
+            .select-all {
+                .label {
+                    font-family: $mainFamily;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: #ea1f08;
+                }
+            }
+
+            .select-sort {
+                margin-left: 20px;
+
+                .select-field {
+                    font-family: $mainFamily;
+                    width: 200px;
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+            }
+
+            // .filter-departure {
+            //     padding-left: 5px;
+            //     padding-top: 10px;
+            //     position: relative;
+
+            //     .icon-calendar {
+            //         position: absolute;
+            //         top: 50px;
+            //         right: 10px;
+            //         color: #0784be;
+            //         font-size: 20px;
+            //         user-select: none;
+            //         pointer-events: none;
+            //     }
+
+            //     .react-datepicker-wrapper {
+            //         margin-top: 0px;
+
+            //         .react-datepicker__input-container {
+            //             input {
+            //                 outline: none;
+            //                 width: 350px;
+            //                 font-family: $mainFamily;
+            //                 font-size: 17px;
+            //                 font-weight: 700;
+            //                 color: #5b5b5b;
+            //                 padding: 8px 10px;
+            //                 border-radius: 4px;
+            //                 border: 2px solid #0b9de0;
+            //             }
+            //         }
+            //     }
+
+            //     .react-datepicker-popper {
+            //         padding-bottom: 15px;
+
+            //         .react-datepicker {
+            //             font-size: 15px;
+            //             border: 0px solid #b1b1b1;
+
+            //             button {
+            //                 margin-top: 4px;
+            //             }
+
+            //             .react-datepicker__month-container {
+            //                 width: 350px;
+            //                 height: 300px;
+            //                 padding: 0px 5px;
+            //                 box-shadow: 1px 1px 10px #bbbbbb;
+            //                 border-radius: 5px;
+            //                 border: 0px solid #0b9de0;
+
+            //                 .react-datepicker__header {
+            //                     font-family: $mainFamily;
+            //                     background-color: #fff;
+            //                     padding-top: 10px;
+
+            //                     .react-datepicker__current-month {
+            //                         font-size: 16px;
+            //                         color: #0b9de0;
+            //                         font-weight: 800;
+            //                     }
+
+            //                     .react-datepicker__day-names {
+            //                         .react-datepicker__day-name {
+            //                             margin: 15px 15px 10px 10px;
+            //                             color: #4a4a4a;
+            //                             font-weight: 700;
+            //                         }
+            //                     }
+            //                 }
+
+            //                 .react-datepicker__month {
+            //                     .react-datepicker__week {
+            //                         .react-datepicker__day {
+            //                             margin: 5px 9px;
+            //                             padding-top: 4px;
+            //                             padding-bottom: 0px;
+            //                             padding-right: 1px;
+            //                             width: 25px;
+            //                             height: 25px;
+
+            //                             font-family: $mainFamily;
+            //                             border-radius: 50px;
+            //                             font-size: 15px;
+            //                         }
+
+            //                         .react-datepicker__day--selected {
+            //                             background-color: #0b9de0;
+            //                             color: #fff;
+            //                             font-weight: 600;
+            //                             transition: ease-in-out 0.1s;
+            //                         }
+
+            //                         .react-datepicker__day:hover {
+            //                             background-color: #0b9de0;
+            //                             color: #fff;
+            //                             font-weight: 600;
+            //                             transition: ease-in-out 0.1s;
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+        }
+
+        .search-filter {
+            position: relative;
+            right: 5px;
+
+            .textfield-search {
+                width: 350px;
+                height: 42px;
+                padding: 0px 15px;
+                font-family: $mainFamily;
+                font-weight: 600;
+                font-size: 15px;
+                outline: none;
+                border-radius: 5px;
+                border: 2px solid #0b9de0;
+            }
+
+            label {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                background-color: #0b9de0;
+                color: #fff;
+                height: 42px;
+                width: 42px;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .search-icon {
+                font-size: 30px;
+            }
+        }
+    }
 
     .list-bookings {
         display: flex;

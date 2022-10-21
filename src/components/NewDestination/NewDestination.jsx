@@ -1,19 +1,25 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
-
 import Button from '@mui/material/Button';
-import Carousel from 'react-bootstrap/Carousel';
-
 import styles from './NewDestination.scss';
 import ButtonBases from './ButtonBases';
+import DestinationItem from './DestinationItem';
+import * as api from '../../api';
+import { viewAdvertisement } from '../Advertisement/AdvertisementSlice';
+import ViewAdvertisement from '../Advertisement/ViewAvertisement';
 
 const cx = classNames.bind(styles);
 
 function NewDestination() {
-    const [index, setIndex] = useState(0);
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-    };
+    const openAdvertisement = useSelector(viewAdvertisement);
+    const [listAdvertisement, setListAdvertisement] = useState(null);
+
+    useEffect(() => {
+        api.getLimitActiveAdvertisement({ limitAmount: 3 }).then((res) => {
+            setListAdvertisement(res.data);
+        });
+    }, []);
 
     return (
         <div className={cx('new-destination')}>
@@ -22,137 +28,19 @@ function NewDestination() {
             </div>
             <ButtonBases></ButtonBases>
             <ul className={cx('destination-list')}>
-                <li className={cx('destination-item')}>
-                    <Carousel
-                        activeIndex={index}
-                        onSelect={handleSelect}
-                        className={cx('controlled-carousel')}
-                    >
-                        <Carousel.Item interval={4000}>
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659601310/GoTravel/soc-trang-2_dluusl.jpg"
-                                alt="Third slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item
-                            interval={4000}
-                            className={cx('carousel-item')}
-                        >
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659140588/GoTravel/inspired-2_x7zaev.jpg"
-                                alt="Third slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item
-                            interval={4000}
-                            className={cx('carousel-item')}
-                        >
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659601317/GoTravel/phu-quoc-5_cwhu6s.jpg"
-                                alt="First slide"
-                            />
-                        </Carousel.Item>
-                    </Carousel>
-                    <div className={cx('destination-infor')}>
-                        <p className={cx('infor-label')}>Đảo ngọc Phú Quốc</p>
-                        <p className={cx('infor-content')}>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Ipsam voluptate distinctio corrupti aut vitae
-                            id molestias dolores numquam veritatis autem magnam
-                            quibusdam nam incidunt at deserunt, beatae dolor
-                            reprehenderit labore.
-                        </p>
-                    </div>
-                </li>
-                <li className={cx('destination-item')}>
-                    <Carousel
-                        activeIndex={index}
-                        onSelect={handleSelect}
-                        className={cx('controlled-carousel')}
-                    >
-                        <Carousel.Item interval={4000}>
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659601310/GoTravel/soc-trang-2_dluusl.jpg"
-                                alt="Third slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item
-                            interval={4000}
-                            className={cx('carousel-item')}
-                        >
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659140588/GoTravel/inspired-2_x7zaev.jpg"
-                                alt="Third slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item
-                            interval={4000}
-                            className={cx('carousel-item')}
-                        >
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659601317/GoTravel/phu-quoc-5_cwhu6s.jpg"
-                                alt="First slide"
-                            />
-                        </Carousel.Item>
-                    </Carousel>
-                    <div className={cx('destination-infor')}>
-                        <p className={cx('infor-label')}>Đảo ngọc Phú Quốc</p>
-                        <p className={cx('infor-content')}>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Ipsam voluptate distinctio corrupti aut vitae
-                            id molestias dolores numquam veritatis autem magnam
-                            quibusdam nam incidunt at deserunt, beatae dolor
-                            reprehenderit labore.
-                        </p>
-                    </div>
-                </li>
-                <li className={cx('destination-item')}>
-                    <Carousel
-                        activeIndex={index}
-                        onSelect={handleSelect}
-                        className={cx('controlled-carousel')}
-                    >
-                        <Carousel.Item interval={4000}>
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659601310/GoTravel/soc-trang-2_dluusl.jpg"
-                                alt="Third slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item
-                            interval={4000}
-                            className={cx('carousel-item')}
-                        >
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659140588/GoTravel/inspired-2_x7zaev.jpg"
-                                alt="Third slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item
-                            interval={4000}
-                            className={cx('carousel-item')}
-                        >
-                            <img
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1659601317/GoTravel/phu-quoc-5_cwhu6s.jpg"
-                                alt="First slide"
-                            />
-                        </Carousel.Item>
-                    </Carousel>
-                    <div className={cx('destination-infor')}>
-                        <p className={cx('infor-label')}>Đảo ngọc Phú Quốc</p>
-                        <p className={cx('infor-content')}>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Ipsam voluptate distinctio corrupti aut vitae
-                            id molestias dolores numquam veritatis autem magnam
-                            quibusdam nam incidunt at deserunt, beatae dolor
-                            reprehenderit labore.
-                        </p>
-                    </div>
-                </li>
+                {listAdvertisement &&
+                    listAdvertisement.map((advertisement, index) => (
+                        <DestinationItem
+                            key={index}
+                            advertisement={advertisement}
+                        ></DestinationItem>
+                    ))}
             </ul>
 
             <div className={cx('buttons-group')}>
                 <Button variant="outlined">Xem thêm</Button>
             </div>
+            {openAdvertisement && <ViewAdvertisement></ViewAdvertisement>}
         </div>
     );
 }

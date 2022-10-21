@@ -108,6 +108,13 @@ $mainFamily: "Mulish", sans-serif;
                 font-weight: 600;
                 font-size: 14px;
                 text-align: justify;
+
+                height: 150px;
+                max-height: 150px;
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-line-clamp: 7;
+                -webkit-box-orient: vertical;
             }
         }
     }

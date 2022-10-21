@@ -6,7 +6,6 @@ import styles from './HistoryBooking.scss';
 import { Fragment } from 'react';
 import * as api from '../../api';
 import {
-    bookingSelected,
     handleSuccessSaveRatingGuide,
     handleToggleLoading,
     isSaveRatingGuide,
@@ -14,25 +13,23 @@ import {
 
 const cx = classNames.bind(styles);
 
-export default function GuideRatingDetails(props) {
+export default function UpdateGuideRatingDetails(props) {
     const dispatch = useDispatch();
+
     const isSaving = useSelector(isSaveRatingGuide);
-    const booking = useSelector(bookingSelected);
-    const { guide } = props;
-    const [ratingValue, setRatingValue] = useState(0);
-    const [ratingComment, setRatingComment] = useState('');
+    const { rating } = props;
+    const [ratingValue, setRatingValue] = useState(rating.dghdv_saodanhgia);
+    const [ratingComment, setRatingComment] = useState(rating.dghdv_nhanxet);
 
     useEffect(() => {
         if (isSaving === true && ratingValue) {
-            api.createRatingGuide({
-                dghdv_huongdanvien: guide,
-                dghdv_booking: booking,
-                dghdv_thoigian: new Date(),
+            api.updateRatingGuide({
+                _id: rating._id,
                 dghdv_saodanhgia: ratingValue,
                 dghdv_nhanxet: ratingComment,
             }).then((res) => {
                 api.updateStartGuide({
-                    username: guide.tkhdv_tendangnhap,
+                    username: rating.dghdv_huongdanvien.tkhdv_tendangnhap,
                 }).then((res) => {
                     dispatch(handleToggleLoading(false));
                     dispatch(handleSuccessSaveRatingGuide(true));
@@ -45,8 +42,13 @@ export default function GuideRatingDetails(props) {
         <Fragment>
             <div className={cx('guides-tab')}>
                 <div className={cx('tab-item')}>
-                    <img src={guide.tkhdv_anhdaidien} alt="" />
-                    <span> {guide.tkhdv_huongdanvien.hdv_hoten}</span>
+                    <img
+                        src={rating.dghdv_huongdanvien.tkhdv_anhdaidien}
+                        alt=""
+                    />
+                    <span>
+                        {rating.dghdv_huongdanvien.tkhdv_huongdanvien.hdv_hoten}
+                    </span>
                 </div>
             </div>
             <table>

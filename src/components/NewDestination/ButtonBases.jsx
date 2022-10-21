@@ -10,8 +10,8 @@ const cx = classNames.bind(styles);
 
 const images = [
     {
-        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1659601312/GoTravel/HCM-lamdmark81_arhbtw.webp',
-        title: 'Landmark 81 - TP. Hồ Chí Minh',
+        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1663819615/GoTravel/s-l-alya-nvb-mainpool-cr-800x450_o76p0r.jpg',
+        title: 'Resort Alyana - Khánh Hòa',
         width: '33.3%',
     },
     {
@@ -25,18 +25,18 @@ const images = [
         width: '33.4%',
     },
     {
-        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1659601317/GoTravel/phu-quoc-3_rf3uv4.jpg',
-        title: 'Mia Reort - Nha Trang',
+        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1663815227/GoTravel/landmark-81-1_1638068945_vmacj3.webp',
+        title: 'Landmark 81 - TP. Hồ Chí Minh',
         width: '33.3%',
     },
     {
-        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1659601311/GoTravel/soc-trang-1_pyqjwm.jpg',
-        title: 'Chùa Kh’leang - Sóc Trăng',
+        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1663818512/GoTravel/49105-hoa-cai-vang-da-lat-1-700x467_ectl4a.jpg',
+        title: 'Vườn hoa Langbiang - Đà Lạt',
         width: '33.3%',
     },
     {
-        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1659140630/GoTravel/vinh-ha-long-1_p3rab3.jpg',
-        title: 'Vịnh Hạ Long - Quảng Ninh',
+        url: 'https://res.cloudinary.com/phtuandev/image/upload/v1663816809/GoTravel/sun-2-7210_u1iqjl.jpg',
+        title: 'Sun World Ba Na Hills - Đà Nẵng',
         width: '33.4%',
     },
 ];
