@@ -146,3 +146,23 @@ export const deleteInteractAdvertisement = (data) =>
         `${URL}/InteractAdvertisement/deleteInteractAdvertisement`,
         data
     );
+
+export const uploadFile = (data) => axios.post(`${URL}/uploadFile`, data);
+
+// TOURIST
+export const changeAvatarAccountTourist = (data) =>
+    axios({
+        method: 'post',
+        url: `${URL}/TouristAccount/changeAvatarAccountTourist`,
+        data: data.formData,
+        params: { accountID: data.idAccount },
+    });
+
+export const updateProfileTourist = (data) =>
+    axios.post(`${URL}/Tourist/updateProfileTourist`, data);
+
+export const getTouristAccountById = (data) =>
+    axios.post(`${URL}/TouristAccount/getTouristAccountById`, data);
+
+export const updateProfileTouristAccount = (data) =>
+    axios.post(`${URL}/TouristAccount/updateProfileTouristAccount`, data);

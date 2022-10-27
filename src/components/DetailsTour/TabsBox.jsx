@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import classNames from 'classnames/bind';
 import Typography from '@mui/material/Typography';
-
+import Rating from '@mui/material/Rating';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -69,6 +69,7 @@ function TabsBox() {
                     aria-label="basic tabs example"
                 >
                     <Tab label="QUY ĐỊNH CHUNG" {...a11yProps(0)} />
+                    <Tab label="ĐÁNH GIÁ TOUR" {...a11yProps(1)} />
                 </Tabs>
             </Box>
             <TabPanel
@@ -143,11 +144,9 @@ function TabsBox() {
                     </span>
                 </span>
             </TabPanel>
+
             <TabPanel value={value} index={1} className={cx('mui-tabs-panels')}>
-                Item Twos
-            </TabPanel>
-            <TabPanel value={value} index={2} className={cx('mui-tabs-panels')}>
-                Item Threes
+                <Rating name="read-only" value={value} readOnly />
             </TabPanel>
         </Box>
     );

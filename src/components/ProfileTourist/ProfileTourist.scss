@@ -1,0 +1,174 @@
+$mainColor: #0b9de0;
+$mainFamily: "Mulish", sans-serif;
+
+p {
+    margin: 0 0;
+}
+
+ul {
+    padding: 0 0;
+    list-style-type: none;
+}
+
+.profile-tourist {
+    margin-bottom: 50px;
+    padding: 0 0 15px 0;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    .label-profile {
+        text-align: center;
+        font-family: $mainFamily;
+        font-weight: 800;
+        font-size: 16px;
+        padding-top: 5px;
+
+        span {
+            background-color: #0b9de0;
+            color: #fff;
+            padding: 8px 20px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+    }
+
+    .content-profile {
+        margin: 20px 20px 0px 20px;
+        font-family: $mainFamily;
+        font-size: 16px;
+        font-weight: 500;
+
+        display: grid;
+        grid-template-columns: 35% 65%;
+
+        .profile-account {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .avatar-account {
+                width: 250px;
+                height: 250px;
+                border-radius: 50%;
+            }
+
+            .button-upload-avatar {
+                margin: 20px 0 0 0;
+                padding: 5px 10px;
+                width: 300px;
+                font-family: $mainFamily;
+                font-size: 13px;
+                font-weight: 800;
+
+                display: flex;
+                align-items: center;
+
+                .cameraIcon {
+                    font-size: 20px;
+                    margin-right: 10px;
+                }
+            }
+
+            .account-information {
+                margin-top: 50px;
+
+                p {
+                    text-align: center;
+                    font-weight: 800;
+                    color: #e74c3c;
+                }
+
+                .text-field {
+                    position: relative;
+                    margin: 15px 0;
+                    border-radius: 5px;
+                    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+                    .field-icon {
+                        position: absolute;
+                        top: 8px;
+                        left: 5px;
+                        font-size: 25px;
+                        color: #a0a0a0;
+                    }
+                    input {
+                        width: 300px;
+                        padding: 7px 10px 7px 40px;
+                        outline: none;
+                        border: 1px solid #d4d4d4;
+                        border-radius: 5px;
+                        font-family: $mainFamily;
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #575757;
+                    }
+                }
+            }
+        }
+
+        .profile-information {
+            ul {
+                margin-left: 40px;
+
+                li {
+                    margin: 20px 0 40px 0;
+                    display: flex;
+                    align-items: center;
+
+                    .label-gender {
+                        color: #6e6e6e;
+                        font-family: $mainFamily;
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-right: 20px;
+                        margin-top: 20px;
+                    }
+
+                    .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+                        font-size: 16px;
+                        font-family: $mainFamily;
+                        font-weight: 600;
+                    }
+                    .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
+                        font-size: 20px;
+                        font-weight: 700;
+                        font-family: $mainFamily;
+                        color: #0b9de0;
+                    }
+                    .css-1ptx2yq-MuiInputBase-root-MuiInput-root {
+                        width: 665px;
+                        font-size: 16px;
+                        font-family: $mainFamily;
+                        font-weight: 600;
+                    }
+                }
+
+                .textfield-gender {
+                    width: 635px;
+
+                    .css-j204z7-MuiFormControlLabel-root {
+                        margin-top: 20px;
+                        .css-ahj2mt-MuiTypography-root {
+                            margin-top: 2px;
+                            font-size: 16px;
+                            margin-right: 25px;
+                        }
+                    }
+                }
+            }
+
+            .actions {
+                text-align: right;
+                margin-right: 15px;
+
+                button {
+                    padding: 6px 15px;
+                    font-family: $mainFamily;
+                    font-size: 13px;
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+}

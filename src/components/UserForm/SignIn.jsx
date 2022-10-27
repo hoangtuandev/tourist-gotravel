@@ -2,13 +2,11 @@ import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import Cookies from 'universal-cookie';
-import { useNavigate } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import BackDropCus from '../BackDrop/BackDrop';
 
 import { RiLockPasswordLine } from 'react-icons/ri';
 import {
@@ -19,21 +17,16 @@ import {
 
 import * as api from '../../api';
 import styles from './UserForm.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    handleCloseBackdrop,
-    handleOpenBackdrop,
-    openBackdrop,
-} from '../../GlobalSlice';
+import { useDispatch } from 'react-redux';
+import { handleCloseBackdrop, handleOpenBackdrop } from '../../GlobalSlice';
 // import clientURL from '../../app/clientURL';
 
 const cx = classNames.bind(styles);
 const cookies = new Cookies();
 
 function SignIn() {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const isOpenBackdrop = useSelector(openBackdrop);
+
     const [isShowPassword, setIsShowPassword] = useState(false);
 
     const [username, setUsername] = useState('');

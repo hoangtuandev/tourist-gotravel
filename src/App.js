@@ -6,7 +6,7 @@ import { publicRoutes, privateRoute } from './routes';
 function App() {
     const cookies = new Cookies();
     const user = cookies.get('user');
-    console.log('USER: ', user);
+    // console.log('USER: ', user);
 
     return (
         <Router>

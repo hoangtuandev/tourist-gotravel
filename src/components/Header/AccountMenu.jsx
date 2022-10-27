@@ -7,6 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { GiSailboat } from 'react-icons/gi';
 import { BiLandscape } from 'react-icons/bi';
 import IconButton from '@mui/material/IconButton';
@@ -96,12 +97,14 @@ export default function AccountMenu() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem className={cx('menu-item')}>
-                    <ListItemIcon>
-                        <PersonAdd className={cx('icon')} />
-                    </ListItemIcon>
-                    Quản lý tài khoản
-                </MenuItem>
+                <Link to="/ho-so" className={cx('link-router')}>
+                    <MenuItem className={cx('menu-item')}>
+                        <ListItemIcon>
+                            <AccountCircleIcon className={cx('icon')} />
+                        </ListItemIcon>
+                        Thông tin tài khoản
+                    </MenuItem>
+                </Link>
 
                 <Link to="/lich-su-dat-tour" className={cx('link-router')}>
                     <MenuItem className={cx('menu-item')}>

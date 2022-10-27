@@ -88,11 +88,13 @@ function SignUp() {
                 kdl_sotaikhoan: '',
                 kdl_sodienthoai: contact.includes('@') ? '' : contact,
                 kdl_email: contact.includes('@') ? contact : '',
+                kdl_diachi: '',
             };
             api.createTourist(tourist).then((res) => {
                 api.createAccountTourist({
                     tkkdl_tendangnhap: contact,
                     tkkdl_matkhau: password,
+                    tkkdl_anhdaidien: '',
                     tkkdl_trangthai: 1,
                     tkkdl_khachdulich: tourist,
                 }).then((res) => {
