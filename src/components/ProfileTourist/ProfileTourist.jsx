@@ -12,11 +12,12 @@ import LockIcon from '@mui/icons-material/Lock';
 import styles from './ProfileTourist.scss';
 import * as api from '../../api';
 
+const baseURL = 'http://localhost:5000/static/';
 const cx = classNames.bind(styles);
 const cookies = new Cookies();
 
 function ProfileTourist() {
-    const user = cookies.get('user').others;
+    const [isLoading, setIsLoading] = useState(false);
     const [avatarImage, setAvatarImage] = useState({});
     const [previewAvatar, setPreviewAvatar] = useState(null);
     const [profileTourist, setProfileTourist] = useState(null);
@@ -33,6 +34,11 @@ function ProfileTourist() {
             idAccount: cookies.get('user').others._id,
         }).then((res) => {
             setProfileTourist(res.data[0]);
+            setPreviewAvatar(
+                res.data[0].tkkdl_anhdaidien
+                    ? `${baseURL}${res.data[0].tkkdl_anhdaidien}`
+                    : ''
+            );
             setUsername(res.data[0].tkkdl_tendangnhap);
             setFullname(res.data[0].tkkdl_khachdulich.kdl_hoten);
             setGendar(res.data[0].tkkdl_khachdulich.kdl_gioitinh);
@@ -48,10 +54,11 @@ function ProfileTourist() {
         const file = event.target.files[0];
         file.preview = URL.createObjectURL(file);
 
-        setPreviewAvatar(file);
+        setPreviewAvatar(file.preview);
     };
 
     const onSaveProfileTourist = () => {
+        setIsLoading(true);
         let formData = new FormData();
         formData.append('avatar', avatarImage);
 
@@ -68,12 +75,15 @@ function ProfileTourist() {
                 idAccount: profileTourist._id,
                 profile: res.data[0],
             }).then((res) => {
-                console.log(profileTourist._id);
                 api.changeAvatarAccountTourist({
                     formData: formData,
                     idAccount: profileTourist._id,
                 }).then((res) => {
                     setProfileTourist(res.data[0]);
+                    setPreviewAvatar(
+                        `${baseURL}${res.data[0].tkkdl_anhdaidien}`
+                    );
+
                     setFullname(res.data[0].tkkdl_khachdulich.kdl_hoten);
                     setGendar(res.data[0].tkkdl_khachdulich.kdl_gioitinh);
                     setNumberPhone(
@@ -82,6 +92,7 @@ function ProfileTourist() {
                     setEmail(res.data[0].tkkdl_khachdulich.kdl_email);
                     setAddress(res.data[0].tkkdl_khachdulich.kdl_diachi);
                     setIdentify(res.data[0].tkkdl_khachdulich.kdl_cccd);
+                    setIsLoading(false);
                 });
             });
         });
@@ -105,10 +116,11 @@ function ProfileTourist() {
                     {previewAvatar && (
                         <img
                             className="avatar-account"
-                            src={previewAvatar.preview}
+                            src={previewAvatar}
                             alt=""
                         />
                     )}
+
                     {!previewAvatar && (
                         <img
                             className="avatar-account"
@@ -116,6 +128,7 @@ function ProfileTourist() {
                             alt=""
                         />
                     )}
+
                     <Button
                         className={cx('button-upload-avatar')}
                         variant="outlined"
@@ -248,13 +261,24 @@ function ProfileTourist() {
                         </li>
                     </ul>
                     <div className="actions">
-                        <Button
-                            variant="contained"
-                            color="success"
-                            onClick={onSaveProfileTourist}
-                        >
-                            LƯU THAY ĐỔI
-                        </Button>
+                        {!isLoading && (
+                            <Button
+                                variant="contained"
+                                color="success"
+                                onClick={onSaveProfileTourist}
+                            >
+                                LƯU THAY ĐỔI
+                            </Button>
+                        )}
+                        {isLoading && (
+                            <Button
+                                disabled
+                                variant="contained"
+                                color="success"
+                            >
+                                LƯU THAY ĐỔI
+                            </Button>
+                        )}
                     </div>
                 </div>
             </div>

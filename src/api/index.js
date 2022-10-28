@@ -84,6 +84,9 @@ export const updateRatingTour = (data) =>
 export const getRatingTourByTourist = (data) =>
     axios.post(`${URL}/RatingTour/getRatingTourByTourist`, data);
 
+export const getAllRatingTourByTour = (data) =>
+    axios.post(`${URL}/RatingTour/getAllRatingTourByTour`, data);
+
 // RATING GUIDE
 export const createRatingGuide = (data) =>
     axios.post(`${URL}/RatingGuide/createRatingGuide`, data);

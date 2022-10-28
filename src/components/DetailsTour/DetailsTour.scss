@@ -220,6 +220,46 @@ $mainFamily: "Mulish", sans-serif;
                     }
                 }
             }
+
+            .rating-tour {
+                .rating-item {
+                    display: flex;
+                    align-items: center;
+                    margin: 0 0 15px 0;
+
+                    .tourist-avatar {
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50px;
+                    }
+
+                    .detail-rating {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .detail-rating {
+                        margin-left: 15px;
+
+                        .rating-star {
+                            font-size: 18px;
+                        }
+
+                        .tourist-name {
+                            font-family: $mainFamily;
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: #0089c8;
+                        }
+
+                        .comment {
+                            font-family: $mainFamily;
+                            font-size: 14px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
         }
     }
 

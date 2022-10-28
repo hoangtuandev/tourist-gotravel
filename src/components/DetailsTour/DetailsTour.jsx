@@ -64,8 +64,6 @@ function DetailsTour() {
         return start > currentDate;
     };
 
-    console.log(departure);
-
     const handleClickBookingTour = () => {
         if (!user) {
             window.location.href = '/dang-nhap';

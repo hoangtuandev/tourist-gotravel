@@ -1,17 +1,19 @@
 import { React, useState } from 'react';
 import classNames from 'classnames/bind';
 import Typography from '@mui/material/Typography';
-import Rating from '@mui/material/Rating';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-
 import { TbSignRight } from 'react-icons/tb';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './DetailsTour.scss';
+import { useSelector } from 'react-redux';
+import { tourSelected } from './DetailsTourSlice';
+import * as api from '../../api';
+import { useEffect } from 'react';
+import RatingTour from './RatingTour';
 
 const cx = classNames.bind(styles);
 
@@ -49,11 +51,21 @@ function a11yProps(index) {
 }
 
 function TabsBox() {
+    const tour = useSelector(tourSelected);
+
+    const [ratingList, setRatingList] = useState([]);
+
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    useEffect(() => {
+        api.getAllRatingTourByTour({ idTour: tour._id }).then((res) => {
+            setRatingList(res.data);
+        });
+    }, [tour]);
 
     return (
         <Box sx={{ width: '100%' }} className={cx('mui-tabs-box')}>
@@ -145,8 +157,15 @@ function TabsBox() {
                 </span>
             </TabPanel>
 
-            <TabPanel value={value} index={1} className={cx('mui-tabs-panels')}>
-                <Rating name="read-only" value={value} readOnly />
+            <TabPanel
+                value={value}
+                index={1}
+                className={cx('mui-tabs-panels rating-tour')}
+            >
+                {ratingList.length !== 0 &&
+                    ratingList.map((rating, index) => (
+                        <RatingTour key={index} rating={rating}></RatingTour>
+                    ))}
             </TabPanel>
         </Box>
     );

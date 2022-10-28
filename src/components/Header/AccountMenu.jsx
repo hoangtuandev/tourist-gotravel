@@ -12,7 +12,6 @@ import { GiSailboat } from 'react-icons/gi';
 import { BiLandscape } from 'react-icons/bi';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Logout from '@mui/icons-material/Logout';
 import styles from './Header.scss';
 
