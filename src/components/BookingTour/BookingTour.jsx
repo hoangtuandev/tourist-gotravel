@@ -61,16 +61,10 @@ function BookingTour(props) {
         );
     }, [tour.t_gia, amountAdult, amountChildren, amountBaby]);
 
-    // const handleChangeTypePayment = () => {
-    //     if(typePayment === 'paypal' ) {
-
-    //     }
-    // }
-
     const handlePayBookingTour = () => {
         const current = new Date();
         const randomID = `BT00${current.getTime()}`;
-        console.log(current.toISOString());
+
         api.bookingTour({
             bt_ma: randomID,
             bt_tour: tour,
@@ -102,7 +96,6 @@ function BookingTour(props) {
             bt_tongthanhtoan: totalPayment,
             bt_trangthai: 1,
         }).then((res) => {
-            console.log(res.data);
             dispatch(handleSuccessPaymentTour(true));
         });
     };

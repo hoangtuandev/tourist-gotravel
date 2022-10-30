@@ -38,6 +38,7 @@ function MenuTour(props) {
 
     const handleChangeTourismTab = (event, newValue) => {
         setCurrentIndexTourismTab(newValue);
+
         if (typeTourismList[newValue - 1]) {
             dispatch(
                 handleSetTabMenuCurrentTour(typeTourismList[newValue - 1])

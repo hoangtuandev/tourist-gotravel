@@ -31,10 +31,13 @@ function Sidebar() {
                         <GiSailboat className={cx('icon')} />
                     </li>
                 </Link>
-                <li>
-                    <div className={cx('hover-box')}>Chia sẻ</div>
-                    <GiShare className={cx('icon')} />
-                </li>
+                <Link to={'/trai-nghiem'} className={cx('link-router')}>
+                    <li>
+                        <div className={cx('hover-box')}>Trải nghiệm</div>
+                        <GiShare className={cx('icon')} />
+                    </li>
+                </Link>
+
                 <Link to={'/kham-pha'} className={cx('link-router')}>
                     <li>
                         <div className={cx('hover-box')}>Khám phá</div>

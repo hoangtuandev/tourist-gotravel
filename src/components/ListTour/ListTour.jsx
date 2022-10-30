@@ -42,11 +42,10 @@ function ListTour() {
     useEffect(() => {
         api.filterTourByParams({
             params: paramsFilter,
-            typeTourism: tabMenuTour,
         }).then((res) => {
             setListTour(res.data);
         });
-    }, [paramsFilter, tabMenuTour]);
+    }, [paramsFilter]);
 
     useEffect(() => {
         if (tabMenuTour.lht_ma === 'all') {
