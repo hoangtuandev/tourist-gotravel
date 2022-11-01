@@ -169,3 +169,12 @@ export const getTouristAccountById = (data) =>
 
 export const updateProfileTouristAccount = (data) =>
     axios.post(`${URL}/TouristAccount/updateProfileTouristAccount`, data);
+
+// SHARE POSTS
+export const createSharePosts = (data) =>
+    axios({
+        method: 'post',
+        url: `${URL}/SharePosts/createSharePosts`,
+        data: data.formData,
+        params: { datas: data.datas },
+    });

@@ -18,6 +18,7 @@ const initialState = {
 
     tabMenuCurrentTour: {},
     successPayment: false,
+    baseURLServer: 'http://localhost:5000/static/',
 };
 
 export const GlobalSlice = createSlice({
@@ -68,6 +69,9 @@ export const GlobalSlice = createSlice({
         handleSuccessPaymentTour: (state, action) => {
             state.successPayment = action.payload;
         },
+        handleSetBaseURL: (state, action) => {
+            state.baseURLServer = action.payload;
+        },
     },
 });
 
@@ -87,6 +91,7 @@ export const {
     handleChangeKeySearching,
     handleSetSearchingTour,
     handleSuccessPaymentTour,
+    handleSetBaseURL,
 } = GlobalSlice.actions;
 
 export const tourBooked = (state) => state.global.tourBooked;
@@ -101,5 +106,6 @@ export const checkedAllTime = (state) => state.global.checkedAllTime;
 export const keySearching = (state) => state.global.keySearching;
 export const resultSearchingTour = (state) => state.global.resultSearchingTour;
 export const successPayment = (state) => state.global.successPayment;
+export const baseURLServer = (state) => state.global.baseURLServer;
 
 export default GlobalSlice.reducer;

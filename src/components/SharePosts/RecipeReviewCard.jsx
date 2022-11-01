@@ -75,7 +75,7 @@ export default function RecipeReviewCard() {
                 <IconButton aria-label="share">
                     <ShareIcon fontSize="large" />
                 </IconButton>
-                {/* <ExpandMore
+                <ExpandMore
                     fontSize="large"
                     expand={expanded}
                     onClick={handleExpandClick}
@@ -83,7 +83,7 @@ export default function RecipeReviewCard() {
                     aria-label="show more"
                 >
                     <ExpandMoreIcon />
-                </ExpandMore> */}
+                </ExpandMore>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>

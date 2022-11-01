@@ -4,6 +4,7 @@ import detailsTourReducer from '../components/DetailsTour/DetailsTourSlice';
 import globalReducer from '../GlobalSlice';
 import historyBookingReducer from '../components/HistoryBooking/HistoryBookingSlice';
 import advertisementReducer from '../components/Advertisement/AdvertisementSlice';
+import sharePostsReducer from '../components/SharePosts/SharePostsSlice';
 
 export const store = configureStore({
     reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
         global: globalReducer,
         historyBooking: historyBookingReducer,
         advertisement: advertisementReducer,
+        sharePosts: sharePostsReducer,
     },
 });
