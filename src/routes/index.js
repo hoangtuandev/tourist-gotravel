@@ -39,6 +39,6 @@ export const privateRoute = [
     { path: '/lich-su-dat-tour', component: HistoryBookingPage },
     { path: '/dia-diem-da-luu', component: SavedAdvertisementPage },
     { path: '/ho-so', component: ProfileTouristPage },
-    { path: '/trai-nghiem', component: SharePostsPage },
+    { path: '/chia-se', component: SharePostsPage },
     { path: '/:somestring', component: HomePage },
 ];

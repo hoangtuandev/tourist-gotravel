@@ -178,3 +178,19 @@ export const createSharePosts = (data) =>
         data: data.formData,
         params: { datas: data.datas },
     });
+
+export const getAcceptedSharePosts = () =>
+    axios.get(`${URL}/SharePosts/getAcceptedSharePosts`);
+
+export const handleFavoriteSharePost = (data) =>
+    axios.post(`${URL}/SharePosts/handleFavoriteSharePost`, data);
+
+export const handleDisFavoriteSharePost = (data) =>
+    axios.post(`${URL}/SharePosts/handleDisFavoriteSharePost`, data);
+
+export const createCommentSharePosts = (data) =>
+    axios.post(`${URL}/PostsComment/createCommentSharePosts`, data);
+
+// export const createCommentSharePosts = (data) => {
+//     axios.post(`${URL}/PostsComment/createCommentSharePosts`, data);
+// };

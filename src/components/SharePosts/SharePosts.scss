@@ -95,7 +95,7 @@ p {
                     font-weight: 700;
                     font-size: 19px;
                     padding: 10px 10px;
-                    background-color: rgba(91, 91, 91, 0.1);
+                    background-color: rgba(91, 91, 91, 0.2);
                 }
             }
 
@@ -173,6 +173,96 @@ p {
                             font-family: $mainFamily;
                             font-weight: 600;
                             font-size: 14px;
+                        }
+                    }
+                }
+
+                .comments-posts {
+                    border-top: 1px solid #cecece;
+
+                    margin: 10px 15px 0px 15px;
+                    padding: 5px 0 0 0;
+
+                    .comment-list {
+                        display: flex;
+                        flex-direction: column;
+
+                        .comment-item {
+                            display: flex;
+                            margin: 10px 0 0 0;
+
+                            .avatar-comment {
+                                width: 35px;
+                                height: 35px;
+                                border-radius: 50px;
+                            }
+                            .content-comment {
+                                margin-left: 10px;
+                                background-color: #f5f5f5;
+                                padding: 7px 10px 10px 10px;
+                                border-radius: 15px;
+
+                                p {
+                                    margin: 0 0;
+                                    font-family: $mainFamily;
+                                    font-size: 14.5px;
+                                }
+
+                                .user {
+                                    font-weight: 700;
+                                }
+
+                                .detail {
+                                    font-weight: 600;
+                                    font-size: 14px;
+                                }
+                            }
+
+                            .interact-comment {
+                                margin-left: 20px;
+                                margin-top: 0px;
+
+                                .time {
+                                    font-family: $mainFamily;
+                                    font-weight: 700;
+                                    font-size: 13px;
+                                    color: #7b7b7b;
+                                }
+                            }
+                        }
+                    }
+
+                    .comment-field {
+                        display: flex;
+                        align-items: center;
+                        margin-top: 20px;
+                        position: relative;
+
+                        .avatar-user {
+                            width: 35px;
+                            height: 35px;
+                            border-radius: 50px;
+                            margin-right: 10px;
+                        }
+
+                        .text-field {
+                            outline: none;
+                            width: 560px;
+                            padding: 7px 15px;
+                            border: 0px solid #979797;
+                            background-color: #f1f1f1;
+                            border-radius: 50px;
+
+                            font-family: $mainFamily;
+                            font-size: 15px;
+                            font-weight: 500;
+                        }
+
+                        .send-icon {
+                            position: absolute;
+                            right: 15px;
+                            font-size: 19px;
+                            color: #0092d5;
                         }
                     }
                 }

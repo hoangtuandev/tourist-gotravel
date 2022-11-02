@@ -1,13 +1,13 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import classNames from 'classnames/bind';
 import Cookies from 'universal-cookie';
 import { useSelector, useDispatch } from 'react-redux';
-import Button from '@mui/material/Button';
 import styles from './SharePosts.scss';
 import PostsItem from './PostsItem';
 import RecipeReviewCard from './RecipeReviewCard';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import AddPosts from './AddPosts';
+import * as api from '../../api';
 import {
     handleSetUserLogined,
     handleToggleAddSharePosts,
@@ -24,8 +24,16 @@ function SharePosts() {
     const openAdd = useSelector(openAddPosts);
     const baseURL = useSelector(baseURLServer);
 
+    const [postsList, setPostsList] = useState([]);
+
     useEffect(() => {
         dispatch(handleSetUserLogined(cookies.get('user').others));
+    }, []);
+
+    useEffect(() => {
+        api.getAcceptedSharePosts().then((res) => {
+            setPostsList(res.data);
+        });
     }, []);
 
     return (
@@ -36,13 +44,22 @@ function SharePosts() {
                     onClick={() => dispatch(handleToggleAddSharePosts(true))}
                 >
                     <div className={cx('user-experience')}>
-                        <img
-                            className={cx('avatar')}
-                            src={`${baseURL}${
-                                cookies.get('user').others.tkkdl_anhdaidien
-                            }`}
-                            alt=""
-                        />
+                        {cookies.get('user').others.tkkdl_anhdaidien && (
+                            <img
+                                className={cx('avatar')}
+                                src={`${baseURL}${
+                                    cookies.get('user').others.tkkdl_anhdaidien
+                                }`}
+                                alt=""
+                            />
+                        )}
+                        {!cookies.get('user').others.tkkdl_anhdaidien && (
+                            <img
+                                className={cx('avatar')}
+                                src="https://res.cloudinary.com/phtuandev/image/upload/v1666851369/GoTravel/360_F_340124934_ocif6t.jpg"
+                                alt=""
+                            />
+                        )}
                         <p className={cx('label')}>
                             Chia sẻ trải nghiệm của bản thân !
                         </p>
@@ -51,9 +68,10 @@ function SharePosts() {
                         <ShareOutlinedIcon className="icon-share" />
                     </button>
                 </div>
-                <PostsItem></PostsItem>
-                <PostsItem></PostsItem>
-                <PostsItem></PostsItem>
+                {postsList.length !== 0 &&
+                    postsList.map((posts, index) => (
+                        <PostsItem key={index} posts={posts}></PostsItem>
+                    ))}
             </div>
             <div>
                 <div className={cx('recipe-review')}>
