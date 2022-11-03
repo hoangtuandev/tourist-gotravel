@@ -160,13 +160,20 @@ export default function AddPosts() {
                     >
                         ĐÓNG
                     </Button>
-                    <Button
-                        variant="contained"
-                        color="success"
-                        onClick={() => handleSaveSharePosts()}
-                    >
-                        CHIA SẺ
-                    </Button>
+                    {!isLoading && (
+                        <Button
+                            variant="contained"
+                            color="success"
+                            onClick={() => handleSaveSharePosts()}
+                        >
+                            CHIA SẺ
+                        </Button>
+                    )}
+                    {isLoading && (
+                        <Button variant="contained" color="success" disabled>
+                            CHIA SẺ
+                        </Button>
+                    )}
                 </DialogActions>
             </Dialog>
         </div>

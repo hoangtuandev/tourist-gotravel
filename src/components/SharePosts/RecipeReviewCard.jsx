@@ -10,7 +10,6 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -30,7 +29,8 @@ const ExpandMore = styled((props) => {
 
 const cx = classNames.bind(styles);
 
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard(props) {
+    const { review } = props;
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -42,23 +42,20 @@ export default function RecipeReviewCard() {
             <CardHeader
                 fontSize="20"
                 avatar={
-                    <Avatar
-                        src="https://res.cloudinary.com/phtuandev/image/upload/v1666082026/Avatar/anh-beauty-06_lyzi25.jpg"
-                        aria-label="recipe"
-                    ></Avatar>
+                    <Avatar src={review.avatar} aria-label="recipe"></Avatar>
                 }
                 action={
                     <IconButton aria-label="settings">
                         <MoreVertIcon fontSize="large" />
                     </IconButton>
                 }
-                title="Shrimp and Chorizo Paella"
+                title={review.fullname}
                 subheader="September 14, 2016"
             />
             <CardMedia
                 component="img"
                 height="194"
-                image="https://res.cloudinary.com/phtuandev/image/upload/v1660789897/GoTravel/pexels-pixabay-45853_fkcl4f.jpg"
+                image={review.image}
                 alt="Paella dish"
             />
             <CardContent>

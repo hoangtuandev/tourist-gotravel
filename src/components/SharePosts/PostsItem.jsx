@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames/bind';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -11,13 +11,18 @@ import styles from './SharePosts.scss';
 import { useState, useEffect } from 'react';
 import { baseURLServer } from '../../GlobalSlice';
 import * as api from '../../api';
-import { userLogined } from './SharePostsSlice';
+import {
+    handleSelectPosts,
+    handleToggleViewSharePosts,
+    userLogined,
+} from './SharePostsSlice';
 
 const cx = classNames.bind(styles);
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function PostsItem(props) {
+    const dispatch = useDispatch();
     const baseURL = useSelector(baseURLServer);
     const userLogin = useSelector(userLogined);
 
@@ -121,9 +126,17 @@ function PostsItem(props) {
     };
     // console.log(posts);
 
+    const handleViewSharePosts = () => {
+        dispatch(handleSelectPosts(posts));
+        dispatch(handleToggleViewSharePosts(true));
+    };
+
     return (
         <div className={cx('posts-item')}>
-            <div className={cx('panel-posts')}>
+            <div
+                className={cx('panel-posts')}
+                onClick={() => handleViewSharePosts()}
+            >
                 <img
                     className={cx('image-posts')}
                     src={`${baseURL}${posts.bvcs_hinhanhtieude}`}
@@ -202,46 +215,54 @@ function PostsItem(props) {
                 </div>
                 <div className="comments-posts">
                     <div className="comment-list">
-                        {posts.bvcs_binhluan.map((comment, index) => (
-                            <div
-                                key={index}
-                                comment={comment}
-                                className="comment-item"
-                            >
-                                {comment.blbv_taikhoan.tkkdl_anhdaidien && (
-                                    <img
-                                        src={`${baseURL}${comment.blbv_taikhoan.tkkdl_anhdaidien}`}
-                                        alt=""
-                                        className="avatar-comment"
-                                    />
-                                )}
-                                {!comment.blbv_taikhoan.tkkdl_anhdaidien && (
-                                    <img
-                                        src="https://res.cloudinary.com/phtuandev/image/upload/v1666851369/GoTravel/360_F_340124934_ocif6t.jpg"
-                                        alt=""
-                                        className="avatar-comment"
-                                    />
-                                )}
-                                <div>
-                                    <div className="content-comment">
-                                        <p className="user">
-                                            {
-                                                comment.blbv_taikhoan
-                                                    .tkkdl_khachdulich.kdl_hoten
-                                            }
-                                        </p>
-                                        <p className="detail">
-                                            {comment.blbv_noidung}
-                                        </p>
+                        {posts.bvcs_binhluan.map(
+                            (comment, index) =>
+                                index < 3 && (
+                                    <div
+                                        key={index}
+                                        comment={comment}
+                                        className="comment-item"
+                                    >
+                                        {comment.blbv_taikhoan
+                                            .tkkdl_anhdaidien && (
+                                            <img
+                                                src={`${baseURL}${comment.blbv_taikhoan.tkkdl_anhdaidien}`}
+                                                alt=""
+                                                className="avatar-comment"
+                                            />
+                                        )}
+                                        {!comment.blbv_taikhoan
+                                            .tkkdl_anhdaidien && (
+                                            <img
+                                                src="https://res.cloudinary.com/phtuandev/image/upload/v1666851369/GoTravel/360_F_340124934_ocif6t.jpg"
+                                                alt=""
+                                                className="avatar-comment"
+                                            />
+                                        )}
+                                        <div>
+                                            <div className="content-comment">
+                                                <p className="user">
+                                                    {
+                                                        comment.blbv_taikhoan
+                                                            .tkkdl_khachdulich
+                                                            .kdl_hoten
+                                                    }
+                                                </p>
+                                                <p className="detail">
+                                                    {comment.blbv_noidung}
+                                                </p>
+                                            </div>
+                                            <div className="interact-comment">
+                                                <p className="time">
+                                                    {prettyDate(
+                                                        comment.blbv_thoigian
+                                                    )}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="interact-comment">
-                                        <p className="time">
-                                            {prettyDate(comment.blbv_thoigian)}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                                )
+                        )}
                     </div>
                     <div className="comment-field">
                         {userLogin.tkkdl_anhdaidien && (
