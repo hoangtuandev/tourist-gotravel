@@ -41,10 +41,19 @@ function SharePosts() {
     const baseURL = useSelector(baseURLServer);
 
     const [postsList, setPostsList] = useState([]);
+    const [userLogin, setUserLogin] = useState(null);
 
     useEffect(() => {
-        dispatch(handleSetUserLogined(cookies.get('user').others));
+        api.getTouristAccountById({
+            idAccount: cookies.get('user').others._id,
+        }).then((res) => {
+            setUserLogin(res.data[0]);
+        });
     }, []);
+
+    useEffect(() => {
+        dispatch(handleSetUserLogined(userLogin));
+    }, [userLogin]);
 
     useEffect(() => {
         api.getAcceptedSharePosts().then((res) => {
@@ -59,27 +68,27 @@ function SharePosts() {
                     className={cx('experience-share')}
                     onClick={() => dispatch(handleToggleAddSharePosts(true))}
                 >
-                    <div className={cx('user-experience')}>
-                        {cookies.get('user').others.tkkdl_anhdaidien && (
-                            <img
-                                className={cx('avatar')}
-                                src={`${baseURL}${
-                                    cookies.get('user').others.tkkdl_anhdaidien
-                                }`}
-                                alt=""
-                            />
-                        )}
-                        {!cookies.get('user').others.tkkdl_anhdaidien && (
-                            <img
-                                className={cx('avatar')}
-                                src="https://res.cloudinary.com/phtuandev/image/upload/v1666851369/GoTravel/360_F_340124934_ocif6t.jpg"
-                                alt=""
-                            />
-                        )}
-                        <p className={cx('label')}>
-                            Chia sẻ trải nghiệm của bản thân !
-                        </p>
-                    </div>
+                    {userLogin && (
+                        <div className={cx('user-experience')}>
+                            {userLogin.tkkdl_anhdaidien && (
+                                <img
+                                    className={cx('avatar')}
+                                    src={`${baseURL}${userLogin.tkkdl_anhdaidien}`}
+                                    alt=""
+                                />
+                            )}
+                            {!userLogin.tkkdl_anhdaidien && (
+                                <img
+                                    className={cx('avatar')}
+                                    src="https://res.cloudinary.com/phtuandev/image/upload/v1666851369/GoTravel/360_F_340124934_ocif6t.jpg"
+                                    alt=""
+                                />
+                            )}
+                            <p className={cx('label')}>
+                                Chia sẻ trải nghiệm của bản thân !
+                            </p>
+                        </div>
+                    )}
                     <button variant="contained" className="button-share">
                         <ShareOutlinedIcon className="icon-share" />
                     </button>

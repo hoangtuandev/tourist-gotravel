@@ -10,8 +10,8 @@ p {
     justify-content: center;
 
     .experience-share {
-        width: 640px;
-        max-width: 640px;
+        width: 700px;
+        max-width: 700px;
         display: flex;
         padding: 10px 10px;
         justify-content: space-between;
@@ -68,8 +68,8 @@ p {
         border-top-right-radius: 15px;
 
         .posts-item {
-            width: 640px;
-            max-width: 640px;
+            width: 700px;
+            max-width: 700px;
             padding-bottom: 10px;
             margin: 0px 0 30px 0;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -81,8 +81,8 @@ p {
                 position: relative;
 
                 img {
-                    width: 640px;
-                    height: 350px;
+                    width: 700px;
+                    height: 400px;
                 }
 
                 .title-posts {
@@ -134,14 +134,16 @@ p {
                 }
 
                 .content-posts {
+                    margin-top: 20px;
                     padding: 0 15px;
                     text-align: justify;
                     font-family: $mainFamily;
-                    font-size: 15px;
+                    font-size: 16px;
                     font-weight: 500;
+                    line-height: 25px;
 
-                    height: 135px;
-                    max-height: 135px;
+                    height: 150px;
+                    max-height: 150px;
                     display: -webkit-box;
                     overflow: hidden;
                     -webkit-line-clamp: 6;
@@ -415,7 +417,7 @@ p {
 
             .content-posts {
                 // margin: 30px 0;
-                margin-top: 20px;
+                margin-top: 10px;
 
                 textarea {
                     outline: none;

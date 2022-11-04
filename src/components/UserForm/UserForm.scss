@@ -71,6 +71,9 @@ $mainFamily: "Mulish", sans-serif;
 
             .icon-field {
               position: absolute;
+              display: flex;
+              align-items: center;
+
               color: white;
               font-size: 22px;
               margin: 11px 9px 5px 9px;

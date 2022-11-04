@@ -36,8 +36,17 @@ export default function ViewPosts(props) {
 
     const [yourComment, setYourComment] = useState('');
     const [posts, setPosts] = useState(postsInit);
+    const [author, setAuthor] = useState(null);
     const filterContent = (item) => item !== '';
     const contentPosts = posts.bvcs_noidung.split('\n').filter(filterContent);
+
+    useEffect(() => {
+        api.getTouristAccountById({ idAccount: posts.bvcs_taikhoan._id }).then(
+            (res) => {
+                setAuthor(res.data[0]);
+            }
+        );
+    }, [posts]);
 
     const [isFavorite, setIsFavorite] = useState(() => {
         const favoriteTimes = posts.bvcs_luotthich.filter((favorite) => {
@@ -145,22 +154,34 @@ export default function ViewPosts(props) {
                 aria-describedby="alert-dialog-slide-description"
             >
                 <DialogContent className={cx('dialog-content')}>
-                    <div className={cx('header-form')}>
-                        <img
-                            src={`${baseURL}${user.tkkdl_anhdaidien}`}
-                            alt=""
-                            className="avatar"
-                        />
-                        <div className="user">
-                            <p className="user-name">
-                                {user.tkkdl_khachdulich.kdl_hoten}
-                            </p>
-                            <p className="permission">
-                                <PublicIcon className="icon-permission" />
-                                <span>Công khai</span>
-                            </p>
+                    {author && (
+                        <div className={cx('header-form')}>
+                            {author.tkkdl_anhdaidien && (
+                                <img
+                                    src={`${baseURL}${author.tkkdl_anhdaidien}`}
+                                    alt=""
+                                    className="avatar"
+                                />
+                            )}
+
+                            {!author.tkkdl_anhdaidien && (
+                                <img
+                                    src="https://res.cloudinary.com/phtuandev/image/upload/v1666851369/GoTravel/360_F_340124934_ocif6t.jpg"
+                                    alt=""
+                                    className="avatar"
+                                />
+                            )}
+                            <div className="user">
+                                <p className="user-name">
+                                    {author.tkkdl_khachdulich.kdl_hoten}
+                                </p>
+                                <p className="permission">
+                                    <PublicIcon className="icon-permission" />
+                                    <span>Công khai</span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     <div className={cx('body-form')}>
                         <div className={cx('image-label')}>

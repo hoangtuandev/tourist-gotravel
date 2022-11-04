@@ -10,6 +10,7 @@ import HistoryBookingPage from '../pages/HistoryBookingPage/HistoryBookingPage';
 import SavedAdvertisementPage from '../pages/SavedAdvertisementPage/SavedAdvertisementPage';
 import ProfileTouristPage from '../pages/ProfileTouristPage/ProfileTouristPage';
 import SharePostsPage from '../pages/SharePostsPage/SharePostsPage';
+import HistorySharePostsPage from '../pages/HistorySharePostsPage/HistorySharePostsPage';
 
 export const publicRoutes = [
     { path: '/', component: HomePage },
@@ -40,5 +41,6 @@ export const privateRoute = [
     { path: '/dia-diem-da-luu', component: SavedAdvertisementPage },
     { path: '/ho-so', component: ProfileTouristPage },
     { path: '/chia-se', component: SharePostsPage },
+    { path: '/bai-viet-da-chia-se', component: HistorySharePostsPage },
     { path: '/:somestring', component: HomePage },
 ];

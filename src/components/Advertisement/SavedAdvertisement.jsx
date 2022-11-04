@@ -26,6 +26,9 @@ function SavedAdvertisement() {
 
     return (
         <div className={cx('advertisement')}>
+            <p className="history-panel-label">
+                <span>BÀI VIẾT QUẢNG BÁ ĐÃ LƯU</span>
+            </p>
             {advertisementList.length !== 0 && (
                 <ul className={cx('advertisement-list')}>
                     {advertisementList.length !== 0 &&

@@ -92,6 +92,9 @@ function HistoryBooking() {
 
     return (
         <div className={cx('history-booking')}>
+            <p className="history-panel-label">
+                <span>LỊCH SỬ ĐẶT TOUR</span>
+            </p>
             <div className={cx('filter-admin')}>
                 <div className={cx('select-filter')}>
                     <div className={cx('select-all')}>

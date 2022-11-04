@@ -5,6 +5,21 @@ $mainFamily: "Mulish", sans-serif;
     padding: 20px 0px;
     border-radius: 15px;
 
+    .history-panel-label {
+        text-align: center;
+        margin: 0px 0 40px 0;
+
+        span {
+            font-family: $mainFamily;
+            font-size: 17px;
+            font-weight: 800;
+            color: #fff;
+            background-color: #0b9de0;
+            padding: 10px 30px;
+            border-radius: 50px;
+        }
+    }
+
     .filter-admin {
         display: flex;
         justify-content: space-between;
@@ -184,6 +199,7 @@ $mainFamily: "Mulish", sans-serif;
         flex-wrap: wrap;
         border-radius: 15px;
         list-style-type: none;
+        margin-left: 20px;
 
         .item-booking {
             width: 390px;
@@ -299,6 +315,7 @@ $mainFamily: "Mulish", sans-serif;
         border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         margin-top: 20px;
+
         text-align: center;
         p {
             padding: 20px 0;

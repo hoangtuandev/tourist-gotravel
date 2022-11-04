@@ -191,6 +191,5 @@ export const handleDisFavoriteSharePost = (data) =>
 export const createCommentSharePosts = (data) =>
     axios.post(`${URL}/PostsComment/createCommentSharePosts`, data);
 
-// export const createCommentSharePosts = (data) => {
-//     axios.post(`${URL}/PostsComment/createCommentSharePosts`, data);
-// };
+export const historySharePostsByTourist = (data) =>
+    axios.post(`${URL}/SharePosts/historySharePostsByTourist`, data);

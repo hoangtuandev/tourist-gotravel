@@ -86,11 +86,20 @@ export default function AddPosts() {
                 </DialogTitle>
                 <DialogContent className={cx('dialog-content')}>
                     <div className={cx('header-form')}>
-                        <img
-                            src={`${baseURL}${user.tkkdl_anhdaidien}`}
-                            alt=""
-                            className="avatar"
-                        />
+                        {user.tkkdl_anhdaidien && (
+                            <img
+                                src={`${baseURL}${user.tkkdl_anhdaidien}`}
+                                alt=""
+                                className="avatar"
+                            />
+                        )}
+                        {!user.tkkdl_anhdaidien && (
+                            <img
+                                src="https://res.cloudinary.com/phtuandev/image/upload/v1666851369/GoTravel/360_F_340124934_ocif6t.jpg"
+                                alt=""
+                                className="avatar"
+                            />
+                        )}
                         <div className="user">
                             <p className="user-name">
                                 {user.tkkdl_khachdulich.kdl_hoten}
@@ -140,7 +149,7 @@ export default function AddPosts() {
                             <textarea
                                 name=""
                                 id=""
-                                rows={10}
+                                rows={25}
                                 placeholder="Chia sẻ trải nghiệm của bản thân..."
                                 value={contentPosts}
                                 onChange={(e) =>

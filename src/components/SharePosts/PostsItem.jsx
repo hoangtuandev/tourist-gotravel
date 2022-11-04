@@ -30,6 +30,9 @@ function PostsItem(props) {
     const [posts, setPosts] = useState(props.posts);
     const [yourComment, setYourComment] = useState('');
 
+    const filterContent = (item) => item !== '';
+    const contentPosts = posts.bvcs_noidung.split('\n').filter(filterContent);
+
     const [isFavorite, setIsFavorite] = useState(() => {
         const favoriteTimes = posts.bvcs_luotthich.filter((favorite) => {
             return (
@@ -164,7 +167,11 @@ function PostsItem(props) {
                         </div>
                     )}
                 </div>
-                <div className={cx('content-posts')}>{posts.bvcs_noidung}</div>
+                <div className={cx('content-posts')}>
+                    {contentPosts.map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                    ))}
+                </div>
                 <div className={cx('interact-posts')}>
                     <div className={cx('interact-item')}>
                         <Checkbox
