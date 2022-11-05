@@ -121,3 +121,37 @@ $mainFamily: "Mulish", sans-serif;
         }
     }
 }
+
+.result-searching-chatbot {
+    .app-bar {
+        .icon-close {
+            font-size: 25px;
+        }
+
+        .typography {
+            font-family: $mainFamily;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .close-button {
+            font-family: $mainFamily;
+            font-size: 15px;
+            font-weight: 800;
+            padding: 5px 10px;
+
+            background-color: #fff;
+            color: #0b9de0;
+        }
+    }
+
+    .result-searching-chatbot-list {
+        display: flex;
+        justify-content: center;
+        padding: 0 90px;
+
+        .list-tour {
+            box-shadow: none;
+        }
+    }
+}

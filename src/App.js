@@ -1,9 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Cookies from 'universal-cookie';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes, privateRoute } from './routes';
+import { openChatBot, openResultSearchingChatBot } from './GlobalSlice';
+import ToggleChatBotButton from './components/ChatBot/ToggleChatBotButton';
+import ChatBotSimple from './components/ChatBot/ChatBotSimple';
+import ResultSearchingChatBot from './pages/ResultSearchingPage/ResultSearchingChatBot';
 
 function App() {
+    const openChatbot = useSelector(openChatBot);
+    const openResultSearching = useSelector(openResultSearchingChatBot);
     const cookies = new Cookies();
     const user = cookies.get('user');
     // console.log('USER: ', user);
@@ -56,6 +63,12 @@ function App() {
                             );
                         })} */}
                 </Routes>
+
+                <ToggleChatBotButton></ToggleChatBotButton>
+                {openResultSearching && (
+                    <ResultSearchingChatBot></ResultSearchingChatBot>
+                )}
+                {openChatbot && <ChatBotSimple></ChatBotSimple>}
             </div>
         </Router>
     );

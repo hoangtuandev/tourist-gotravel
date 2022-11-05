@@ -18,6 +18,9 @@ const initialState = {
 
     tabMenuCurrentTour: {},
     successPayment: false,
+    openChatBot: false,
+    openResultSearchingChatBot: false,
+    resultSearchingChatBotList: [],
     baseURLServer: 'http://localhost:5000/static/',
 };
 
@@ -72,6 +75,15 @@ export const GlobalSlice = createSlice({
         handleSetBaseURL: (state, action) => {
             state.baseURLServer = action.payload;
         },
+        handleToggleResultSearchingChatBot: (state, action) => {
+            state.openResultSearchingChatBot = action.payload;
+        },
+        setResultSearchingChatBot: (state, action) => {
+            state.resultSearchingChatBotList = action.payload;
+        },
+        handleToggleChatBot: (state, action) => {
+            state.openChatBot = action.payload;
+        },
     },
 });
 
@@ -92,6 +104,9 @@ export const {
     handleSetSearchingTour,
     handleSuccessPaymentTour,
     handleSetBaseURL,
+    handleToggleChatBot,
+    setResultSearchingChatBot,
+    handleToggleResultSearchingChatBot,
 } = GlobalSlice.actions;
 
 export const tourBooked = (state) => state.global.tourBooked;
@@ -106,6 +121,11 @@ export const checkedAllTime = (state) => state.global.checkedAllTime;
 export const keySearching = (state) => state.global.keySearching;
 export const resultSearchingTour = (state) => state.global.resultSearchingTour;
 export const successPayment = (state) => state.global.successPayment;
+export const openChatBot = (state) => state.global.openChatBot;
+export const openResultSearchingChatBot = (state) =>
+    state.global.openResultSearchingChatBot;
+export const resultSearchingChatBotList = (state) =>
+    state.global.resultSearchingChatBotList;
 export const baseURLServer = (state) => state.global.baseURLServer;
 
 export default GlobalSlice.reducer;

@@ -1,0 +1,23 @@
+.chatbot-simple {
+    position: fixed;
+    bottom: 65px;
+    right: 10px;
+    z-index: 99;
+}
+
+.toggle-chatbot-button {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    z-index: 100;
+
+    .checked-icon {
+        font-size: 45px;
+        color: #a900d3;
+    }
+
+    .unChecked-icon {
+        font-size: 45px;
+        color: #e74c3c;
+    }
+}

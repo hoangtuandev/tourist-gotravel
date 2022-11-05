@@ -1,6 +1,6 @@
 import { React, Fragment, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-
+import { useSelector } from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 
@@ -13,24 +13,18 @@ import MenuTour from '../../components/MenuTour/MenuTour';
 import * as api from '../../api';
 import styles from './ToursPage.scss';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useLocation } from 'react-router-dom';
-
+import { openChatBot } from '../../GlobalSlice';
+import ToggleChatBotButton from '../../components/ChatBot/ToggleChatBotButton';
+import ChatBotSimple from '../../components/ChatBot/ChatBotSimple';
 const cx = classNames.bind(styles);
 
 function ToursPage() {
-    // const location = useLocation();
-    // const searchParams = location;
-    // let params = new URLSearchParams(searchParams.search);
-    // const typeTourims = params.get('tour');
+    const openChatbot = useSelector(openChatBot);
     const [typeTourismList, setTypeTourismList] = useState([]);
 
     useEffect(() => {
         window.scroll(0, 0);
     }, []);
-
-    // useEffect(() => {
-    //     console.log(typeTourims);
-    // }, [typeTourims]);
 
     useEffect(() => {
         api.getAllTypeTourism().then((res) => {
@@ -56,6 +50,8 @@ function ToursPage() {
                 </Fragment>
             </div>
             <Footer></Footer>
+            {/* <ToggleChatBotButton></ToggleChatBotButton> */}
+            {/* {openChatbot && <ChatBotSimple></ChatBotSimple>} */}
         </div>
     );
 }
