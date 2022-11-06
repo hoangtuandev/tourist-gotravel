@@ -27,6 +27,18 @@ import SuccessPayment from './SuccessPayment';
 const cx = classNames.bind(styles);
 const cookies = new Cookies();
 
+const adultPassengerList = [
+    {
+        fullname: 'ff',
+        birthday: '',
+        gender: '',
+    },
+];
+
+const childrenPassengerList = [];
+
+const babyPassengerList = [];
+
 function BookingTour(props) {
     const { tour, departure } = props;
     const dispatch = useDispatch();
@@ -61,6 +73,80 @@ function BookingTour(props) {
         );
     }, [tour.t_gia, amountAdult, amountChildren, amountBaby]);
 
+    useEffect(() => {}, [amountAdult]);
+
+    const handleChangeAdultPassengerFullname = (event, index) => {
+        for (let i = 0; i < adultPassengerList.length; i++) {
+            if (index === i) {
+                adultPassengerList[index].fullname = event.target.value;
+            }
+        }
+    };
+
+    const handleChangeAdultPassengerBirthday = (event, index) => {
+        for (let i = 0; i < adultPassengerList.length; i++) {
+            if (index === i) {
+                adultPassengerList[index].birthday = event.target.value;
+            }
+        }
+    };
+
+    const handleChangeAdultPassengerGender = (event, index) => {
+        for (let i = 0; i < adultPassengerList.length; i++) {
+            if (index === i) {
+                adultPassengerList[index].gender = event.target.value;
+            }
+        }
+    };
+
+    const handleChangeChildrenPassengerFullname = (event, index) => {
+        for (let i = 0; i < childrenPassengerList.length; i++) {
+            if (index === i) {
+                childrenPassengerList[index].fullname = event.target.value;
+            }
+        }
+    };
+
+    const handleChangeChildrenPassengerBirthday = (event, index) => {
+        for (let i = 0; i < childrenPassengerList.length; i++) {
+            if (index === i) {
+                childrenPassengerList[index].birthday = event.target.value;
+            }
+        }
+    };
+
+    const handleChangeChildrenPassengerGender = (event, index) => {
+        for (let i = 0; i < childrenPassengerList.length; i++) {
+            if (index === i) {
+                childrenPassengerList[index].gender = event.target.value;
+            }
+        }
+    };
+
+    const handleChangeBabyPassengerFullname = (event, index) => {
+        for (let i = 0; i < babyPassengerList.length; i++) {
+            if (index === i) {
+                babyPassengerList[index].fullname = event.target.value;
+            }
+        }
+    };
+
+    const handleChangeBabyPassengerBirthday = (event, index) => {
+        for (let i = 0; i < babyPassengerList.length; i++) {
+            if (index === i) {
+                babyPassengerList[index].birthday = event.target.value;
+            }
+        }
+    };
+
+    const handleChangeBabyPassengerGender = (event, index) => {
+        for (let i = 0; i < babyPassengerList.length; i++) {
+            if (index === i) {
+                babyPassengerList[index].gender = event.target.value;
+            }
+        }
+    };
+
     const handlePayBookingTour = () => {
         const current = new Date();
         const randomID = `BT00${current.getTime()}`;
@@ -93,6 +179,9 @@ function BookingTour(props) {
                 children: amountChildren,
                 baby: amountBaby,
             },
+            bt_nguoilon: adultPassengerList,
+            bt_treem: childrenPassengerList,
+            bt_embe: babyPassengerList,
             bt_tongthanhtoan: totalPayment,
             bt_trangthai: 1,
         }).then((res) => {
@@ -222,7 +311,10 @@ function BookingTour(props) {
                                 size="small"
                                 color="secondary"
                                 aria-label="add"
-                                onClick={() => setAmountAdult(amountAdult - 1)}
+                                onClick={() => {
+                                    setAmountAdult(amountAdult - 1);
+                                    adultPassengerList.pop();
+                                }}
                             >
                                 <RemoveIcon className={cx('icon')} />
                             </Fab>
@@ -241,7 +333,14 @@ function BookingTour(props) {
                                 size="small"
                                 color="secondary"
                                 aria-label="add"
-                                onClick={() => setAmountAdult(amountAdult + 1)}
+                                onClick={() => {
+                                    setAmountAdult(amountAdult + 1);
+                                    adultPassengerList.push({
+                                        fullname: '',
+                                        birthday: '',
+                                        gender: '',
+                                    });
+                                }}
                             >
                                 <AddIcon className={cx('icon')} />
                             </Fab>
@@ -252,9 +351,10 @@ function BookingTour(props) {
                                 color="secondary"
                                 aria-label="add"
                                 disabled={amountChildren === 0}
-                                onClick={() =>
-                                    setamountChildren(amountChildren - 1)
-                                }
+                                onClick={() => {
+                                    setamountChildren(amountChildren - 1);
+                                    childrenPassengerList.pop();
+                                }}
                             >
                                 <RemoveIcon className={cx('icon')} />
                             </Fab>
@@ -273,9 +373,14 @@ function BookingTour(props) {
                                 size="small"
                                 color="secondary"
                                 aria-label="add"
-                                onClick={() =>
-                                    setamountChildren(amountChildren + 1)
-                                }
+                                onClick={() => {
+                                    setamountChildren(amountChildren + 1);
+                                    childrenPassengerList.push({
+                                        fullname: '',
+                                        birthday: '',
+                                        gender: '',
+                                    });
+                                }}
                             >
                                 <AddIcon className={cx('icon')} />
                             </Fab>
@@ -286,7 +391,10 @@ function BookingTour(props) {
                                 color="secondary"
                                 aria-label="add"
                                 disabled={amountBaby === 0}
-                                onClick={() => setAmountBaby(amountBaby - 1)}
+                                onClick={() => {
+                                    setAmountBaby(amountBaby - 1);
+                                    babyPassengerList.pop();
+                                }}
                             >
                                 <RemoveIcon className={cx('icon')} />
                             </Fab>
@@ -305,12 +413,288 @@ function BookingTour(props) {
                                 size="small"
                                 color="secondary"
                                 aria-label="add"
-                                onClick={() => setAmountBaby(amountBaby + 1)}
+                                onClick={() => {
+                                    setAmountBaby(amountBaby + 1);
+                                    babyPassengerList.push({
+                                        fullname: '',
+                                        birthday: '',
+                                        gender: '',
+                                    });
+                                }}
                             >
                                 <AddIcon className={cx('icon')} />
                             </Fab>
                         </li>
                     </ul>
+                    <div className={cx('list-passenger')}>
+                        {adultPassengerList.map((passenger, index) => (
+                            <div key={`adult${index}`}>
+                                <p>{`Thông tin người lớn ${index + 1}`}</p>
+                                <ul className={cx('textfield-list')}>
+                                    <li>
+                                        <TextField
+                                            label="Họ tên"
+                                            variant="standard"
+                                            onChange={(e) => {
+                                                handleChangeAdultPassengerFullname(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        />
+                                    </li>
+                                    <li>
+                                        <TextField
+                                            label="Ngày sinh"
+                                            variant="standard"
+                                            placeholder="DD / MM / YYYY"
+                                            onChange={(e) => {
+                                                handleChangeAdultPassengerBirthday(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        />
+                                    </li>
+                                    <li className={cx('textfield-gender')}>
+                                        <label className={cx('label-gender')}>
+                                            Giới tính
+                                        </label>
+                                        <RadioGroup
+                                            row
+                                            aria-labelledby="demo-row-radio-buttons-group-label"
+                                            name="row-radio-buttons-group"
+                                            // value={inforContactGender}
+                                            onChange={(e) => {
+                                                handleChangeAdultPassengerGender(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        >
+                                            <FormControlLabel
+                                                value="Nam"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Nam"
+                                            />
+                                            <FormControlLabel
+                                                value="Nữ"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Nữ"
+                                            />
+                                            <FormControlLabel
+                                                value="Khác"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Khác"
+                                            />
+                                        </RadioGroup>
+                                    </li>
+                                </ul>
+                            </div>
+                        ))}
+                        {childrenPassengerList.map((passenger, index) => (
+                            <div key={`children${index}`}>
+                                <p>{`Thông tin trẻ em ${index + 1}`}</p>
+                                <ul className={cx('textfield-list')}>
+                                    <li>
+                                        <TextField
+                                            label="Họ tên"
+                                            variant="standard"
+                                            onChange={(e) => {
+                                                handleChangeChildrenPassengerFullname(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        />
+                                    </li>
+                                    <li>
+                                        <TextField
+                                            label="Ngày sinh"
+                                            variant="standard"
+                                            placeholder="DD / MM / YYYY"
+                                            onChange={(e) => {
+                                                handleChangeChildrenPassengerBirthday(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        />
+                                    </li>
+                                    <li className={cx('textfield-gender')}>
+                                        <label className={cx('label-gender')}>
+                                            Giới tính
+                                        </label>
+                                        <RadioGroup
+                                            row
+                                            aria-labelledby="demo-row-radio-buttons-group-label"
+                                            name="row-radio-buttons-group"
+                                            // value={inforContactGender}
+                                            onChange={(e) => {
+                                                handleChangeChildrenPassengerGender(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        >
+                                            <FormControlLabel
+                                                value="Nam"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Nam"
+                                            />
+                                            <FormControlLabel
+                                                value="Nữ"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Nữ"
+                                            />
+                                            <FormControlLabel
+                                                value="Khác"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Khác"
+                                            />
+                                        </RadioGroup>
+                                    </li>
+                                </ul>
+                            </div>
+                        ))}
+                        {babyPassengerList.map((passenger, index) => (
+                            <div key={`baby${index}`}>
+                                <p>{`Thông tin em bé ${index + 1}`}</p>
+                                <ul className={cx('textfield-list')}>
+                                    <li>
+                                        <TextField
+                                            label="Họ tên"
+                                            variant="standard"
+                                            onChange={(e) => {
+                                                handleChangeBabyPassengerFullname(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        />
+                                    </li>
+                                    <li>
+                                        <TextField
+                                            label="Ngày sinh"
+                                            variant="standard"
+                                            placeholder="DD / MM / YYYY"
+                                            onChange={(e) => {
+                                                handleChangeBabyPassengerBirthday(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        />
+                                    </li>
+                                    <li className={cx('textfield-gender')}>
+                                        <label className={cx('label-gender')}>
+                                            Giới tính
+                                        </label>
+                                        <RadioGroup
+                                            row
+                                            aria-labelledby="demo-row-radio-buttons-group-label"
+                                            name="row-radio-buttons-group"
+                                            // value={inforContactGender}
+                                            onChange={(e) => {
+                                                handleChangeBabyPassengerGender(
+                                                    e,
+                                                    index
+                                                );
+                                            }}
+                                        >
+                                            <FormControlLabel
+                                                value="Nam"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Nam"
+                                            />
+                                            <FormControlLabel
+                                                value="Nữ"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Nữ"
+                                            />
+                                            <FormControlLabel
+                                                value="Khác"
+                                                control={
+                                                    <Radio
+                                                        sx={{
+                                                            '& .MuiSvgIcon-root': {
+                                                                fontSize: 22,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label="Khác"
+                                            />
+                                        </RadioGroup>
+                                    </li>
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className={cx('infor-payment')}>
                     <p className={cx('label-box')}>

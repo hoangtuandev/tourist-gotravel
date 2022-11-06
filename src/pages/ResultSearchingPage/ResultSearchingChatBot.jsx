@@ -75,11 +75,7 @@ export default function ResultSearchingChatBot() {
                         </Button>
                     </Toolbar>
                 </AppBar>
-                <div
-                    className={cx(
-                        'result-searching-page result-searching-chatbot-list'
-                    )}
-                >
+                <div className={cx('result-searching-chatbot-list')}>
                     {resultSearching.length === 0 && (
                         <div className={cx('empty-tourList')}>
                             <p>Không tìm thấy tour phù hợp!</p>
@@ -91,7 +87,7 @@ export default function ResultSearchingChatBot() {
                     )}
 
                     {resultSearching.length !== 0 && (
-                        <ul className={cx('list-tour')}>
+                        <ul className={cx('list-result')}>
                             {resultSearching.map((tour, index) => (
                                 <TourItem key={index} tour={tour}></TourItem>
                             ))}

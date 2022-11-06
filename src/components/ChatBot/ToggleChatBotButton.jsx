@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Checkbox from '@mui/material/Checkbox';
 import ForumIcon from '@mui/icons-material/Forum';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { FcReddit, FcVoicePresentation, FcFaq } from 'react-icons/fc';
 import styles from './ChatBotSimple.scss';
 import { handleToggleChatBot, openChatBot } from '../../GlobalSlice';
 
@@ -17,7 +18,7 @@ function ToggleChatBotButton() {
         <div className={cx('toggle-chatbot-button')}>
             <Checkbox
                 {...label}
-                icon={<ForumIcon className="checked-icon" />}
+                icon={<FcReddit className="checked-icon" />}
                 checkedIcon={<CancelIcon className="unChecked-icon" />}
                 onChange={(e) => {
                     dispatch(handleToggleChatBot(e.target.checked));

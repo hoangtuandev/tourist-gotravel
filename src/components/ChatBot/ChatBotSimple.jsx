@@ -25,22 +25,13 @@ function ChatBotSimple() {
     const steps = [
         {
             id: 'Hello',
-            message: 'Xin chào, tôi là Chatbot GO Travel',
-            trigger: '1',
-        },
-        {
-            id: '1',
-            message: 'Tên của bạn là gì?',
-            trigger: 'name',
-        },
-        {
-            id: 'name',
-            user: true,
+            message: `Xin chào ${userLogin &&
+                userLogin.tkkdl_khachdulich.kdl_hoten}`,
             trigger: '3',
         },
         {
             id: '3',
-            message: 'Chào {previousValue}! Bạn cần chúng tôi hỗ trợ?',
+            message: 'Chúng tôi có thể giúp gì cho bạn?',
             trigger: '4',
         },
         {
@@ -70,7 +61,7 @@ function ChatBotSimple() {
         },
         {
             id: '6',
-            message: 'Điểm đến của bạn {previousValue}...',
+            message: 'Điểm đến của bạn "{previousValue}"...',
             end: true,
         },
         {
@@ -115,23 +106,23 @@ function ChatBotSimple() {
 
     const handleSearchingTour = (steps, values) => {
         console.log(steps.values);
-        if (steps.values[1] === 'searchTour') {
-            console.log('search: ', steps.values[2]);
-            api.searchingTour({ keySearch: steps.values[2] }).then((res) => {
+        if (steps.values[0] === 'searchTour') {
+            console.log('search: ', steps.values[1]);
+            api.searchingTour({ keySearch: steps.values[1] }).then((res) => {
                 console.log('RESULR: ', res.data);
                 dispatch(handleSetSearchingTour(res.data));
                 dispatch(setResultSearchingChatBot(res.data));
                 dispatch(handleChangeKeySearching(''));
                 dispatch(handleToggleResultSearchingChatBot(true));
             });
-        } else if (steps.values[1] === 'routerLink') {
-            if (steps.values[2] === 'guidePage') {
+        } else if (steps.values[0] === 'routerLink') {
+            if (steps.values[1] === 'guidePage') {
                 window.location.href = '/huong-dan';
-            } else if (steps.values[2] === 'toursPage') {
+            } else if (steps.values[1] === 'toursPage') {
                 window.location.href = '/tours';
-            } else if (steps.values[2] === 'advertisementPage') {
+            } else if (steps.values[1] === 'advertisementPage') {
                 window.location.href = '/kham-pha';
-            } else if (steps.values[2] === 'sharePage') {
+            } else if (steps.values[1] === 'sharePage') {
                 window.location.href = '/chia-se';
             }
         }

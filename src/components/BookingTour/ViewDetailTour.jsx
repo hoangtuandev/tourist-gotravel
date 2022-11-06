@@ -78,8 +78,11 @@ export default function ViewDetailTour() {
         <div>
             {['right'].map((anchor) => (
                 <Fragment key={anchor} className={cx('view-detail-tour')}>
-                    <Button onClick={toggleDrawer('right', true)} className={cx('button-view')}>
-                       Xem chi tiết tour
+                    <Button
+                        onClick={toggleDrawer('right', true)}
+                        className={cx('button-view')}
+                    >
+                        Xem chi tiết tour
                     </Button>
                     <Drawer
                         anchor={anchor}
