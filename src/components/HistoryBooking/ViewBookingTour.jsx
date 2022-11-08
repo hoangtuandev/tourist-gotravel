@@ -91,10 +91,6 @@ export default function ViewBookingTour(props) {
         });
     };
 
-    // const handleRatingGuide = () => {
-    //     dispatch(handleToggleAddRatingGuide(true));
-    // };
-
     return (
         <div>
             <Dialog
@@ -434,6 +430,93 @@ export default function ViewBookingTour(props) {
                                     </tbody>
                                 </table>
                             </div>
+                            <div>
+                                <p>Thông tin hành khách</p>
+                                <table>
+                                    <thead></thead>
+                                    <tbody>
+                                        {booking.bt_nguoilon.map(
+                                            (passenger, index) => (
+                                                <tr key={`adult${index}`}>
+                                                    <td className={cx('label')}>
+                                                        {passenger.fullname}
+                                                    </td>
+                                                    <td
+                                                        className={cx(
+                                                            'content'
+                                                        )}
+                                                    >
+                                                        {passenger.gender}
+                                                    </td>
+                                                    <td
+                                                        className={cx(
+                                                            'content'
+                                                        )}
+                                                    >
+                                                        {passenger.birthday}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        )}
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <thead></thead>
+                                    <tbody>
+                                        {booking.bt_treem.map(
+                                            (passenger, index) => (
+                                                <tr key={`children${index}`}>
+                                                    <td className={cx('label')}>
+                                                        {passenger.fullname}
+                                                    </td>
+                                                    <td
+                                                        className={cx(
+                                                            'content'
+                                                        )}
+                                                    >
+                                                        {passenger.gender}
+                                                    </td>
+                                                    <td
+                                                        className={cx(
+                                                            'content'
+                                                        )}
+                                                    >
+                                                        {passenger.birthday}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        )}
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <thead></thead>
+                                    <tbody>
+                                        {booking.bt_embe.map(
+                                            (passenger, index) => (
+                                                <tr key={`baby${index}`}>
+                                                    <td className={cx('label')}>
+                                                        {passenger.fullname}
+                                                    </td>
+                                                    <td
+                                                        className={cx(
+                                                            'content'
+                                                        )}
+                                                    >
+                                                        {passenger.gender}
+                                                    </td>
+                                                    <td
+                                                        className={cx(
+                                                            'content'
+                                                        )}
+                                                    >
+                                                        {passenger.birthday}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                         <div className={cx('detail-right')}>
@@ -591,6 +674,7 @@ export default function ViewBookingTour(props) {
                             </div>
                         </div>
                     </div>
+
                     {calendarGuide && (
                         <div>
                             <p className={cx('label-guide-list')}>

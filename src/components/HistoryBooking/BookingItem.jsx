@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-
+import Cookies from 'universal-cookie';
 import styles from './HistoryBooking.scss';
 import ViewBookingTour from './ViewBookingTour';
+import * as api from '../../api';
 import {
     handleSetBookingSelected,
     handleToggleViewHistoryBooking,
@@ -15,10 +16,12 @@ import {
 } from './HistoryBookingSlice';
 
 const cx = classNames.bind(styles);
+const cookies = new Cookies();
 
 function BookingItem(props) {
-    const { item } = props;
+    const { item, setBookingList } = props;
     const dispatch = useDispatch();
+    const user = cookies.get('user');
     const isOpenView = useSelector(openViewBooking);
 
     const handleViewDetailBooking = () => {
@@ -26,14 +29,30 @@ function BookingItem(props) {
         dispatch(handleSetBookingSelected(item));
     };
 
+    const handleDeclineBookingTour = () => {
+        api.updateStatusBookingTour({ _id: item._id, bt_trangthai: 0 }).then(
+            (res) => {
+                api.getBookingTourByTouristAccount({
+                    _id: user.others._id,
+                }).then((res) => {
+                    setBookingList(res.data);
+                });
+            }
+        );
+    };
+
     return (
         <Fragment>
-            <li
-                className={cx('item-booking')}
-                onClick={() => handleViewDetailBooking()}
-            >
-                <img src={item.bt_tour.t_hinhanh[0]} alt="" />
-                <div className={cx('infor-booking')}>
+            <li className={cx('item-booking')}>
+                <img
+                    src={item.bt_tour.t_hinhanh[0]}
+                    alt=""
+                    onClick={() => handleViewDetailBooking()}
+                />
+                <div
+                    className={cx('infor-booking')}
+                    onClick={() => handleViewDetailBooking()}
+                >
                     <p className={cx('name-tour')}>{item.bt_tour.t_ten}</p>
                     <p className={cx('time-booking')}>
                         <CalendarMonthIcon className={cx('icon')} />
@@ -88,13 +107,31 @@ function BookingItem(props) {
                         Đã kết thúc{' '}
                     </div>
                 )}
+
                 <ButtonGroup
                     className={cx('button-groups')}
                     variant="text"
                     aria-label="text button group"
                 >
-                    <Button>Chi tiết</Button>
-                    <Button>Đánh giá</Button>
+                    {item.bt_trangthai > 1 && (
+                        <Button onClick={() => handleViewDetailBooking()}>
+                            Chi tiết
+                        </Button>
+                    )}
+                    {item.bt_trangthai > 1 && (
+                        <Button onClick={() => handleViewDetailBooking()}>
+                            Đánh giá
+                        </Button>
+                    )}
+                    {item.bt_trangthai === 1 && (
+                        <Button
+                            variant="contained"
+                            color="error"
+                            onClick={() => handleDeclineBookingTour()}
+                        >
+                            Hủy tour
+                        </Button>
+                    )}
                 </ButtonGroup>
             </li>
             {isOpenView && <ViewBookingTour></ViewBookingTour>}

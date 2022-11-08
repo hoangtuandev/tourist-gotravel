@@ -67,6 +67,9 @@ export const searchingBookingByTour = (data) =>
 export const filterBookingTourByStatus = (data) =>
     axios.post(`${URL}/BookingTour/filterBookingTourByStatus`, data);
 
+export const updateStatusBookingTour = (data) =>
+    axios.post(`${URL}/BookingTour/updateStatusBookingTour`, data);
+
 // DEPARTURE
 export const getDepartureById = (data) =>
     axios.post(`${URL}/Departure/getDepartureById`, data);

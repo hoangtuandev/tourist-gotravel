@@ -1,11 +1,9 @@
 import { React, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import Switch from '@mui/material/Switch';
 import Cookies from 'universal-cookie';
 import SearchIcon from '@mui/icons-material/Search';
-import { BsCalendar3 } from 'react-icons/bs';
 import styles from './HistoryBooking.scss';
 import BookingItem from './BookingItem';
 import * as api from '../../api';
@@ -29,7 +27,6 @@ function HistoryBooking() {
 
     const [selectAll, setSelectAll] = useState(true);
     const [searchingKey, setSearchingKey] = useState('');
-    const [departure, setDeparture] = useState(new Date());
 
     useEffect(() => {
         setSearchingKey('');
@@ -63,20 +60,6 @@ function HistoryBooking() {
         }).then((res) => {
             setBookingList(res.data);
         });
-    };
-
-    const handleChangeDepartureDate = (date) => {
-        setSelectAll(false);
-        setDeparture(date);
-        // api.getCalendarGuidebyDeaprtureDate({ date: date }).then((res) => {
-        //     setCalendarGuide(
-        //         res.data.sort(
-        //             (a, b) =>
-        //                 Date.parse(a.ldt_lichkhoihanh.lkh_ngaykhoihanh) -
-        //                 Date.parse(b.ldt_lichkhoihanh.lkh_ngaykhoihanh)
-        //         )
-        //     );
-        // });
     };
 
     const handleChangeSearchingKey = (key) => {
@@ -146,7 +129,11 @@ function HistoryBooking() {
             {bookingList.length !== 0 && (
                 <ul className={cx('list-bookings')}>
                     {bookingList.map((item, index) => (
-                        <BookingItem key={index} item={item}></BookingItem>
+                        <BookingItem
+                            key={index}
+                            item={item}
+                            setBookingList={setBookingList}
+                        ></BookingItem>
                     ))}
                 </ul>
             )}
